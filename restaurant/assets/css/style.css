@@ -1,0 +1,290 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  font-family: "Bree Serif", serif;
+  background-color: #970747;
+
+  background-image: url(../img/grain.png);
+  background-size: 300px 300px;
+  background-position: 0 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+.font_text {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ----------- */
+
+.bg-blur {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(255, 255, 255, 0.548) !important;
+}
+
+.nav-link {
+  margin: 0px 10px 0px 10px !important;
+  padding: 0px 10px 0px 10px !important;
+}
+.nav_cent_res {
+  margin: 10px auto;
+}
+.nav_marg {
+  margin-left: 20px;
+}
+
+/* ----------- */
+header {
+  display: flex;
+  flex-direction: column;
+}
+header img {
+  margin: 20px auto;
+}
+
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #9ca3af;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 0px;
+  padding: 2px;
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.596);
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+.form-input:hover {
+  background-color: white;
+}
+
+/* ----------- */
+
+#pres_cat_pl {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  justify-content: center;
+}
+#list_cat_mp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cards_cat_mp {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.315);
+  width: 360px;
+  height: 360px;
+  position: relative;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.cards_cat_mp a {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.349);
+  display: inline-block;
+  align-items: flex-end;
+  vertical-align: bottom;
+  position: absolute;
+  bottom: 0px;
+  text-decoration: none;
+  font-size: 23pt;
+  margin-bottom: 20px;
+}
+
+.cards_cat_mp a:hover {
+  background-color: rgba(0, 0, 0, 0.589);
+  transition: 50ms;
+}
+
+#img_card1 {
+  background: url(/restaurant/assets/img/category/asian_food_cat.jpg) right
+    bottom/cover no-repeat;
+}
+#img_card2 {
+  background: url(/restaurant/assets/img/category/burger_cat.jpg) right
+    top/cover no-repeat;
+}
+#img_card3 {
+  background: url(/restaurant/assets/img/category/pasta_cat.jpg) bottom/cover
+    no-repeat;
+}
+#img_card4 {
+  background: url(/restaurant/assets/img/category/pizza_cat.jpg) right top/cover
+    no-repeat;
+}
+#img_card5 {
+  background: url(/restaurant/assets/img/category/salade_cat.jpg) right / cover
+    no-repeat;
+}
+#img_card6 {
+  background: url(/restaurant/assets/img/category/sandwich_cat.jpg) right
+    top/cover no-repeat;
+}
+
+#pres_cat_pl button {
+  color: black;
+  font-size: 16pt;
+  margin-top: 20px;
+  padding: 5px 30px 5px 30px;
+  background-color: #47b4d1;
+  border: none;
+}
+#pres_cat_pl button:hover {
+  background-color: #a4e3f5;
+}
+
+/* -- */
+
+.cards_pl_mp {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.315);
+  width: 360px;
+  height: 170px;
+  position: relative;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.cards_pl_mp a {
+  color: white;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.349);
+  display: inline-block;
+  align-items: flex-end;
+  vertical-align: bottom;
+  position: absolute;
+  bottom: 0px;
+  text-decoration: none;
+  font-size: 23pt;
+  margin-bottom: -2px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.cards_pl_mp a:hover {
+  background-color: rgba(0, 0, 0, 0.589);
+  transition: 50ms;
+}
+
+#img_card_plat1 {
+  background: url(/restaurant/assets/img/food/spaghetti-legumes.jpg) right
+    bottom/cover no-repeat;
+}
+#img_card_plat2 {
+  background: url(/restaurant/assets/img/food/pizza-margherita.jpg) right
+    bottom/cover no-repeat;
+}
+#img_card_plat3 {
+  background: url(/restaurant/assets/img/food/cheesburger.jpg) right top/cover
+    no-repeat;
+}
+
+/* ----------- */
+
+footer {
+  background-color: black;
+  margin-top: 100px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px 0px 50px 0px;
+  /* border: 1px solid white; */
+}
+
+#social_link {
+  display: flex;
+  flex-direction: column;
+}
+#social_link h1 {
+  text-align: center;
+}
+
+#social_link_logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+#social_link_logo img {
+  width: 50px;
+  height: 50px;
+}
+
+#footer_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footer_logo_district {
+  width: 425px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+#footer_nav {
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+#footer_nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0px 10px 0px 10px;
+}
+
+#footer_rewards {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#michelin_logo {
+  width: 190px;
+  height: 120px;
+  margin: 10px auto;
+}
+#bocuse_logo {
+  width: 180px;
+  height: 45px;
+  margin: 10px auto;
+}
+#gaumill_logo {
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+#img_rewards {
+  display: flex;
+  flex-direction: column;
+}

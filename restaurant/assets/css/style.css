@@ -27,7 +27,9 @@ body {
 .nav-link {
   margin: 0px 10px 0px 10px !important;
   padding: 0px 10px 0px 10px !important;
+  font-size: 16pt;
 }
+
 .nav_cent_res {
   margin: 10px auto;
 }
@@ -126,27 +128,42 @@ header img {
 #img_card1 {
   background: url(/restaurant/assets/img/category/asian_food_cat.jpg) right
     bottom/cover no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
+
 #img_card2 {
   background: url(/restaurant/assets/img/category/burger_cat.jpg) right
     top/cover no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card3 {
   background: url(/restaurant/assets/img/category/pasta_cat.jpg) bottom/cover
     no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card4 {
   background: url(/restaurant/assets/img/category/pizza_cat.jpg) right top/cover
     no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card5 {
   background: url(/restaurant/assets/img/category/salade_cat.jpg) right / cover
     no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card6 {
   background: url(/restaurant/assets/img/category/sandwich_cat.jpg) right
     top/cover no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
+
+/* ------- */
 
 #pres_cat_pl button {
   color: black;
@@ -199,14 +216,34 @@ header img {
 #img_card_plat1 {
   background: url(/restaurant/assets/img/food/spaghetti-legumes.jpg) right
     bottom/cover no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card_plat2 {
   background: url(/restaurant/assets/img/food/pizza-margherita.jpg) right
     bottom/cover no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
 }
 #img_card_plat3 {
   background: url(/restaurant/assets/img/food/cheesburger.jpg) right top/cover
     no-repeat;
+  background-size: 100%;
+  transition: all 0.1s ease-in-out;
+}
+
+/* ----------- */
+
+#img_card1:hover,
+#img_card2:hover,
+#img_card3:hover,
+#img_card4:hover,
+#img_card5:hover,
+#img_card6:hover,
+#img_card_plat1:hover,
+#img_card_plat2:hover,
+#img_card_plat3:hover {
+  background-size: 110%;
 }
 
 /* ----------- */
@@ -245,6 +282,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 20px;
 }
 
 #footer_logo_district {
@@ -287,4 +325,18 @@ footer {
 #img_rewards {
   display: flex;
   flex-direction: column;
+}
+
+/* #footer_info #social_link #footer_rewards  */
+
+@media (max-width: 951px) {
+  #social_link {
+    order: 1;
+  }
+  #footer_info {
+    order: 2;
+  }
+  #footer_rewards {
+    order: 3;
+  }
 }

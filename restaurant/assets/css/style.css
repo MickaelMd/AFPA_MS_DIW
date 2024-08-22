@@ -273,7 +273,7 @@ header img {
 
 footer {
   background-color: black;
-  margin-top: 100px;
+  margin-top: 50px;
   color: white;
   display: flex;
   justify-content: center;
@@ -320,6 +320,9 @@ footer {
 #footer_nav {
   padding-top: 20px;
   margin: 0 auto;
+  display: flex;
+  width: 350px;
+  order: 2;
 }
 
 #footer_nav a {
@@ -353,8 +356,6 @@ footer {
   display: flex;
   flex-direction: column;
 }
-
-/* #footer_info #social_link #footer_rewards  */
 
 @media (max-width: 951px) {
   #social_link {

@@ -22,7 +22,6 @@ function transformElement(el, xyEl) {
   el.style.transform = transforms(xyEl[0], xyEl[1], el);
 }
 
-// Gestion du mouvement de la souris
 mouseOverContainer.addEventListener("mousemove", function (e) {
   let xy = [e.clientX, e.clientY];
   window.requestAnimationFrame(function () {
@@ -30,7 +29,6 @@ mouseOverContainer.addEventListener("mousemove", function (e) {
   });
 });
 
-// Réinitialisation de la transformation lorsque la souris quitte le conteneur
 mouseOverContainer.addEventListener("mouseleave", function () {
   ex1Layer.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
 });

@@ -1,0 +1,20 @@
+#contact_section_page {
+  color: white !important;
+  margin-top: 100px;
+}
+
+#info_contact {
+  text-align: center;
+}
+
+#OSM-map {
+  margin-top: 50px;
+}
+
+#contact_form_section {
+  margin-top: 50px;
+  color: white;
+}
+#contact_form_section h2 {
+  text-align: center;
+}

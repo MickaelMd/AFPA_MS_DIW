@@ -33,3 +33,35 @@
   width: 300px;
   height: 250px;
 }
+.btn_suiv_prec {
+  width: 200px;
+  margin: 20px 50px 0px 50px;
+}
+
+#btn_section {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  #cards_section_p_c {
+    text-align: center;
+  }
+
+  #cards_section_p_c img {
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 0 !important; /* Par défaut, pas arrondi */
+    border-bottom-left-radius: 0 !important;
+  }
+
+  .btn_com {
+    position: static;
+  }
+
+  .show_price {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+  }
+}

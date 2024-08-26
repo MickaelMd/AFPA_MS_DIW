@@ -6,7 +6,12 @@
 		<lastmod>2024-08-26</lastmod>
 	</url>
 	<url>
-		<loc>http://www.localhost/restaurant/html/contact.html</loc>
+		<loc>http://www.localhost/php/Exer_1_2/bonjour.php</loc>
+		<priority>0.25</priority>
+		<lastmod>2024-08-22</lastmod>
+	</url>
+	<url>
+		<loc>http://www.localhost/restaurant/html/cat_asiatique.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2024-08-26</lastmod>
 	</url>
@@ -16,13 +21,8 @@
 		<lastmod>2024-08-26</lastmod>
 	</url>
 	<url>
-		<loc>http://www.localhost/restaurant/html/cat_asiatique.html</loc>
+		<loc>http://www.localhost/restaurant/html/contact.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2024-08-26</lastmod>
-	</url>
-	<url>
-		<loc>http://www.localhost/php/Exer_1_2/bonjour.php</loc>
-		<priority>0.25</priority>
-		<lastmod>2024-08-22</lastmod>
 	</url>
 </urlset>

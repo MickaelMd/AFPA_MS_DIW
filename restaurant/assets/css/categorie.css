@@ -18,3 +18,11 @@
 #img_card8:hover {
   background-size: 110%;
 }
+
+#pres_cat_pl-p {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  justify-content: center;
+}

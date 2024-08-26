@@ -19,10 +19,6 @@
   position: absolute;
   bottom: 30px !important;
   right: 30px !important;
-  background-color: #47b4d1;
-  color: black;
-  border: none;
-  padding: 10px;
 }
 .show_price {
   position: absolute;

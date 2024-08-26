@@ -107,17 +107,6 @@ header img {
 
 /* ----------- */
 
-#pres_cat_pl {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 100px;
-  justify-content: center;
-}
-#list_cat_mp {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 .cards_cat_mp {
   display: flex;
   flex-wrap: wrap;
@@ -191,14 +180,25 @@ header img {
 
 /* ------- */
 
+#pres_cat_pl-pl,
+.list_cat_mp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  justify-content: center;
+}
+
 #pres_cat_pl button {
   color: black;
   font-size: 16pt;
-  margin-top: 20px;
+  margin: 20px auto;
+  justify-content: center;
   padding: 5px 30px 5px 30px;
   background-color: #47b4d1;
   border: none;
 }
+
 #pres_cat_pl button:hover {
   background-color: #a4e3f5;
 }

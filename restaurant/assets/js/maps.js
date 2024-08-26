@@ -17,7 +17,9 @@ marker = L.marker(L.latLng(49.928640638465176, 2.273311614990235), {
   title: "The District",
 });
 marker.addTo(map);
-marker.bindPopup("The District");
+marker.bindPopup(
+  "<p> The District</p> </br> 30 Rue de Poulainville, 80000 Amiens"
+);
 
 L.control
   .bigImage({

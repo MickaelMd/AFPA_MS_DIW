@@ -4,13 +4,14 @@ body {
   padding: 0;
   top: 0;
   font-family: "Bree Serif", serif;
-  background-color: #970747;
+  background-color: #f7c4a5;
 
   background-image: url(../img/grain.png);
   background-size: 300px 300px;
   background-position: 0 0;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
+  color: black;
 
   image-rendering: pixelated;
   image-rendering: optimizeSpeed;
@@ -141,38 +142,38 @@ header img {
 }
 
 #img_card1 {
-  background: url(/restaurant/assets/img/category/asian_food_cat.jpg) right
+  background: url(/The_District/assets/img/category/asian_food_cat.jpg) right
     bottom/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 
 #img_card2 {
-  background: url(/restaurant/assets/img/category/burger_cat.jpg) right
+  background: url(/The_District/assets/img/category/burger_cat.jpg) right
     top/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card3 {
-  background: url(/restaurant/assets/img/category/pasta_cat.jpg) bottom/cover
+  background: url(/The_District/assets/img/category/pasta_cat.jpg) bottom/cover
     no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card4 {
-  background: url(/restaurant/assets/img/category/pizza_cat.jpg) right top/cover
-    no-repeat;
+  background: url(/The_District/assets/img/category/pizza_cat.jpg) right
+    top/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card5 {
-  background: url(/restaurant/assets/img/category/salade_cat.jpg) right / cover
-    no-repeat;
+  background: url(/The_District/assets/img/category/salade_cat.jpg) right /
+    cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card6 {
-  background: url(/restaurant/assets/img/category/sandwich_cat.jpg) right
+  background: url(/The_District/assets/img/category/sandwich_cat.jpg) right
     top/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
@@ -240,19 +241,19 @@ header img {
 }
 
 #img_card_plat1 {
-  background: url(/restaurant/assets/img/food/spaghetti-legumes.jpg) right
+  background: url(/The_District/assets/img/food/spaghetti-legumes.jpg) right
     bottom/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card_plat2 {
-  background: url(/restaurant/assets/img/food/pizza-margherita.jpg) right
+  background: url(/The_District/assets/img/food/pizza-margherita.jpg) right
     bottom/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }
 #img_card_plat3 {
-  background: url(/restaurant/assets/img/food/cheesburger.jpg) right top/cover
+  background: url(/The_District/assets/img/food/cheesburger.jpg) right top/cover
     no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;

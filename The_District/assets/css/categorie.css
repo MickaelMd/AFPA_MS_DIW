@@ -1,13 +1,13 @@
 #img_card7 {
-  background: url(/restaurant/assets/img/category/veggie_cat.jpg) right
+  background: url(/The_District/assets/img/category/veggie_cat.jpg) right
     bottom/cover no-repeat;
   background-size: 150%;
   transition: all 0.1s ease-in-out;
 }
 
 #img_card8 {
-  background: url(/restaurant/assets/img/category/wrap_cat.jpg) right top/cover
-    no-repeat;
+  background: url(/The_District/assets/img/category/wrap_cat.jpg) right
+    top/cover no-repeat;
   background-size: 100%;
   transition: all 0.1s ease-in-out;
 }

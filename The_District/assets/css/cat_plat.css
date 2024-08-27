@@ -3,10 +3,6 @@
   margin-bottom: 100px;
 }
 
-#sec_cards_plat_cat h1 {
-  color: white !important;
-}
-
 #cards_section_p_c {
   display: flex;
   flex-direction: row !important;

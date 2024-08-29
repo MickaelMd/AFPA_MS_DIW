@@ -17,6 +17,17 @@
 // $resultat doit contenir 17
 
 
+function calcul ($tab) {
+
+    
+    global $resultat;
+    $resultat = array_sum($tab);
+    
+};
+
+calcul($tab =  array(4, 3, 8, 2));
+
+echo $resultat;
 ?>
 
 </body>

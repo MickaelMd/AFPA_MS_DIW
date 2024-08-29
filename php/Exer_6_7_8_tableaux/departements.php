@@ -16,6 +16,7 @@ $departements = array(
     "Normandie" => array("Calvados", "Eure", "Manche", "Orne", "Seine-Maritime")
 );
 
+
 // A partir du tableau ci-dessus:
 
 // Affichez la liste des régions (par ordre alphabétique) suivie du nom des départements

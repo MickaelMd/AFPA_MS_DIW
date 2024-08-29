@@ -18,6 +18,44 @@
 // $resultat = complex_password("TopSecret42");
 // $resultat doit contenir true.
 
+function verif($mdp) {
+
+    $text_mdp = "</br> Le mot de passe doit";
+    global $resultat;
+
+    
+    if (strlen($mdp) < 8) {
+        echo "$text_mdp faire au moins 8 caractères de long";
+       
+    }
+
+   
+    if (!preg_match('/[0-9]/', $mdp)) {
+        echo "$text_mdp avoir au moins 1 chiffre";
+       
+    }
+
+    
+    if (!preg_match('/[a-z]/', $mdp) || !preg_match('/[A-Z]/', $mdp)) {
+        echo "$text_mdp avoir au moins une majuscule et une minuscule";
+      
+    }
+
+    else {
+        echo "Le mot de passe est bon !";
+        $resultat = true;
+        
+    }
+}
+
+
+verif("TopSecret42");
+
+if ($resultat === true) {
+
+    echo "</br> Variable résultat : $resultat";
+}
+
 ?>
 
 </body>

@@ -17,6 +17,16 @@
 
 // <a href="https://www.reddit.com/">Reddit Hug</a>
 
+function lien ($lien, $titre) {
+
+    echo "<a href=$lien > $titre </a>" ;
+
+};
+
+
+lien("https://www.reddit.com/", "Reddit Hug");
+
+
 
 ?>
 

@@ -12,40 +12,28 @@
 <body>
     
 
-
-
-    <form class="form" action="login_script.php" method="POST">
-       <p class="form-title">Create account</p>
+<body>
+    <form class="form" action="sign_up_script.php" method="POST">
+       <p class="form-title">Créer un compte</p>
         <div class="input-container">
-          <input type="text" placeholder="Enter login" name="sign_login">
-          <span>
-          </span>
-      </div>
-
-      <div class="input-container">
-          <input type="text" placeholder="Nom" name="sign_nom">
+          <input type="text" placeholder="Nom" name="sign_nom" required>
         </div>
-
         <div class="input-container">
-          <input type="text" placeholder="Prénom" name="sign_prenom">
+          <input type="text" placeholder="Prénom" name="sign_prenom" required>
         </div>
-
         <div class="input-container">
-          <input type="email" placeholder="Adresse email" name="sign_email">
+          <input type="email" placeholder="Adresse email" name="sign_email" required>
         </div>
-
-      <div class="input-container">
-          <input type="password" placeholder="Enter password" name="sign_password">
+        <div class="input-container">
+          <input type="text" placeholder="Login" name="sign_login" required>
         </div>
-         <button type="submit" class="submit">
-        Sign up
-        
-      </button>
+        <div class="input-container">
+          <input type="password" placeholder="Mot de passe" name="sign_password" required>
+        </div>
+        <button type="submit" class="submit">S'inscrire</button>
+    </form>
     
-      
    </form>
-
-
 
 
 </body>

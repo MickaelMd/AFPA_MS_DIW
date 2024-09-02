@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== 'ok') {
-   
     header('Location: login_form.php');
     exit;
 }
@@ -17,8 +15,6 @@ if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== 'ok') {
     <title>Document</title>
 </head>
 <body>
-    
-    <p>Vous êtes authentifié.</p>
-  
+    <p>Vous êtes connecté.</p>
 </body>
 </html>

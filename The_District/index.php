@@ -29,9 +29,12 @@
   </head>
   <body>
     <div class="container">
+
+   
+
       <nav class="navbar bg-body-tertiary navbar-expand-md fixed-top bg-blur">
         <div class="container-fluid">
-          <a class="navbar-brand nav_marg" href="index.html">
+          <a class="navbar-brand nav_marg" href="index.php">
             <img
               src="assets/img/the_district_brand/nav_logo.svg"
               alt="Bootstrap"
@@ -53,18 +56,18 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item nav_cent_res">
-                <a class="nav-link active" aria-current="page" href="index.html"
+                <a class="nav-link active" aria-current="page" href="index.php"
                   >Accueil</a
                 >
               </li>
               <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="html/categorie.html">Catégorie</a>
+                <a class="nav-link" href="html/categorie.php">Catégorie</a>
               </li>
               <li class="nav-item nav_cent_res">
                 <a class="nav-link" href="#">Plats</a>
               </li>
               <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="html/contact.html">Contact</a>
+                <a class="nav-link" href="html/contact.php">Contact</a>
               </li>
             </ul>
           </div>
@@ -81,7 +84,7 @@
         </div>
       </div>
       <header>
-        <!-- --------- -->
+         
 
         <div class="container">
           <div
@@ -102,6 +105,8 @@
           </div>
         </div>
       </header>
+
+     
 
       <section id="pres_cat_pl" class="container">
         <div class="list_cat_mp">
@@ -124,13 +129,13 @@
           <div class="cards_cat_mp" id="img_card6">
             <a href="">Sandwich</a>
           </div>
-          <a href="html/categorie.html">
+         
+        </div>
+ <a class="d-flex text-decoration-none" href="html/categorie.php">
             <button type="button" class="btn btn-lg btn-info mt-3">
               TOUTES LES CATÉGORIES
             </button>
           </a>
-        </div>
-
         <br />
 
         <div class="mt-5 list_cat_mp">
@@ -143,12 +148,12 @@
           <div class="cards_pl_mp" id="img_card_plat3">
             <a href="">Cheesburger</a>
           </div>
-          <a href="html/plats.html">
+        
+        </div>  <a class="d-flex text-decoration-none" href="html/plats.php">
             <button type="button" class="btn btn-info mt-3">
               TOUTS LES PLATS
             </button></a
           >
-        </div>
       </section>
     </div>
 

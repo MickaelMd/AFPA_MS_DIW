@@ -28,82 +28,9 @@
   </head>
   <body>
     <div class="container">
-      <nav class="navbar bg-body-tertiary navbar-expand-md fixed-top bg-blur">
-        <div class="container-fluid">
-          <a class="navbar-brand nav_marg" href="../index.html">
-            <img
-              src="../assets/img/the_district_brand/nav_logo.svg"
-              alt="Bootstrap"
-              width="150"
-              height="auto"
-            />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item nav_cent_res">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="../index.html"
-                  >Accueil</a
-                >
-              </li>
-              <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="categorie.html">Catégorie</a>
-              </li>
-              <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="#">Plats</a>
-              </li>
-              <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    
+    <?php require_once(__DIR__ . '/../assets/php/header.php'); ?>
 
-      <div id="ex1" class="paralaxbox">
-        <div id="ex1-layer">
-          <img
-            src="../assets/img/the_district_brand/big_white_logo.svg"
-            alt="The
-        District Logo"
-          />
-        </div>
-      </div>
-      <header>
-        <!-- --------- -->
-
-        <div class="container">
-          <div
-            class="row height d-flex justify-content-center align-items-center"
-          >
-            <div class="col-md-6">
-              <div class="form">
-                <input
-                  type="text"
-                  class="form-control form-input"
-                  placeholder="Recherche..."
-                />
-                <span class="left-pan"
-                  ><img src="../assets/img/search.svg" alt=""
-                /></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
       <section id="sec_cards_plat_cat">
         <h1 id="title_section_cat_plat">Catégorie : Asiatique</h1>
 
@@ -266,87 +193,11 @@
       </section>
     </div>
 
-    <!-- ---------------- -->
+  
 
-    <footer>
-      <div id="footer_info">
-        <h4>Amiens :</h4>
-        <p class="font_text">
-          30 Rue de Poulainville, 80000 Amiens <br />
-          09 72 72 39 36
-        </p>
+    <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>
 
-        <p class="font_text">
-          Horaires: Lundi : 08:00 – 12:00, 13:00 – 17:00 <br />
-          Mardi : 08:00–12:00, 13:00 – 17:00 <br />
-          Mercredi : 08:00–12:00, 13:00 – 17:00 <br />
-          Jeudi : 08:00 – 12:00, 13:00 – 17:00 <br />
-          Vendredi : 08:00 – 12:00 <br />
-          Samedi et Dimanche : Fermé
-        </p>
-      </div>
-
-      <div id="social_link">
-        <h1>Suivez-nous !</h1>
-        <div id="social_link_logo">
-          <a href=""
-            ><img
-              src="../assets/img/social_link/facebook_icon.svg"
-              alt="Facebook icon"
-          /></a>
-          <a href="">
-            <img
-              src="../assets/img/social_link/instagram_icon.svg"
-              alt="Instagram icon"
-          /></a>
-          <a href="">
-            <img
-              src="../assets/img/social_link/tiktok_icon.svg"
-              alt="Tiktok icon"
-            />
-          </a>
-          <a href="">
-            <img
-              src="../assets/img/social_link/x_icon.svg"
-              alt="X / Twitter icon"
-            />
-          </a>
-        </div>
-        <img
-          id="footer_logo_district"
-          src="../assets/img/the_district_brand/logo_b_footer.svg"
-          alt="The District Logo"
-        />
-
-        <div id="footer_nav" class="font_text">
-          <a href="">Accueil</a>
-          <a href="">Catégorie</a>
-          <a href="">Plats</a>
-          <a href="">Contact</a>
-        </div>
-      </div>
-      <div id="footer_rewards">
-        <div id="img_rewards">
-          <img
-            src="../assets/img/logo/michelon_guide.svg"
-            alt="Logo du guide Michelin"
-            id="michelin_logo"
-          />
-          <img
-            src="../assets/img/logo/Bocuse_dOr.svg"
-            alt="Logo du Bocuse d'or"
-            id="bocuse_logo"
-          />
-          <img
-            src="../assets/img/logo/gault_millau.svg"
-            alt="Logo de Gault & Millau"
-            id="gaumill_logo"
-          />
-        </div>
-      </div>
-    </footer>
-
-    <!-- ---------- -->
+  
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

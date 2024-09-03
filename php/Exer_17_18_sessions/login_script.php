@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-// Initialisation du tableau global des utilisateurs si nécessaire
 if (!isset($GLOBALS['users'])) {
     $GLOBALS['users'] = [];
 }
 
-// Vérification si le formulaire de connexion a été soumis
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des données du formulaire de connexion
     $login = trim($_POST['login']);
@@ -18,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Vérifier le login et le mot de passe dans le tableau en mémoire
+    
     if (isset($GLOBALS['users'][$login])) {
         $user = $GLOBALS['users'][$login];
         if (password_verify($password, $user['password'])) {
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Authentification échouée
+    
     session_destroy();
     echo "Identifiants incorrects. <a href='login_form.php'>Réessayez</a>.";
     exit;

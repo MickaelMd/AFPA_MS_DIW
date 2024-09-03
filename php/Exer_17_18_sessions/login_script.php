@@ -7,11 +7,11 @@ if (!isset($GLOBALS['users'])) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire de connexion
+    
     $login = trim($_POST['login']);
     $password = trim($_POST['password']);
 
-    // Vérification des champs vides
+    
     if (empty($login) || empty($password)) {
         echo "Le champ login ou mot de passe est vide. <a href='login_form.php'>Réessayez</a>.";
         exit;

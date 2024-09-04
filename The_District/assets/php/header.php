@@ -1,9 +1,9 @@
 
 <nav class="navbar bg-body-tertiary navbar-expand-md fixed-top bg-blur">
         <div class="container-fluid">
-          <a class="navbar-brand nav_marg" href="../index.php">
+          <a class="navbar-brand nav_marg" href="http://localhost:3000/The_District/index.php">
             <img
-              src="../assets/img/the_district_brand/nav_logo.svg"
+              src="http://localhost:3000/The_District/assets/img/the_district_brand/nav_logo.svg"
               alt="Bootstrap"
               width="150"
               height="auto"
@@ -23,13 +23,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="../index.php">Accueil</a>
+                <a class="nav-link" href="http://localhost:3000/The_District/index.php">Accueil</a>
               </li>
               <li class="nav-item nav_cent_res">
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="categorie.php"
+                  href="http://localhost:3000/The_District/html/categorie.php"
                   >Catégorie</a
                 >
               </li>
@@ -37,7 +37,7 @@
                 <a class="nav-link" href="#">Plats</a>
               </li>
               <li class="nav-item nav_cent_res">
-                <a class="nav-link" href="contact.php">Contact</a>
+                <a class="nav-link" href="http://localhost:3000/The_District/html/contact.php">Contact</a>
               </li>
             </ul>
           </div>
@@ -47,7 +47,7 @@
       <div id="ex1" class="paralaxbox">
         <div id="ex1-layer">
            <img
-            src="../assets/img/the_district_brand/big_white_logo.svg"
+            src="http://localhost:3000/The_District/assets/img/the_district_brand/big_white_logo.svg"
 
             
             alt="The District Logo"
@@ -71,7 +71,7 @@
                   placeholder="Recherche..."
                 />
                 <span class="left-pan"
-                  ><img src="../assets/img/search.svg" alt=""
+                  ><img src="http://localhost:3000/The_District/assets/img/search.svg" alt=""
                 /></span>
               </div>
             </div>

@@ -21,30 +21,30 @@
         <div id="social_link_logo">
           <a href=""
             ><img
-              src="../assets/img/social_link/facebook_icon.svg"
+              src="http://localhost:3000/The_District/assets/img/social_link/facebook_icon.svg"
               alt="Facebook icon"
           /></a>
           <a href="">
             <img
-              src="../assets/img/social_link/instagram_icon.svg"
+              src="http://localhost:3000/The_District/assets/img/social_link/instagram_icon.svg"
               alt="Instagram icon"
           /></a>
           <a href="">
             <img
-              src="../assets/img/social_link/tiktok_icon.svg"
+              src="http://localhost:3000/The_District/assets/img/social_link/tiktok_icon.svg"
               alt="Tiktok icon"
             />
           </a>
           <a href="">
             <img
-              src="../assets/img/social_link/x_icon.svg"
+              src="http://localhost:3000/The_District/assets/img/social_link/x_icon.svg"
               alt="X / Twitter icon"
             />
           </a>
         </div>
         <img
           id="footer_logo_district"
-          src="../assets/img/the_district_brand/logo_b_footer.svg"
+          src="http://localhost:3000/The_District/assets/img/the_district_brand/logo_b_footer.svg"
           alt="The District Logo"
         />
 
@@ -58,17 +58,17 @@
       <div id="footer_rewards">
         <div id="img_rewards">
           <img
-            src="../assets/img/logo/michelon_guide.svg"
+            src="http://localhost:3000/The_District/assets/img/logo/michelon_guide.svg"
             alt="Logo du guide Michelin"
             id="michelin_logo"
           />
           <img
-            src="../assets/img/logo/Bocuse_dOr.svg"
+            src="http://localhost:3000/The_District/assets/img/logo/Bocuse_dOr.svg"
             alt="Logo du Bocuse d'or"
             id="bocuse_logo"
           />
           <img
-            src="../assets/img/logo/gault_millau.svg"
+            src="http://localhost:3000/The_District/assets/img/logo/gault_millau.svg"
             alt="Logo de Gault & Millau"
             id="gaumill_logo"
           />

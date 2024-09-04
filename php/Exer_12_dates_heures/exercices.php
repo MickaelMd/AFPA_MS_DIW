@@ -39,7 +39,7 @@ echo "<hr></br>";
 
 // -----------
 
-$fin_form = strtotime('2024-11-10');
+$fin_form = strtotime('2024-10-11');
 $difference = $today_timestamp - $fin_form;
 echo "Il reste " . floor($difference / 86400) . " Jour de formation.";
 
@@ -103,7 +103,7 @@ echo "</br></br> <hr> </br>";
 $timestamp = 1000200000;
 
 
-echo "Le " . date('d/m/Y', $timestamp) . " Il c'est passé les Attentats du 11 septembre 2001.";
+echo "Le " . date('d/m/Y', $timestamp) . " Correspond aux Attentats du 11 septembre 2001.";
 
 
 ?>

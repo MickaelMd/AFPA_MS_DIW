@@ -27,7 +27,7 @@
               </li>
               <li class="nav-item nav_cent_res">
                 <a
-                  class="nav-link active"
+                  class="nav-link"
                   aria-current="page"
                   href="http://localhost:3000/The_District/html/categorie.php"
                   >Catégorie</a
@@ -78,3 +78,6 @@
           </div>
         </div>
       </header>
+
+
+    

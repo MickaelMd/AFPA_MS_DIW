@@ -2,7 +2,7 @@
 
 try {
     $mysqlClient = new PDO(
-        'mysql:host=localhost;dbname=The_District;charset=utf8',
+        'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
         'root',
         'root',
 
@@ -67,3 +67,51 @@ echo '</tbody></table> <hr>';
 
   <input type="submit" value="Submit">
 </form> 
+
+
+<!-- <form action="">
+
+<label class="container">One
+  <input type="checkbox" >
+  <span class="checkmark"></span>
+</label> -->
+
+
+<form action="testupdate.php" method="POST">
+<?php
+$sqlQuery = "SELECT * FROM `categorie` ";
+$categorieeStatement = $mysqlClient->prepare($sqlQuery);
+$categorieeStatement->execute();
+$categoriee = $categorieeStatement->fetchAll(); ?>
+
+<?php
+foreach ($categoriee as $showcate) { 
+
+if ($showcate['active'] === 'Yes') { 
+    $valueactive = 'checked="checked"';
+    
+}
+else { $valueactive = ''; 
+}; 
+
+    echo '<label>' . $showcate['libelle'] . 
+    '<input type="checkbox" ' . ' name="' . $showcate['libelle'] . '"' . $valueactive . '>' . '</br>';
+}
+
+?>
+<input type="submit" value="Submit">
+</form>
+
+</br>
+</br>
+
+<?php 
+
+for ($i = 0; $i < 10; $i++) { 
+echo $i;
+
+
+} 
+
+
+?>

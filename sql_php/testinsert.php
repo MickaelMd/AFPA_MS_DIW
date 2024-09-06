@@ -3,7 +3,7 @@
 try
 {
     $mysqlClient = new PDO(
-        'mysql:host=localhost;dbname=The_District;charset=utf8',
+        'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
         'root',
         'root',);
 }
@@ -19,6 +19,9 @@ $sqlQuery = 'INSERT INTO categorie(libelle, image, active) VALUES (:libelle, :im
 $insertRecipe = $mysqlClient->prepare($sqlQuery);
 
 // Exécution ! 
+
+
+
 $insertRecipe->execute([
     'libelle' => $_POST['libelle'],
     'image' => $_POST['image'],
@@ -30,4 +33,6 @@ $insertRecipe->execute([
 ?>
 
 <!-- UPDATE categorie SET id = 20 WHERE libelle = 'libelle'; -->
+
+<!-- UPDATE commande SET id_plat = 20 WHERE id = '20'; -->
 

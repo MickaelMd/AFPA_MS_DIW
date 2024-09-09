@@ -36,4 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Accès non autorisé.";
     exit;
 }
-?>
+

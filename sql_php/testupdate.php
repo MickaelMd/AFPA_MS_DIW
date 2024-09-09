@@ -33,8 +33,11 @@ echo $value;
    
     if ($value == 'on') {
         $activeStatus = 'Yes';
+        
     } 
     
+    
+
     else {
         $activeStatus = 'No';
     };
@@ -49,4 +52,4 @@ echo $value;
         'libelle' => $showcat['libelle']
     ]);
 }
-?>
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 06 sep. 2024 à 07:58
+-- Généré le : lun. 09 sep. 2024 à 13:03
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categorie` (
   `id` int(2) NOT NULL,
-  `libelle` varchar(10) DEFAULT NULL,
-  `image` varchar(18) DEFAULT NULL,
+  `libelle` varchar(128) DEFAULT NULL,
+  `image` varchar(128) DEFAULT NULL,
   `active` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
@@ -44,11 +44,9 @@ INSERT INTO `categorie` (`id`, `libelle`, `image`, `active`) VALUES
 (9, 'Wraps', 'wrap_cat.jpg', 'Yes'),
 (10, 'Pasta', 'pasta_cat.jpg', 'Yes'),
 (11, 'Sandwich', 'sandwich_cat.jpg', 'Yes'),
-(12, 'Asian Food', 'asian_food_cat.jpg', 'No'),
+(12, 'Asian_Food', 'asian_food_cat.jpg', 'Yes'),
 (13, 'Salade', 'salade_cat.jpg', 'Yes'),
-(14, 'Veggie', 'veggie_cat.jpg', 'Yes'),
-(25, NULL, NULL, NULL),
-(26, 'Test', 'test.png', 'Yes');
+(14, 'Veggie', 'veggie_cat.jpg', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -115,6 +113,17 @@ INSERT INTO `plat` (`id`, `libelle`, `description`, `prix`, `image`, `id_categor
 (16, 'Lasagnes', 'Découvrez notre recette des lasagnes, l\'une des spécialités italiennes que tout le monde aime avec sa viande hachée et gratinée à l\'emmental. Et bien sûr, une inoubliable béchamel à la noix de muscade.\n\n', '12.00', 'lasagnes_viande.jpg\n', '10', 'Yes'),
 (17, 'Tagliatelles au saumon', 'Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal!  \n\n', '12.00', 'tagliatelles_saumon.webp\n', '10', 'Yes');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `TestDel`
+--
+
+CREATE TABLE `TestDel` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Index pour les tables déchargées
 --
@@ -138,6 +147,12 @@ ALTER TABLE `plat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `TestDel`
+--
+ALTER TABLE `TestDel`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -145,7 +160,7 @@ ALTER TABLE `plat`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
@@ -158,6 +173,12 @@ ALTER TABLE `commande`
 --
 ALTER TABLE `plat`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pour la table `TestDel`
+--
+ALTER TABLE `TestDel`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

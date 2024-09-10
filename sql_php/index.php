@@ -19,18 +19,27 @@ for ($i = 0; $i < 5; $i++) {
 }
 
 
-$sqlQuery = "SELECT * FROM `categorie` WHERE active = 'YES'";
+$sqlQuery = "SELECT * FROM `categorie`  WHERE active = 'YES' ORDER BY libelle ";
 $categorieStatement = $mysqlClient->prepare($sqlQuery);
 $categorieStatement->execute();
 $categorie = $categorieStatement->fetchAll();
 
 
-$sqlQueryy = "SELECT * FROM `commande`";
+$sqlQueryy = "SELECT * FROM `commande` ORDER BY etat ";
 $commandeStatementt = $mysqlClient->prepare($sqlQueryy);
 $commandeStatementt->execute();
 $commande = $commandeStatementt->fetchAll();
 
 
+
+echo '<select name="select_cat_list" id="name="select_cat_list">';
+
+foreach ($categorie as $showcat) {
+
+    echo '<option value="' . strip_tags($showcat['libelle']) . '">' . strip_tags($showcat['libelle']) . '</option>';
+};
+
+echo '</select>';
 
 foreach ($categorie as $showcat) { 
 
@@ -77,6 +86,9 @@ echo '</tbody></table> <hr>';
 </form> 
 
 
+
+
+
 <!-- <form action="">
 
 <label class="container">One
@@ -87,7 +99,7 @@ echo '</tbody></table> <hr>';
 
 <form action="" method="POST">
 <?php
-$sqlQuery = "SELECT * FROM `categorie` ";
+$sqlQuery = "SELECT * FROM `categorie`  ORDER BY libelle";
 $categorieeStatement = $mysqlClient->prepare($sqlQuery);
 $categorieeStatement->execute();
 $categoriee = $categorieeStatement->fetchAll(); ?>

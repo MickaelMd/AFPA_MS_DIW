@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 09 sep. 2024 à 13:03
+-- Généré le : mar. 10 sep. 2024 à 12:22
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -125,6 +125,34 @@ CREATE TABLE `TestDel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `TestDel`
+--
+
+INSERT INTO `TestDel` (`ID`, `Name`) VALUES
+(47, 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` varchar(32) NOT NULL,
+  `mdp` varchar(256) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `mdp`, `admin`) VALUES
+(19, 'admin', '$2y$10$d0OOx3ltbTuQNLWtCHh3euGm19C3s2nVJu4Ks.5hFYYNdVQC8jcke', 1),
+(49, 'user4864', '$2y$10$G/lwqDpdFffM/YQMDt6GvuJ8gBney/aDON6GqDxIOTxb0VCEdSAAa', 0);
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -153,6 +181,12 @@ ALTER TABLE `TestDel`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -178,7 +212,13 @@ ALTER TABLE `plat`
 -- AUTO_INCREMENT pour la table `TestDel`
 --
 ALTER TABLE `TestDel`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

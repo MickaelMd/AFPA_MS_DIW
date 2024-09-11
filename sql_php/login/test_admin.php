@@ -49,7 +49,7 @@ try {
   $mysqlClient = new PDO(
       'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
       'root',
-      'root',
+      password: 'root',
 
       // [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
   );

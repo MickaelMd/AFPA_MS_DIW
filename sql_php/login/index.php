@@ -126,9 +126,9 @@ if (isset($_POST['deco'])) {
   // -------------
   try {
     $mysqlClient = new PDO(
-        'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
-        'root',
-        'root',
+        dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
+        username: 'root',
+        password: 'root',
 
         // [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
     );
@@ -142,7 +142,7 @@ if (isset($_POST['deco'])) {
   $login_login = $_POST['login'];
   $mdp_login = $_POST['mdp'];
 
-  if (!preg_match("/^[a-zA-Z0-9]{4,}$/", $_POST['login'])) {
+  if (!preg_match(pattern: "/^[a-zA-Z0-9]{4,}$/", subject: $_POST['login'])) {
         
     echo 'Le login doit avoir au minimum 4 caractéres uniquement de lettres et de chiffres . </br></br>';
     return;
@@ -151,14 +151,14 @@ if (isset($_POST['deco'])) {
   echo $login_login . ' - ' . $mdp_login . '</br>';
 
   
-                    $req = $mysqlClient->prepare('SELECT id, mdp, admin FROM users WHERE login = :login');
-                    $req-> execute(array(
+                    $req = $mysqlClient->prepare(query: 'SELECT id, mdp, admin FROM users WHERE login = :login');
+                    $req-> execute(params: array(
                         'login' => $login_login));
  
                     $resultat = $req->fetch();
  
                      
-                    if (!$resultat OR !password_verify($_POST['mdp'], $resultat['mdp']))
+                    if (!$resultat OR !password_verify(password: $_POST['mdp'], hash: $resultat['mdp']))
                     {
                         echo 'Identifiant ou Mot De Passe incorrect.<br/>';
                     }
@@ -193,13 +193,13 @@ if (isset($_POST['deco'])) {
     echo  '</br>' . $_POST['login_sU'] . '</br>';
     echo $_POST['mdp_sU'] . '</br>';
 
-    if (!preg_match("/^[a-zA-Z0-9]{4,}$/", $_POST['login_sU'])) {
+    if (!preg_match(pattern: "/^[a-zA-Z0-9]{4,}$/", subject: $_POST['login_sU'])) {
         
       echo 'Le login doit avoir au minimum 4 caractéres uniquement de lettres et de chiffres . </br></br>';
       return;
       }
 
-      if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!?@#$%^&*{}]{8,}$/", $_POST['mdp_sU'])) {
+      if (!preg_match(pattern: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!?@#$%^&*{}]{8,}$/", subject: $_POST['mdp_sU'])) {
         
         echo 'Le mot de passe doit contenir au moins une lettre, un chiffre, et avoir au moins 8 caractères. </br></br>';
         return;
@@ -207,8 +207,8 @@ if (isset($_POST['deco'])) {
 
 
     $username_sU = $_POST['login_sU'];
-    $stmt = $mysqlClient->prepare("SELECT * FROM users WHERE login=?");
-    $stmt->execute([$username_sU]); 
+    $stmt = $mysqlClient->prepare(query: "SELECT * FROM users WHERE login=?");
+    $stmt->execute(params: [$username_sU]); 
     $user = $stmt->fetch();
     if ($user) {
         echo "Le nom d'utilisateur existe déjà !";

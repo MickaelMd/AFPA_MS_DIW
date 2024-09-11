@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/verif.php'); ?> 
+<?php require_once(__DIR__ . '/verif.php'); ?>
 
 <!-- ------------- Cookie ------------- -->
 <?php
@@ -22,31 +22,28 @@
 // echo 'Bonjour ' . $_COOKIE['login'];
 
 // }; 
-?> 
+?>
 <!-- --------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <title>Document</title>
-  </head>
-  
+</head>
 
 
 
 
 
-    <div class="container mt-5">
-      <form action="" method="POST" id="mdp_form">
-<h4>Connection</h4>
+
+<div class="container mt-5">
+    <form action="" method="POST" id="mdp_form">
+        <h4>Connection</h4>
 
         <label for="login">Login</label><br />
         <input type="text" id="login" name="login" /><br /><br />
@@ -54,25 +51,25 @@
         <label for="mdp">Mot de passe</label><br />
         <input type="password" id="mdp" name="mdp" /><br /><br />
         <input type="submit" value="Submit" name="submit" />
-      </form>
+    </form>
 
-      <hr />
+    <hr />
 
-      <form action="" method="POST" id="sU_form">
+    <form action="" method="POST" id="sU_form">
         <h4>Inscription</h4>
         <label for="login_sU">Login</label><br />
-        <input type="text" id="login_sU" name="login_sU"  /><br /><br />
-    
+        <input type="text" id="login_sU" name="login_sU" /><br /><br />
+
         <label for="mdp_sU">Mot de passe</label><br />
         <input type="password" id="mdp_sU" name="mdp_sU" /><br /><br />
         <input type="submit" value="Submit" name="submit_sU" />
 
-      </form>
-    </div>
+    </form>
+</div>
 
-  <hr>
+<hr>
 
-  <?php if (isset($_SESSION["login"])) {
+<?php if (isset($_SESSION["login"])) {
 
 echo '<form action="" method="POST" id="deco" style="margin-left:310;">
 
@@ -90,9 +87,9 @@ echo '<form action="" method="POST" id="deco" style="margin-left:310;">
 
     </form> -->
 
-    <a href="test_admin.php">Test compte admin</a>
+<a href="test_admin.php">Test compte admin</a>
 </br>
-    <a href="test_membre.php">Test membre</a>
+<a href="test_membre.php">Test membre</a>
 <!-- --------------------------------- Kill la session  -->
 <?php
 if (isset($_POST['deco'])) {
@@ -120,9 +117,9 @@ if (isset($_POST['deco'])) {
 }
 ?>
 
-    <!-- ------------------------- -->
+<!-- ------------------------- -->
 
-  <?php 
+<?php 
   // -------------
   try {
     $mysqlClient = new PDO(
@@ -199,7 +196,7 @@ if (isset($_POST['deco'])) {
       return;
       }
 
-      if (!preg_match(pattern: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!?@#$%^&*{}]{8,}$/", subject: $_POST['mdp_sU'])) {
+      if (!preg_match(pattern: "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!;:?.@#$%^&*{}]{8,}$/", subject: $_POST['mdp_sU'])) {
         
         echo 'Le mot de passe doit contenir au moins une lettre, un chiffre, et avoir au moins 8 caractères. </br></br>';
         return;
@@ -293,14 +290,13 @@ $_SESSION["admin"] = $resultat['admin'];
   
   ?>
 
-    <!-- ------------------------- -->
+<!-- ------------------------- -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+</body>
+
 </html>
 
 

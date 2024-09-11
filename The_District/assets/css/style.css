@@ -40,6 +40,15 @@ body {
 .nav_marg {
   margin-left: 20px;
 }
+
+.log_sign_nav {
+  font-size: 14pt;
+}
+
+.log_sign_nav:hover {
+  color: rgb(34, 34, 34) !important;
+  text-decoration: underline;
+}
 /* ----------- */
 .paralaxbox {
   width: 100%;

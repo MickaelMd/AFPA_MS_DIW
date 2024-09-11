@@ -67,7 +67,7 @@ $sqlQueryy = "SELECT * FROM `users` WHERE `admin` != 1";
 $testdelStatementt = $mysqlClient->prepare($sqlQueryy);
 $testdelStatementt->execute();
 $testdel = $testdelStatementt->fetchAll();
-
+echo '<div class="container">';
 echo '<form action="" method="POST" id="DELETE">';
 echo '<table class="table" >
   <thead>
@@ -88,7 +88,7 @@ echo '<table class="table" >
     ;
 
   };
-
+echo '<div class="container">';
   echo '</tbody></table>  <input type="submit" value="Delete" name="DeleteDel"> </form>';
 
 
@@ -98,7 +98,7 @@ foreach ($testdel as $showtestdel) {
     echo '<input type="hidden" name="' . $showtestdel['login'] . '" value="No">';
     echo 'Login : ' . strip_tags($showtestdel['login']) . ' - Date d\'inscription ' . $showtestdel['date'] .  ' <input type="checkbox" name="delete_ids[]" value="' . $showtestdel['id'] . '' . '"></br>';
 }
-echo '</br><input type="submit" value="Delete" name="DeleteDel"></form>';
+echo '</br><input type="submit" value="Delete" name="DeleteDel"></form></div>';
 
 
 if (isset($_POST['DeleteDel'])) {

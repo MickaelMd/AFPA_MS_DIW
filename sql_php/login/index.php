@@ -52,7 +52,7 @@
         <input type="text" id="login" name="login" /><br /><br />
 
         <label for="mdp">Mot de passe</label><br />
-        <input type="text" id="mdp" name="mdp" /><br /><br />
+        <input type="password" id="mdp" name="mdp" /><br /><br />
         <input type="submit" value="Submit" name="submit" />
       </form>
 
@@ -64,7 +64,7 @@
         <input type="text" id="login_sU" name="login_sU"  /><br /><br />
     
         <label for="mdp_sU">Mot de passe</label><br />
-        <input type="text" id="mdp_sU" name="mdp_sU" /><br /><br />
+        <input type="password" id="mdp_sU" name="mdp_sU" /><br /><br />
         <input type="submit" value="Submit" name="submit_sU" />
 
       </form>
@@ -199,7 +199,7 @@ if (isset($_POST['deco'])) {
       return;
       }
 
-      if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*{}]{8,}$/", $_POST['mdp_sU'])) {
+      if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!?@#$%^&*{}]{8,}$/", $_POST['mdp_sU'])) {
         
         echo 'Le mot de passe doit contenir au moins une lettre, un chiffre, et avoir au moins 8 caractères. </br></br>';
         return;

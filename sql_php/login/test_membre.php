@@ -1,17 +1,19 @@
 <?php require_once(__DIR__ . '/verif.php'); ?> 
 
-<?php if (isset($_SESSION["login"])) {
+<?php 
+// if (isset($_SESSION["login"])) {
 
 
 
 
-}
-else {
+// }
+// else {
 
-    echo '</br>' . 'Page refusé';
-    return;
+//     echo '</br>' . 'Page refusé';
+//     return;
 
-} ?>
+// } 
+?>
 
 
 <!DOCTYPE html>

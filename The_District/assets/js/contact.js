@@ -25,16 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
       errorMessage: "Le prénom est obligatoire.",
     },
     email: {
-      validate: (value) => /\S+@\S+\.\S+/.test(value),
+      validate: (value) =>
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
       errorMessage: "Veuillez entrer un email valide.",
     },
     telephone: {
-      validate: (value) => /^\d+$/.test(value),
+      validate: (value) =>
+        /^(\+?\d{1,3}\s?)?([1-9](\s?\d\s?){8}|\d{10,14})$/.test(value),
       errorMessage: "Le téléphone doit comporter uniquement des chiffres.",
     },
     demande: {
-      validate: (value) => value !== "",
-      errorMessage: "La demande est obligatoire.",
+      validate: (value) => /^.{1,1000}$/.test(value),
+      errorMessage:
+        "La demande est obligatoire et est limitée à 1000 caractères.",
     },
   };
 

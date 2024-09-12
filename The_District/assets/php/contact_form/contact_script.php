@@ -2,13 +2,13 @@
 
 date_default_timezone_set("Europe/Paris");
 
-$str = ' Nom : ' . $_GET['nom'] . '
- ' . 'Prenom : ' . $_GET['prenom'] . ' 
- ' . 'Email : ' . $_GET['email']  . ' 
- ' . 'Telephone : ' . $_GET['telephone'] . ' 
- ' . 'Demande : ' . $_GET['demande']  . PHP_EOL;
+$str = ' Nom : ' . $_POST['nom'] . '
+ ' . 'Prenom : ' . $_POST['prenom'] . ' 
+ ' . 'Email : ' . $_POST['email']  . ' 
+ ' . 'Telephone : ' . $_POST['telephone'] . ' 
+ ' . 'Demande : ' . $_POST['demande']  . PHP_EOL;
 file_put_contents(date("Y-m-d-H-i-s") . ".txt", $str, FILE_APPEND);
 
-?>
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-<meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />
+?>

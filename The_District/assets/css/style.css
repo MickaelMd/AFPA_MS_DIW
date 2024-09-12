@@ -49,6 +49,22 @@ body {
   color: rgb(34, 34, 34) !important;
   text-decoration: underline;
 }
+
+.deco_btn {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none;
+  border: none;
+
+  font-size: 14pt;
+  margin-top: 10px !important;
+  text-align: center;
+}
+
+.deco_btn:hover {
+  color: rgb(34, 34, 34) !important;
+  text-decoration: underline;
+}
 /* ----------- */
 .paralaxbox {
   width: 100%;

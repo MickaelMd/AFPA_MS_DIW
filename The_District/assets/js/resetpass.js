@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("sign_up_form");
   const fields = [
-    "sign_nom",
-    "sign_prenom",
-    "sign_email",
-    "sign_telephone",
-    "sign_adresse",
-    "sign_pwd",
-    "sign_pwd_confirm",
+    "reset_email",
+    "reset_code",
+    "reset_pass",
+    "reset_pass_confirm",
   ];
 
   function validateField(fieldId, errorId, validationFn, values, errorMessage) {
@@ -24,40 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const validations = {
-    sign_nom: {
-      validate: (value) => /^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/.test(value),
-      errorMessage:
-        "Le nom est obligatoire et doit comporter uniquement des lettres.",
-    },
-    sign_prenom: {
-      validate: (value) => /^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/.test(value),
-      errorMessage:
-        "Le prénom est obligatoire et doit comporter uniquement des lettres.",
-    },
-    sign_email: {
+    reset_email: {
       validate: (value) =>
         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
       errorMessage: "Veuillez entrer un email valide.",
     },
-    sign_telephone: {
-      validate: (value) =>
-        /^(\+?\d{1,3}\s?)?([1-9](\s?\d\s?){8}|\d{10,14})$/.test(value),
-      errorMessage:
-        "Le téléphone doit comporter uniquement des chiffres. (Le signe + est autorisé.)",
+
+    reset_code: {
+      validate: (value) => /^^/.test(value),
+      errorMessage: "Le code est non valide.",
     },
-    sign_adresse: {
-      validate: (value) =>
-        /^\d+\s[A-Za-zÀ-ÿ0-9\s.'-]+(?:\sAppartement\s\d+)?\s*,?\s*\d{5}\s[A-Za-zÀ-ÿ\s.'-]+$/.test(
-          value
-        ),
-      errorMessage: "L'adresse est obligatoire et doit être valide.",
-    },
-    sign_pwd: {
+
+    reset_pass: {
       validate: (value) => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value),
       errorMessage:
         "Le mot de passe doit contenir au moins une lettre, un chiffre, et avoir au moins 8 caractères.",
     },
-    sign_pwd_confirm: {
+    reset_pass_confirm: {
       validate: (value, values) => value === values.sign_pwd,
       errorMessage: "Les mots de passe doivent être identiques.",
     },

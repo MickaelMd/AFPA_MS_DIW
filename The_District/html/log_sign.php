@@ -29,6 +29,19 @@
 
         <?php require_once(__DIR__ . '/../assets/php/header.php'); ?>
 
+
+
+        <?php 
+            
+            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
+               
+
+                echo '<h3 class="text-center mt-5 text-success">Vous êtes connecté ! </h3>';
+
+            } else { echo '
+
+
+
         <section id="login_section_page" class="mt-5">
 
             <h3 class="text-center">Connexion
@@ -52,11 +65,15 @@
 
 
                     </div>
-                    <a href="" class="text-center mt-2">Mot de passe oublié</a>
+                    <a href="pwdlost.php" class="text-center mt-2">Mot de passe oublié</a>
                 </div>
             </form>
 
         </section>
+
+
+
+
 
 
         <section id="signup_section_page" class="mt-5">
@@ -117,12 +134,85 @@
             </form>
 
 
+            '; }
+                
+            
+
+            ?>
+
         </section>
 
 
     </div>
+    <?php 
+
+    // ------------- Connection ---------------
+
+if (isset($_POST['login_submit'])) {
+
+ $login_login = $_POST['login_email'];
+ $mdp_login = $_POST['login_pwd'];
+
+ if (!preg_match(pattern: "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", subject: $_POST['login_email'])) {
+       
+   echo 'Error . </br></br>';
+   return;
+   }
+
+ echo $login_login . ' - ' . $mdp_login . '</br>';
+
+ 
+                   $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, admin FROM clients WHERE email = :email');
+                   $req-> execute(params: array(
+                       'email' => $login_login));
+
+                   $resultat = $req->fetch();
 
 
+           
+
+
+                    
+                   if (!$resultat OR !password_verify(password: $_POST['login_pwd'], hash: $resultat['pass']))
+                   {
+                       echo 'Identifiant ou Mot De Passe incorrect.<br/>';
+                   }
+
+                   elseif ($resultat['active'] < 1 ) {
+
+                    echo 'Compte désactivé';
+
+                   }
+
+                   else
+                   {
+                       echo 'Vous êtes connecté !<br/>';
+                    
+                       $_SESSION["email"] = $login_login;
+                       $_SESSION["nom"] = $resultat['nom'];
+                       $_SESSION["prenom"] = $resultat['prenom'];
+                       $_SESSION["telephone"] = $resultat['telephone'];
+                       $_SESSION["adresse"] = $resultat['adresse'];
+                       $_SESSION["admin"] = $resultat['admin'];
+
+                       echo' ' . $_SESSION["admin"] . '</br>';
+                       echo" Session ID : ".session_id(); 
+
+                       
+
+                       
+
+                        
+
+                        echo "<meta http-equiv='refresh' content='0'>";
+
+                   }
+
+
+
+ };
+ 
+?>
     <!-- ------------------------------------ -->
 
 
@@ -134,13 +224,13 @@
   if (isset($_POST['sign_submit'])) {
 
 
-    if (!preg_match(pattern: "/^[a-zA-Z]+$/", subject: $_POST['sign_nom'])) {
+    if (!preg_match(pattern: "/^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/", subject: $_POST['sign_nom'])) {
         
       echo 'Le nom est obligatoire et doit comporter uniquement des lettres.</br></br>';
       return;
       }
 
-      if (!preg_match(pattern: "/^[a-zA-Z]+$/", subject: $_POST['sign_prenom'])) {
+      if (!preg_match(pattern: "/^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/", subject: $_POST['sign_prenom'])) {
         
         echo 'Le prénom est obligatoire et doit comporter uniquement des lettres. </br></br>';
         return;
@@ -197,28 +287,40 @@ if (password_verify($mdp_sU, $mdp_hash)) {
   echo 'Le mot de passe est invalide.';
 }
 
-$sqlQuery = 'INSERT INTO users(login, mdp) VALUES (:login, :mdp)';
+$sqlQuery = 'INSERT INTO clients(nom, prenom, email, telephone, adresse, pass) VALUES (:nom, :prenom, :email, :telephone, :adresse, :pass)';
 
 // Préparation
 $insertmdp = $mysqlClient->prepare($sqlQuery);
 
 // Exécution ! 
 $insertmdp->execute([
-  'login' => $_POST['login_sU'],
-  'mdp' => $mdp_hash,
+  'nom' => $_POST['sign_nom'],
+  'prenom' => $_POST['sign_prenom'],
+  'email' => $_POST['sign_email'],
+  'telephone' => $_POST['sign_telephone'],
+  'adresse' => $_POST['sign_adresse'],
+  'pass' => $mdp_hash,
   
   
 ]);
-
-$req = $mysqlClient->prepare('SELECT id, mdp, admin FROM users WHERE login = :login');
+$req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, admin FROM clients WHERE email = :email');
+// $req = $mysqlClient->prepare('SELECT prenom, admin FROM clients WHERE email = :email');
                     $req-> execute(array(
-                        'login' => $username_sU));
+                        'email' => $sign_email));
  
                     $resultat = $req->fetch();
  
 
-$_SESSION["login"] = $username_sU;
+$_SESSION["email"] = $sign_email;
+$_SESSION["nom"] = $resultat['nom'];
+$_SESSION["prenom"] = $resultat['prenom'];
+$_SESSION["telephone"] = $resultat['telephone'];
+$_SESSION["adresse"] = $resultat['adresse'];
 $_SESSION["admin"] = $resultat['admin'];
+
+
+
+
 
 // ----------------------------------
 

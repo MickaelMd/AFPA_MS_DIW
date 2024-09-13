@@ -1,4 +1,3 @@
-<?php $ip_link = 'http://localhost:3000' ?>
 <footer>
     <div id="footer_info">
         <h4>Amiens :</h4>

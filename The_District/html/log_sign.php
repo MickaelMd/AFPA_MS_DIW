@@ -198,7 +198,9 @@ if (isset($_POST['login_submit'])) {
                        echo' ' . $_SESSION["admin"] . '</br>';
                        echo" Session ID : ".session_id(); 
 
-                       
+                        $updateQuery = "UPDATE clients SET resetcode = 0 WHERE email = :email";
+                        $updateStatement = $mysqlClient->prepare($updateQuery);
+                        $updateStatement->execute(['email' => $login_login]);
 
                        
 

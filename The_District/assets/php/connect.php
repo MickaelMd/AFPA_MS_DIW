@@ -34,8 +34,15 @@ if (isset($_SESSION["email"])) {
 
     if (!$userExists) {
         // Si l'utilisateur n'existe plus, détruire la session
-        unset($_SESSION["email"]);
-        unset($_SESSION["admin"]);
+       
+    unset($_SESSION["email"]);
+    unset($_SESSION["nom"]);
+    unset($_SESSION["prenom"]);
+    unset($_SESSION["telephone"]);
+    unset($_SESSION["adresse"]);
+    unset($_SESSION["admin"]);
+    unset($_SESSION["role"]);
+    unset($_SESSION['lostmail']);
 
         if (ini_get(option: "session.use_cookies")) {
             setcookie(session_name(), '', time() - 42000);

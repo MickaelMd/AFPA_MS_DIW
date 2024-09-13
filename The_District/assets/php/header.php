@@ -25,20 +25,38 @@
                 <li class="nav-item nav_cent_res">
                     <a class="nav-link" href="<?php echo $ip_link ?>/The_District/html/contact.php">Contact</a>
                 </li>
+
+                <?php 
+            
+            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
+                
+                
+                echo ' 
+                 <li class="nav-item nav_cent_res">
+                    <a class="nav-link" href="' . $ip_link . '/The_District/html/profil.php">Profil</a>
+                </li>
+                ';
+
+                } else {
+                    echo ' 
+                    <li class="nav-item nav_cent_res">
+                       <a class="nav-link" href="' . $ip_link . '/The_District/html/log_sign.php">Profil</a>
+                   </li>
+                   ';
+                }; ?>
+
+
             </ul>
+
+
+
             <span class="navbar-text  ms-auto">
 
                 <?php 
             
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                // echo '<form action="" method="POST" id="deco">
-
-                //  <input class="deco_btn nav-link " type="submit" value="Déconnexion" name="deco" />
-            
-                // </form>';
-
-                // echo '<p>Bonjour ' . $_SESSION['prenom'] . '</p>';
-
+                
+                
                 echo ' <a class="nav-link log_sign_nav" href=" ' . $ip_link . '/The_District/html/logout.php">Déconnexion</a>
             </span>';
 

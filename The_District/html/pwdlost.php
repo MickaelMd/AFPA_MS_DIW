@@ -61,7 +61,7 @@
 
 
                     </div>
-
+<a href="resetpass.php" class="text-center mt-2">Vous avez un code ?</a>
                 </div>
             </form>
 
@@ -107,7 +107,8 @@ if (isset($_POST['reset_submit'])) {
                             'email' => $lostemail
                         ]);
 
-                        echo '<h3 class="text-center mt-4 text-danger">Code de réinitialisation : ' . $resetcode . '</h3>';
+                        echo '<h3 class="text-center mt-4 text-danger">Code de réinitialisation : ' . $resetcode . '</h3>' . 
+                        '</br> <p class="text-center">(a envoyer par mail)</p>';
                         
 
                         // ------------

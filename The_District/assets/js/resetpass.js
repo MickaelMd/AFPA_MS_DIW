@@ -1,11 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("sign_up_form");
-  const fields = [
-    "reset_email",
-    "reset_code",
-    "reset_pass",
-    "reset_pass_confirm",
-  ];
+  const form = document.getElementById("reset_form");
+  const fields = ["reset_code", "reset_pass", "reset_pass_confirm"];
 
   function validateField(fieldId, errorId, validationFn, values, errorMessage) {
     const field = document.getElementById(fieldId);
@@ -21,14 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const validations = {
-    reset_email: {
-      validate: (value) =>
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
-      errorMessage: "Veuillez entrer un email valide.",
-    },
-
     reset_code: {
-      validate: (value) => /^^/.test(value),
+      validate: (value) => /^\d{8}$/.test(value),
       errorMessage: "Le code est non valide.",
     },
 
@@ -38,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Le mot de passe doit contenir au moins une lettre, un chiffre, et avoir au moins 8 caractères.",
     },
     reset_pass_confirm: {
-      validate: (value, values) => value === values.sign_pwd,
+      validate: (value, values) => value === values.reset_pass,
       errorMessage: "Les mots de passe doivent être identiques.",
     },
   };

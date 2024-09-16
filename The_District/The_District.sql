@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 12 sep. 2024 à 14:06
+-- Généré le : lun. 16 sep. 2024 à 13:04
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -41,14 +41,15 @@ CREATE TABLE `categorie` (
 INSERT INTO `categorie` (`id`, `libelle`, `image`, `active`) VALUES
 (4, 'Pizza', 'pizza_cat.jpg', 'Yes'),
 (5, 'Burger', 'burger_cat.jpg', 'Yes'),
-(9, 'Wraps', 'wrap_cat.jpg', 'No'),
-(10, 'Pasta', 'pasta_cat.jpg', 'No'),
-(11, 'Sandwich', 'sandwich_cat.jpg', 'No'),
+(9, 'Wraps', 'wrap_cat.jpg', 'Yes'),
+(10, 'Pasta', 'pasta_cat.jpg', 'Yes'),
+(11, 'Sandwich', 'sandwich_cat.jpg', 'Yes'),
 (12, 'Asian_Food', 'asian_food_cat.jpg', 'Yes'),
 (13, 'Salade', 'salade_cat.jpg', 'Yes'),
 (14, 'Veggie', 'veggie_cat.jpg', 'Yes'),
-(84, 'test', '1726044525670545766.jpg', 'Yes'),
-(85, 'image', '17260445791320492752.jpg', 'Yes');
+(84, 'test', '1726044525670545766.jpg', 'No'),
+(85, 'image', '17260445791320492752.jpg', 'No'),
+(86, 'TestLibelle', '17264914882066704044.jpg', 'No');
 
 -- --------------------------------------------------------
 
@@ -58,6 +59,7 @@ INSERT INTO `categorie` (`id`, `libelle`, `image`, `active`) VALUES
 
 CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
+  `nom_client` varchar(258) NOT NULL,
   `nom` varchar(128) NOT NULL,
   `prenom` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -67,7 +69,7 @@ CREATE TABLE `clients` (
   `dateinscription` date NOT NULL DEFAULT current_timestamp(),
   `uuid` uuid NOT NULL DEFAULT uuid(),
   `active` tinyint(1) NOT NULL DEFAULT 1,
-  `resetcode` int(11) NOT NULL,
+  `resetcode` int(11) NOT NULL DEFAULT 0,
   `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -75,14 +77,16 @@ CREATE TABLE `clients` (
 -- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`id`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `pass`, `dateinscription`, `uuid`, `active`, `resetcode`, `admin`) VALUES
-(1, 'smith', 'john', 'test@test.com', '0707070707', '7 rue des test 80000 amiens', '$2y$10$MiuSgTTn3u5xbyjytPtAXerQ83eBkhKXCUggCrroYoKfQM56JjqDe', '2024-09-12', 'd152c76e-70d8-11ef-8e51-8d3f9323f76f', 1, 35286304, 0),
-(2, 'Smith', 'jogn', 'time@tardis.fr', '0787562623', '7 rue des test 80000 amiens', '$2y$10$4YnxFhGXNV9G2O8Y13Zmveio51IWVfqkrc9Z2i2qYar5TlujDYMri', '2024-09-12', '217aeab3-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(3, 'dada', 'dada', 'dada@dada.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$V6Wb5xszUUA1bTqYZKld0.Oy5bert5kvzIM20cU50ucZ7GRLfhNAS', '2024-09-12', '4d527811-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(4, 'dada', 'dada', 'dada@dadada.fr', '0785568962', '498 rue du test, 80450 amiens', '$2y$10$06JYz1ICntVpZYAddMTxHO5HQVOAkwwwUWM/m4.Q6PHwnokoi//Fq', '2024-09-12', '4601a92b-70da-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(6, 'admin', 'admin', 'admin@admin.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$PZ0YnRsvBAsAfz145RZpGOl6vioFMOGR2epaC2Jjz4vBHZj/T0z3K', '2024-09-12', '496f8b69-70dd-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(7, 'Smith-test', 'test', 'jhon@test.com', '06 48 78 12 65', '5659 Rue Du Test 44865 Terre', '$2y$10$2AiymcPeIO/BJmaDGttmCeyyJsCMvNgxszjoXw1dc.lC1051yup.a', '2024-09-12', 'f561c15b-70eb-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(8, 'nom-test', 'prénom-test', 'email@testtest4.com', '07 87 56 26 23', '125 rue du tour, 75000  Paris', '$2y$10$xdjVGnRwBSH/BV9NU0mOGO.WL59qUxXR6.gitiXyNBGT0CbFbqgRG', '2024-09-12', '73b39216-70ec-11ef-8e51-8d3f9323f76f', 1, 0, 0);
+INSERT INTO `clients` (`id`, `nom_client`, `nom`, `prenom`, `email`, `telephone`, `adresse`, `pass`, `dateinscription`, `uuid`, `active`, `resetcode`, `admin`) VALUES
+(1, '', 'smith', 'john', 'test@test.com', '0707070707', '7 rue des test 80000 amiens', '$2y$10$w428tN6Hsp/JtjD2SRXnHuSX8iK/dtU64AzbWBgl98lB0ID5UcW9S', '2024-09-12', 'd152c76e-70d8-11ef-8e51-8d3f9323f76f', 1, 32738189, 0),
+(2, '', 'Smith', 'jogn', 'time@tardis.fr', '0787562623', '7 rue des test 80000 amiens', '$2y$10$4YnxFhGXNV9G2O8Y13Zmveio51IWVfqkrc9Z2i2qYar5TlujDYMri', '2024-09-12', '217aeab3-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
+(3, '', 'dada', 'dada', 'dada@dada.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$V6Wb5xszUUA1bTqYZKld0.Oy5bert5kvzIM20cU50ucZ7GRLfhNAS', '2024-09-12', '4d527811-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
+(4, '', 'dada', 'dada', 'dada@dadada.fr', '0785568962', '498 rue du test, 80450 amiens', '$2y$10$06JYz1ICntVpZYAddMTxHO5HQVOAkwwwUWM/m4.Q6PHwnokoi//Fq', '2024-09-12', '4601a92b-70da-11ef-8e51-8d3f9323f76f', 1, 0, 0),
+(6, '', 'admin', 'admin', 'admin@admin.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$PZ0YnRsvBAsAfz145RZpGOl6vioFMOGR2epaC2Jjz4vBHZj/T0z3K', '2024-09-12', '496f8b69-70dd-11ef-8e51-8d3f9323f76f', 1, 0, 1),
+(7, '', 'Smith-test', 'test', 'jhon@test.com', '06 48 78 12 65', '5659 Rue Du Test 44865 Terre', '$2y$10$2AiymcPeIO/BJmaDGttmCeyyJsCMvNgxszjoXw1dc.lC1051yup.a', '2024-09-12', 'f561c15b-70eb-11ef-8e51-8d3f9323f76f', 1, 0, 0),
+(8, '', 'nom-test', 'prénom-test', 'email@testtest4.com', '07 87 56 26 23', '125 rue du tour, 75000  Paris', '$2y$10$xdjVGnRwBSH/BV9NU0mOGO.WL59qUxXR6.gitiXyNBGT0CbFbqgRG', '2024-09-12', '73b39216-70ec-11ef-8e51-8d3f9323f76f', 1, 0, 0),
+(9, '', 'user', 'test', 'testuser@user.com', '0707070707', '7 rue des test 80000 amiens', '$2y$10$c357EK9gID5QMmhni4XjIu0t9zJmTEr2kNATk3OOI5wA/2nJ6XVoa', '2024-09-16', 'd16fd948-73fa-11ef-8e4b-8d3e911ee009', 1, 0, 0),
+(10, 'Test prénom Test nom', 'test nom', 'test prénom', 'test@emailnewtest.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$UfV804A9JQtGmI/fRWi.Ke0yFrdtKSpLge33K2vgugSrXy14vRdfC', '2024-09-16', 'af6b2b7b-7406-11ef-8e4b-8d3e911ee009', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -101,6 +105,7 @@ CREATE TABLE `commande` (
   `telephone_client` varchar(16) DEFAULT NULL,
   `email_client` varchar(18) DEFAULT NULL,
   `adresse_client` varchar(21) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `uuid` uuid NOT NULL DEFAULT uuid()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
@@ -108,15 +113,15 @@ CREATE TABLE `commande` (
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`id`, `id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client`, `uuid`) VALUES
-(2, ' 4', '4', '16.00', '2020-11-30 03:52:43', 'Livrée', 'Kelly Dillard', '7896547800', 'kelly@gmail.com', '308 Post Avenue', '6ee69e8f-701c-11ef-94b7-309c232eb309'),
-(3, ' 5', '2', '20.00', '2020-11-30 04:07:17', 'Livrée', 'Thomas Gilchrist', '7410001450', 'thom@gmail.com', '1277 Sunburst Drive', '6ee69f2d-701c-11ef-94b7-309c232eb309'),
-(4, ' 5', '1', '10.00', '2021-05-04 01:35:34', 'Livrée', 'Martha Woods', '78540001200', 'marthagmail.com', '478 Avenue Street', '6ee69f54-701c-11ef-94b7-309c232eb309'),
-(6, ' 9', '1', '7.00', '2021-07-20 06:10:37', 'Livrée', 'Charlie', '7458965550', 'charlie@gmail.com', '3140 Bartlett Avenue', '6ee69f6f-701c-11ef-94b7-309c232eb309'),
-(7, ' 10', '2', '8.00', '2021-07-20 06:40:21', 'En cours de livraison', 'Claudia Hedley', '7451114400', 'hedley@gmail.com', '1119 Kinney Street', '6ee69f86-701c-11ef-94b7-309c232eb309'),
-(8, ' 14 ', '1', '6.00', '2021-07-20 06:40:57', 'En préparation', 'Vernon Vargas', '7414744440', 'venno@gmail.com', '1234 Hazelwood Avenue', '6ee69f9e-701c-11ef-94b7-309c232eb309'),
-(9, ' 9', '4', '20.00', '2021-07-20 07:06:06', 'Annulée', 'Carlos Grayson', '7401456980', 'carlos@gmail.com', '2969 Hartland Avenue', '6ee69fb5-701c-11ef-94b7-309c232eb309'),
-(10, ' 16', ' 4', '12.00', '2021-07-20 07:11:06', 'Livrée', 'Jonathan Caudill', '7410256996', 'jonathan@gmail.com', '1959 Limer Street', '6ee69fc9-701c-11ef-94b7-309c232eb309');
+INSERT INTO `commande` (`id`, `id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client`, `active`, `uuid`) VALUES
+(2, ' 4', '4', '16.00', '2020-11-30 03:52:43', 'Livrée', 'Kelly Dillard', '7896547800', 'kelly@gmail.com', '308 Post Avenue', 1, '6ee69e8f-701c-11ef-94b7-309c232eb309'),
+(3, ' 5', '2', '20.00', '2020-11-30 04:07:17', 'En préparation', 'Thomas Gilchrist', '7410001450', 'thom@gmail.com', '1277 Sunburst Drive', 1, '6ee69f2d-701c-11ef-94b7-309c232eb309'),
+(4, ' 5', '1', '10.00', '2021-05-04 01:35:34', 'En cours de livraison', 'Martha Woods', '78540001200', 'marthagmail.com', '478 Avenue Street', 1, '6ee69f54-701c-11ef-94b7-309c232eb309'),
+(6, ' 9', '1', '7.00', '2021-07-20 06:10:37', 'Livrée', 'Charlie', '7458965550', 'charlie@gmail.com', '3140 Bartlett Avenue', 1, '6ee69f6f-701c-11ef-94b7-309c232eb309'),
+(7, ' 10', '2', '8.00', '2021-07-20 06:40:21', 'Livrée', 'Claudia Hedley', '7451114400', 'hedley@gmail.com', '1119 Kinney Street', 1, '6ee69f86-701c-11ef-94b7-309c232eb309'),
+(8, ' 14 ', '1', '6.00', '2021-07-20 06:40:57', 'Livrée', 'Vernon Vargas', '7414744440', 'venno@gmail.com', '1234 Hazelwood Avenue', 1, '6ee69f9e-701c-11ef-94b7-309c232eb309'),
+(9, ' 9', '4', '20.00', '2021-07-20 07:06:06', 'Annulée', 'Carlos Grayson', '7401456980', 'carlos@gmail.com', '2969 Hartland Avenue', 1, '6ee69fb5-701c-11ef-94b7-309c232eb309'),
+(10, ' 16', ' 4', '12.00', '2021-07-20 07:11:06', 'Annulée', 'Jonathan Caudill', '7410256996', 'jonathan@gmail.com', '1959 Limer Street', 1, '6ee69fc9-701c-11ef-94b7-309c232eb309');
 
 -- --------------------------------------------------------
 
@@ -246,13 +251,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `commande`

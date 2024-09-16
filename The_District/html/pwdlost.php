@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../assets/css/login.css" />
     <script src="../assets/js/script.js" defer></script>
     <script src="../assets/js/login.js" defer></script>
-    <title>The District : Connexion / Inscription</title>
+    <title>The District : Récupération de mot de passe</title>
 </head>
 
 <body>

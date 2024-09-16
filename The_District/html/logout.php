@@ -8,6 +8,7 @@
     unset($_SESSION["adresse"]);
     unset($_SESSION["admin"]);
     unset($_SESSION["role"]);
+    unset($_SESSION['lostmail']);
 
    
     if (isset($_COOKIE['login'])) {

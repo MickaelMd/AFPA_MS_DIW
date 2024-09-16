@@ -70,20 +70,20 @@ echo '</tbody></table> <hr>';
 <!-- ----------------- -->
 
 <form action="testinsert.php" method="POST" id="sqlform" enctype="multipart/form-data">
-  <label for="libelle">Libelle</label><br>
-  <input type="text" id="libelle" name="libelle" ><br><br>
+    <label for="libelle">Libelle</label><br>
+    <input type="text" id="libelle" name="libelle"><br><br>
 
-  <!-- <label for="image">Image</label><br>
+    <!-- <label for="image">Image</label><br>
   <input type="text" id="image" name="image"><br><br> -->
 
-  <label for="image_file">Image file</label>
-<input type="file" id="image_file" name="image_file"><br><br>
+    <label for="image_file">Image file</label>
+    <input type="file" id="image_file" name="image_file"><br><br>
 
-  <label for="active">Active (Yes/No)</label><br>
-  <input type="active" id="active" name="active"><br><br>
+    <label for="active">Active (Yes/No)</label><br>
+    <input type="active" id="active" name="active"><br><br>
 
-  <input type="submit" value="Submit">
-</form> 
+    <input type="submit" value="Submit">
+</form>
 
 
 
@@ -98,13 +98,13 @@ echo '</tbody></table> <hr>';
 
 
 <form action="" method="POST">
-<?php
+    <?php
 $sqlQuery = "SELECT * FROM `categorie`  ORDER BY libelle";
 $categorieeStatement = $mysqlClient->prepare($sqlQuery);
 $categorieeStatement->execute();
 $categoriee = $categorieeStatement->fetchAll(); ?>
 
-<?php
+    <?php
 foreach ($categoriee as $showcate) { 
 
 if ($showcate['active'] === 'Yes') { 
@@ -127,7 +127,7 @@ echo
 }
 
 ?>
-<input type="submit" value="Submit" name="SubmitButton">
+    <input type="submit" value="Submit" name="SubmitButton">
 </form>
 
 </br>
@@ -154,7 +154,7 @@ foreach ($categorie as $showcat) {
    
     
 
-    // $value = isset($_POST[$showcat['libelle']]) ? $_POST[$showcat['libelle']] : '';
+   
 
 
 $value = $_POST[$showcat['libelle']];
@@ -196,12 +196,12 @@ echo "<meta http-equiv='refresh' content='0'>";
 
 
 <form action="" method="POST" id="testdelform">
-  <label for="namedel">Name</label><br>
-  <input type="text" id="namedel" name="namedel" ><br><br>
+    <label for="namedel">Name</label><br>
+    <input type="text" id="namedel" name="namedel"><br><br>
 
-  <input type="submit" value="Submit" name="SubmitDel">
-  <!-- <input type="submit" value="Delete" name="DeleteDel"> -->
-</form> 
+    <input type="submit" value="Submit" name="SubmitDel">
+    <!-- <input type="submit" value="Delete" name="DeleteDel"> -->
+</form>
 
 
 
@@ -286,5 +286,3 @@ if (isset($_POST['DeleteDel'])) {
 <!-- 
 Pour éviter la faille XSS, il suffit d'appliquer la fonction htmlspecialchars 
  ou  strip_tags sur tous les textes envoyés par vos visiteurs que vous afficherez. -->
-
-

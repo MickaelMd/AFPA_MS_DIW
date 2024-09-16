@@ -111,7 +111,6 @@ header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>
 
-<!-- UPDATE categorie SET id = 20 WHERE libelle = 'libelle'; -->
+ <!-- UPDATE categorie SET id = 20 WHERE libelle = 'libelle'; -->
 
-<!-- UPDATE commande SET id_plat = 20 WHERE id = '20'; -->
-
+ <!-- UPDATE commande SET id_plat = 20 WHERE id = '20'; -->

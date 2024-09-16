@@ -1,4 +1,9 @@
 <?php require_once(__DIR__ . '/../assets/php/connect.php'); ?>
+<?php
+if (!isset($_SESSION["email"])) {
+    header('Location: ../index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

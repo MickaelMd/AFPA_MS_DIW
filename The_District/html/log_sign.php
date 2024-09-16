@@ -194,6 +194,7 @@ if (isset($_POST['login_submit'])) {
                        $_SESSION["telephone"] = $resultat['telephone'];
                        $_SESSION["adresse"] = $resultat['adresse'];
                        $_SESSION["admin"] = $resultat['admin'];
+                       $_SESSION["nom_client"] = $resultat['nom_client'];
 
                        echo' ' . $_SESSION["admin"] . '</br>';
                        echo" Session ID : ".session_id(); 
@@ -272,6 +273,8 @@ if (isset($_POST['login_submit'])) {
     } else {
         // le nom d'utilisateur n'existe pas
     
+    $nom_client = ucfirst($_POST['sign_prenom']) . ' ' . ucfirst($_POST['sign_nom']);
+
 
 echo '</br>';
 
@@ -289,7 +292,7 @@ if (password_verify($mdp_sU, $mdp_hash)) {
   echo 'Le mot de passe est invalide.';
 }
 
-$sqlQuery = 'INSERT INTO clients(nom, prenom, email, telephone, adresse, pass) VALUES (:nom, :prenom, :email, :telephone, :adresse, :pass)';
+$sqlQuery = 'INSERT INTO clients(nom_client, nom, prenom, email, telephone, adresse, pass) VALUES (:nom_client, :nom, :prenom, :email, :telephone, :adresse, :pass)';
 
 // Préparation
 $insertmdp = $mysqlClient->prepare($sqlQuery);
@@ -302,6 +305,7 @@ $insertmdp->execute([
   'telephone' => $_POST['sign_telephone'],
   'adresse' => $_POST['sign_adresse'],
   'pass' => $mdp_hash,
+  'nom_client' => $nom_client,
   
   
 ]);
@@ -319,6 +323,7 @@ $_SESSION["prenom"] = $resultat['prenom'];
 $_SESSION["telephone"] = $resultat['telephone'];
 $_SESSION["adresse"] = $resultat['adresse'];
 $_SESSION["admin"] = $resultat['admin'];
+$_SESSION["nom_client"] = $resultat['nom_client'];
 
 
 

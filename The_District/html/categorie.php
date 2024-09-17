@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/categorie.css" />
+
     <script src="../assets/js/script.js" defer></script>
     <title>The District : Catégorie</title>
 </head>
@@ -30,31 +30,26 @@
 
 
         <section id="pres_cat_pl-p" class="container">
-            <div class="cards_cat_mp" id="img_card1">
-                <a href="cat_asiatique.php">Asiatique</a>
-            </div>
+            <?php 
+                
+                $sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle";
+                    $categorieStatement = $mysqlClient->prepare($sqlQuery);
+                    $categorieStatement->execute();
+                    $categorie = $categorieStatement->fetchAll();
 
-            <div class="cards_cat_mp" id="img_card2">
-                <a href="">Burger</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card3">
-                <a href="">Pâtes</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card4">
-                <a href="">Pizza</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card5">
-                <a href="">Salade</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card6">
-                <a href="">Sandwich</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card7">
-                <a href="">Végan</a>
-            </div>
-            <div class="cards_cat_mp" id="img_card8">
-                <a href="">Wrap</a>
-            </div>
+                     
+                    foreach ($categorie as $categories) {
+
+                            echo '
+                            
+                            <div class="cards_cat_mp" id="img_card1">
+                        <img class="img_card_cat" src="' . $ip_link .  '/assets/img/category/' . $categories['image'] . '" alt="' . $categories['libelle'] . '">
+                        <a href="' . $ip_link . '/categorie/' . preg_replace('#\s+#', '', $categories['libelle']) . '.php' . '">' . $categories['libelle'] . '</a>
+                    </div>';
+
+
+                    };
+                ?>
         </section>
     </div>
 

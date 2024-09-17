@@ -3,8 +3,6 @@
 
 <!-- ------TEST ------ -->
 
-
-
 <!-- ----------------- -->
 <?php require_once(__DIR__ . '/assets/php/connect.php'); ?>
 <!DOCTYPE html>
@@ -31,33 +29,28 @@
 <body>
     <div class="container">
 
-
-
         <?php require_once(__DIR__ . '/assets/php/header.php'); ?>
-
-
 
         <section id="pres_cat_pl" class="container">
             <div class="list_cat_mp">
-                <div class="cards_cat_mp" id="img_card1">
-                    <a href="">Asiatique</a>
-                </div>
+                <?php 
+                
+                $sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT 6";
+                    $categorieStatement = $mysqlClient->prepare($sqlQuery);
+                    $categorieStatement->execute();
+                    $categorie = $categorieStatement->fetchAll();
 
-                <div class="cards_cat_mp" id="img_card2">
-                    <a href="">Burger</a>
-                </div>
-                <div class="cards_cat_mp" id="img_card3">
-                    <a href="">Pâtes</a>
-                </div>
-                <div class="cards_cat_mp" id="img_card4">
-                    <a href="">Pizza</a>
-                </div>
-                <div class="cards_cat_mp" id="img_card5">
-                    <a href="">Salade</a>
-                </div>
-                <div class="cards_cat_mp" id="img_card6">
-                    <a href="">Sandwich</a>
-                </div>
+                    foreach ($categorie as $categories) {
+
+                            echo '
+                            
+                            <div class="cards_cat_mp" id="img_card1">
+                        <img class="img_card_cat" src="' . $ip_link .  '/assets/img/category/' . $categories['image'] . '" alt="' . $categories['libelle'] . '">
+                        <a href="' . $ip_link . '/categorie/' . preg_replace('#\s+#', '', $categories['libelle']) . '.php' . '">' . $categories['libelle'] . '</a>
+                    </div>';
+
+                    };
+                ?>
 
             </div>
             <a class="d-flex text-decoration-none" href="html/categorie.php">
@@ -68,15 +61,28 @@
             <br />
 
             <div class="mt-5 list_cat_mp">
+
+                <?php 
+
+            $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+            $platStatement = $mysqlClient->prepare($sqlQuery);
+            $platStatement->execute();
+            $plat = $platStatement->fetchAll();
+
+            foreach ($plat as $plats) {
+
+                echo '
+                
                 <div class="cards_pl_mp" id="img_card_plat1">
-                    <a href="">Spaghetti Legumes</a>
+                 <img class="img_card_plat_i" src="' . $ip_link .  '/assets/img/food/' . $plats['image'] . '" alt="' . $plats['libelle'] . '">
+                        <a href="' . $ip_link . '/food/' . preg_replace('#\s+#', '', $plats['libelle']) . '.php' . '">' . $plats['libelle'] . '</a>
+                    
                 </div>
-                <div class="cards_pl_mp" id="img_card_plat2">
-                    <a href="">Pizza Margherita</a>
-                </div>
-                <div class="cards_pl_mp" id="img_card_plat3">
-                    <a href="">Cheesburger</a>
-                </div>
+                             
+                ';
+            };
+
+            ?>
 
             </div> <a class="d-flex text-decoration-none" href="html/plats.php">
                 <button type="button" class="btn btn-info mt-3">

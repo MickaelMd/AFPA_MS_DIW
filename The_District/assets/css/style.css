@@ -134,6 +134,12 @@ header img {
 
 /* ----------- */
 
+.img_card_cat {
+  max-width: 360px;
+  height: 360px;
+  border-radius: 8px;
+}
+
 .cards_cat_mp {
   display: flex;
   flex-wrap: wrap;
@@ -165,44 +171,6 @@ header img {
 .cards_cat_mp a:hover {
   background-color: rgba(0, 0, 0, 0.589);
   transition: 50ms;
-}
-
-#img_card1 {
-  background: url(/The_District/assets/img/category/asian_food_cat.jpg) right
-    bottom/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-
-#img_card2 {
-  background: url(/The_District/assets/img/category/burger_cat.jpg) right
-    top/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card3 {
-  background: url(/The_District/assets/img/category/pasta_cat.jpg) bottom/cover
-    no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card4 {
-  background: url(/The_District/assets/img/category/pizza_cat.jpg) right
-    top/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card5 {
-  background: url(/The_District/assets/img/category/salade_cat.jpg) right /
-    cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card6 {
-  background: url(/The_District/assets/img/category/sandwich_cat.jpg) right
-    top/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
 }
 
 /* ------- */
@@ -244,6 +212,12 @@ header img {
   border-radius: 8px;
 }
 
+.img_card_plat_i {
+  width: 360px;
+  height: 170px;
+  border-radius: 8px;
+}
+
 .cards_pl_mp a {
   color: white;
   text-align: center;
@@ -266,37 +240,14 @@ header img {
   transition: 50ms;
 }
 
-#img_card_plat1 {
-  background: url(/The_District/assets/img/food/spaghetti-legumes.jpg) right
-    bottom/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card_plat2 {
-  background: url(/The_District/assets/img/food/pizza-margherita.jpg) right
-    bottom/cover no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-#img_card_plat3 {
-  background: url(/The_District/assets/img/food/cheesburger.jpg) right top/cover
-    no-repeat;
-  background-size: 100%;
-  transition: all 0.1s ease-in-out;
-}
-
 /* ----------- */
 
-#img_card1:hover,
-#img_card2:hover,
-#img_card3:hover,
-#img_card4:hover,
-#img_card5:hover,
-#img_card6:hover,
-#img_card_plat1:hover,
-#img_card_plat2:hover,
-#img_card_plat3:hover {
-  background-size: 110%;
+#pres_cat_pl-p {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  justify-content: center;
 }
 
 /* ----------- */

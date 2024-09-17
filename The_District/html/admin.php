@@ -27,6 +27,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/admin.css">
     <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/admin.js"></script>
     <title>The District : Administration</title>
 </head>
 
@@ -234,10 +235,11 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                     <input type="text" class="form-control" id="cat_add_name" name="cat_add_name"
                         placeholder="Nom de la catégorie">
                     <label for="cat_add_name">Nom de la catégorie (Libelle)</label>
+                    <span id="error-cat_add_name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Choisir une image</label>
-                    <input class="form-control" type="file" id="cat_add_img" name="cat_add_img">
+                    <input class="form-control" type="file" id="cat_add_img" name="cat_add_img" required>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="cat_add_active"
@@ -251,6 +253,213 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             </form>
 
         </section>
+
+        <section id="plat_by_cat" class="mt-5">
+
+            <h2 class="mt-3 text-center">Plats par catégorie</h2>
+
+            <select id="categorySelect" class="form-select mt-5" aria-label="Default select example">
+                <?php
+    foreach ($categorie as $categories) {
+        echo '<option class="text-center" value="' . $categories['id'] . '">' . $categories['libelle'] . '</option>';
+    }
+    ?>
+            </select>
+            <form action="" name="form_enable_plat">
+                <table class="table mt-3" id="platsTable">
+                    <thead>
+                        <tr>
+                            <th scope="">Image</th>
+                            <th scope="">ID</th>
+                            <th scope="">Libelle</th>
+                            <th scope="">Déscription</th>
+                            <th scope="">Prix</th>
+                            <th scope="">ID catégorie</th>
+                            <th scope="">Active</th>
+                        </tr>
+                    </thead>
+                    <tbody id="platsBody">
+
+
+                        <?php 
+        $sqlQuery = "SELECT * FROM `plat` ORDER BY libelle";
+        $platLStatement = $mysqlClient->prepare($sqlQuery);
+        $platLStatement->execute();
+        $platL = $platLStatement->fetchAll();
+
+        foreach ($platL as $platLs) {
+            
+            echo '<tr data-category="' . htmlspecialchars($platLs['id_categorie']) . '">  
+                <td><img src="' . htmlspecialchars($ip_link . '/assets/img/food/' . $platLs['image']) . '" class="img_cat_list"></td>' . 
+                '<td>' . htmlspecialchars($platLs['id']) . '</td>' . 
+                '<td>' . htmlspecialchars($platLs['libelle']) . '</td>' . 
+                
+                '<td>' . htmlspecialchars($platLs['description']) . '</td>' . 
+                '<td>' . htmlspecialchars($platLs['prix']) . '€</td>' . 
+                '<td>' . htmlspecialchars($platLs['id_categorie']) . '</td>' . 
+                // '<td>' . htmlspecialchars($platLs['active']) . '</td>' .
+                   '<td><input type="checkbox" class="form-check-input" name="disable_' . $platLs['id'] . '" value="1"' . ($platLs['active'] === 'Yes' ? ' checked' : '') . '></td>' .
+            '</tr>';
+        }
+        ?>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary mt-3 w-100" type="submit" name="submit_update_plat">Valider
+                    leschangements</button>
+            </form>
+        </section>
+
+
+        <section id="update_plat_section">
+            <h2 class="mt-5 text-center">Modifier / Ajouter un plat</h2>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                <select id="platSelect" class="form-select mt-5" name="update_plat_select">
+                    <option class="text-center" value="add">Ajouter un plat</option>
+                    <?php
+            foreach ($platL as $platLs) {
+                echo '<option class="text-center" value="' . htmlspecialchars($platLs['id']) . '">' . htmlspecialchars($platLs['libelle']) . '</option>';
+            }
+            ?>
+                </select>
+
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="update_plat_libelle" name="update_plat_libelle"
+                        placeholder="Nouveau libelle">
+                    <label for="update_plat_libelle">Libellé</label>
+                    <span id="error-update_plat_libelle" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Description" name="update_plat_desc"
+                        id="update_plat_desc" style="height: 100px"></textarea>
+                    <label for="update_plat_desc">Description</label>
+                    <span id="error-update_plat_desc" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="update_plat_img" class="form-label">Choisir une image</label>
+                    <input class="form-control" type="file" id="update_plat_img" name="update_plat_img">
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="update_plat_prix" name="update_plat_prix"
+                        placeholder="Prix">
+                    <label for="update_plat_prix">Prix (sans € et avec un point pour les centimes, ex: 8.50)</label>
+                    <span id="error-update_plat_prix" class="text-danger"></span>
+                </div>
+
+                <select id="categorySelect" class="form-select mt-0" name="update_plat_cat">
+                    <option class="text-center" value="" selected>Choisir la catégorie</option>
+                    <?php
+            foreach ($categorie as $categories) {
+                echo '<option class="text-center" value="' . htmlspecialchars($categories['id']) . '">' . htmlspecialchars($categories['libelle']) . '</option>';
+            }
+            ?>
+                </select>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-3" type="submit" name="submit_add_categorie">
+                        <?php echo isset($_POST['update_plat_select']) && $_POST['update_plat_select'] == 'add' ? 'Modifier / Ajouter le plat' : 'Ajouter / Modifier le plat'; ?>
+                    </button>
+                </div>
+            </form>
+
+            <?php
+    if (isset($_POST['submit_add_categorie'])) {
+        $up_id_plat = $_POST['update_plat_select'];
+        $up_id_categorie = $_POST['update_plat_cat'];
+
+        if ($up_id_plat === 'add') {
+            
+            $insertQuery = "INSERT INTO `plat` (libelle, description, prix, id_categorie, image) VALUES (:libelle, :description, :prix, :id_categorie, :image)";
+            $params = [];
+
+            
+            $params['libelle'] = $_POST['update_plat_libelle'];
+            $params['description'] = $_POST['update_plat_desc'];
+            $params['prix'] = $_POST['update_plat_prix'];
+            $params['id_categorie'] = $up_id_categorie;
+
+            if (isset($_FILES['update_plat_img']) && $_FILES['update_plat_img']['error'] === 0) {
+                $fileInfo = pathinfo($_FILES['update_plat_img']['name']);
+                $extension = strtolower($fileInfo['extension']);
+                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+
+                if (in_array($extension, $allowedExtensions)) {
+                    $path = __DIR__ . '/../assets/img/food/';
+                    if (!is_dir($path)) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    $image_name = time() . rand() . '.' . $extension;
+                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path . $image_name);
+
+                    $params['image'] = $image_name;
+                }
+            }
+
+            $insertStatement = $mysqlClient->prepare($insertQuery);
+            $insertStatement->execute($params);
+
+            echo "<meta http-equiv='refresh' content='0'>";
+        } else {
+           
+            $updateQuery = "UPDATE `plat` SET ";
+            $params = [];
+
+            if (!empty($_POST['update_plat_libelle'])) {
+                $updateQuery .= "libelle = :libelle, ";
+                $params['libelle'] = $_POST['update_plat_libelle'];
+            }
+
+            if (!empty($_POST['update_plat_desc'])) {
+                $updateQuery .= "description = :description, ";
+                $params['description'] = $_POST['update_plat_desc'];
+            }
+
+            if (!empty($_POST['update_plat_prix'])) {
+                $updateQuery .= "prix = :prix, ";
+                $params['prix'] = $_POST['update_plat_prix'];
+            }
+
+            if (!empty($up_id_categorie)) {
+                $updateQuery .= "id_categorie = :id_categorie, ";
+                $params['id_categorie'] = $up_id_categorie;
+            }
+
+            if (isset($_FILES['update_plat_img']) && $_FILES['update_plat_img']['error'] === 0) {
+                $fileInfo = pathinfo($_FILES['update_plat_img']['name']);
+                $extension = strtolower($fileInfo['extension']);
+                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+
+                if (in_array($extension, $allowedExtensions)) {
+                    $path = __DIR__ . '/../assets/img/food/';
+                    if (!is_dir($path)) {
+                        mkdir($path, 0777, true);
+                    }
+
+                    $image_name = time() . rand() . '.' . $extension;
+                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path . $image_name);
+
+                    $updateQuery .= "image = :image, ";
+                    $params['image'] = $image_name;
+                }
+            }
+
+            $updateQuery = rtrim($updateQuery, ', ') . " WHERE id = :id";
+            $params['id'] = $up_id_plat;
+
+            $updateStatement = $mysqlClient->prepare($updateQuery);
+            $updateStatement->execute($params);
+
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+    }
+    ?>
+        </section>
+
+
 
 
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 16 sep. 2024 à 13:04
+-- Généré le : mar. 17 sep. 2024 à 09:03
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -31,25 +31,23 @@ CREATE TABLE `categorie` (
   `id` int(2) NOT NULL,
   `libelle` varchar(128) DEFAULT NULL,
   `image` varchar(128) DEFAULT NULL,
-  `active` varchar(6) DEFAULT NULL
+  `active` varchar(6) DEFAULT NULL,
+  `SuperActive` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Déchargement des données de la table `categorie`
 --
 
-INSERT INTO `categorie` (`id`, `libelle`, `image`, `active`) VALUES
-(4, 'Pizza', 'pizza_cat.jpg', 'Yes'),
-(5, 'Burger', 'burger_cat.jpg', 'Yes'),
-(9, 'Wraps', 'wrap_cat.jpg', 'Yes'),
-(10, 'Pasta', 'pasta_cat.jpg', 'Yes'),
-(11, 'Sandwich', 'sandwich_cat.jpg', 'Yes'),
-(12, 'Asian_Food', 'asian_food_cat.jpg', 'Yes'),
-(13, 'Salade', 'salade_cat.jpg', 'Yes'),
-(14, 'Veggie', 'veggie_cat.jpg', 'Yes'),
-(84, 'test', '1726044525670545766.jpg', 'No'),
-(85, 'image', '17260445791320492752.jpg', 'No'),
-(86, 'TestLibelle', '17264914882066704044.jpg', 'No');
+INSERT INTO `categorie` (`id`, `libelle`, `image`, `active`, `SuperActive`) VALUES
+(4, 'Pizza', 'pizza_cat.jpg', 'Yes', 1),
+(5, 'Burger', 'burger_cat.jpg', 'Yes', 1),
+(9, 'Wraps', 'wrap_cat.jpg', 'Yes', 1),
+(10, 'Pasta', 'pasta_cat.jpg', 'Yes', 1),
+(11, 'Sandwich', 'sandwich_cat.jpg', 'Yes', 1),
+(12, 'Asian Food', 'asian_food_cat.jpg', 'Yes', 1),
+(13, 'Salade', 'salade_cat.jpg', 'Yes', 1),
+(14, 'Veggie', 'veggie_cat.jpg', 'Yes', 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +149,7 @@ INSERT INTO `plat` (`id`, `libelle`, `description`, `prix`, `image`, `id_categor
 (12, 'Spaghetti aux légumes', 'Un plat de spaghetti au pesto de basilic et légumes poêlés, très parfumé et rapide', '10.00', 'spaghetti-legumes.jpg', '10', 'Yes'),
 (13, 'Salade César', 'Une délicieuse salade Caesar (César) composée de filets de poulet grillés, de feuilles croquantes de salade romaine, de croutons à l\'ail, de tomates cerise et surtout de sa fameuse sauce Caesar. Le tout agrémenté de copeaux de parmesan.', '7.00', 'cesar_salad.jpg', '13', 'Yes'),
 (14, 'Pizza Margherita', 'Une authentique pizza margarita, un classique de la cuisine italienne! Une pâte faite maison, une sauce tomate fraîche, de la mozzarella Fior di latte, du basilic, origan, ail, sucre, sel & poivre...', '14.00', 'pizza-margherita.jpg', '4', 'Yes'),
-(15, 'Courgettes farcies au quinoa et duxelles de champignons', 'Voici une recette équilibrée à base de courgettes, quinoa et champignons, 100% vegan et sans gluten!', '8.00', 'courgettes_farcies.jpg', '14', 'Yes'),
+(15, 'Courgettes farcies végan', 'Voici une recette équilibrée à base de courgettes, quinoa et champignons, 100% vegan et sans gluten!', '8.00', 'courgettes_farcies.jpg', '14', 'Yes'),
 (16, 'Lasagnes', 'Découvrez notre recette des lasagnes, l\'une des spécialités italiennes que tout le monde aime avec sa viande hachée et gratinée à l\'emmental. Et bien sûr, une inoubliable béchamel à la noix de muscade.\n\n', '12.00', 'lasagnes_viande.jpg\n', '10', 'Yes'),
 (17, 'Tagliatelles au saumon', 'Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal!  \n\n', '12.00', 'tagliatelles_saumon.webp\n', '10', 'Yes');
 
@@ -251,7 +249,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT pour la table `clients`

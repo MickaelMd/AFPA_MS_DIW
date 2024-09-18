@@ -9,6 +9,9 @@
     unset($_SESSION["admin"]);
     unset($_SESSION["role"]);
     unset($_SESSION['lostmail']);
+    unset($_SESSION['nom_client']);
+    unset($_SESSION['uuid']);
+
 
    
     if (isset($_COOKIE['login'])) {

@@ -159,10 +159,10 @@ if (isset($_POST['login_submit'])) {
    return;
    }
 
- echo $login_login . ' - ' . $mdp_login . '</br>';
+ 
 
  
-                   $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, admin FROM clients WHERE email = :email');
+                   $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid, admin FROM clients WHERE email = :email');
                    $req-> execute(params: array(
                        'email' => $login_login));
 
@@ -195,6 +195,7 @@ if (isset($_POST['login_submit'])) {
                        $_SESSION["adresse"] = $resultat['adresse'];
                        $_SESSION["admin"] = $resultat['admin'];
                        $_SESSION["nom_client"] = $resultat['nom_client'];
+                       $_SESSION["uuid"] = $resultat['uuid'];
 
                        echo' ' . $_SESSION["admin"] . '</br>';
                        echo" Session ID : ".session_id(); 
@@ -271,7 +272,7 @@ if (isset($_POST['login_submit'])) {
     if ($user) {
         echo "Le nom d'utilisateur existe déjà !";
     } else {
-        // le nom d'utilisateur n'existe pas
+       
     
     $nom_client = ucfirst($_POST['sign_prenom']) . ' ' . ucfirst($_POST['sign_nom']);
 
@@ -309,7 +310,7 @@ $insertmdp->execute([
   
   
 ]);
-$req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, admin FROM clients WHERE email = :email');
+$req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid admin FROM clients WHERE email = :email');
 // $req = $mysqlClient->prepare('SELECT prenom, admin FROM clients WHERE email = :email');
                     $req-> execute(array(
                         'email' => $sign_email));
@@ -324,6 +325,7 @@ $_SESSION["telephone"] = $resultat['telephone'];
 $_SESSION["adresse"] = $resultat['adresse'];
 $_SESSION["admin"] = $resultat['admin'];
 $_SESSION["nom_client"] = $resultat['nom_client'];
+$_SESSION["uuid"] = $resultat['uuid'];
 
 
 

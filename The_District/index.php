@@ -46,7 +46,7 @@
                             
                             <div class="cards_cat_mp" id="img_card1">
                         <img class="img_card_cat" src="' . $ip_link .  '/assets/img/category/' . $categories['image'] . '" alt="' . $categories['libelle'] . '">
-                        <a href="' . $ip_link . '/categorie/' . preg_replace('#\s+#', '', $categories['libelle']) . '.php' . '">' . $categories['libelle'] . '</a>
+                        <a href="' . $ip_link . '/html/' . preg_replace('#\s+#', '', $categories['libelle']) . '.php' . '">' . $categories['libelle'] . '</a>
                     </div>';
 
                     };

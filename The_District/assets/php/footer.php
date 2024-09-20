@@ -34,10 +34,11 @@
             alt="The District Logo" />
 
         <div id="footer_nav" class="font_text">
-            <a href="">Accueil</a>
-            <a href="">Catégorie</a>
-            <a href="">Plats</a>
-            <a href="">Contact</a>
+            <a href="<?php echo $ip_link ?>/index.php">Accueil</a>
+            <a href="<?php echo $ip_link ?>/html/categorie.php">Catégorie</a>
+            <a href="<?php echo $ip_link ?>/html/plats.php">Plats</a>
+            <a href="<?php echo $ip_link ?>/html/contact.php">Contact</a>
+
         </div>
     </div>
     <div id="footer_rewards">

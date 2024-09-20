@@ -18,7 +18,7 @@
                         href="<?php echo $ip_link ?>/html/categorie.php">Catégorie</a>
                 </li>
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="#">Plats</a>
+                    <a class="nav-link" href="<?php echo $ip_link ?>/html/plats.php">Plats</a>
                 </li>
                 <li class="nav-item nav_cent_res">
                     <a class="nav-link" href="<?php echo $ip_link ?>/html/contact.php">Contact</a>

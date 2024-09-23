@@ -43,7 +43,6 @@
         <section id="contact_form_section">
             <h2 class="text-center">Contact</h2>
             <div id="form_contact" class="container"></div>
-
             <form id="contactForm" action="../assets/php/contact_form/contact_script.php" method="POST">
                 <div class="row mb-3 mt-3">
                     <div class="col-md-6">

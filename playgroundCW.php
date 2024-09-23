@@ -318,17 +318,222 @@
 
 // echo switch_it_up(8);
 
-function countsheep($num){
+// function countsheep($num){
 
-    $text = '';
+//     $text = '';
     
-        for ($i=1; $i < $num + 1; $i++) { 
+//         for ($i=1; $i < $num + 1; $i++) { 
     
-            $text .= $i . ' sheep...';
+//             $text .= $i . ' sheep...';
             
             
-        }
-    return $text;
-    }
+//         }
+//     return $text;
+//     }
     
-    echo countsheep(3);
+//     echo countsheep(3);
+
+
+
+
+
+// function lovefunc($flower1, $flower2) {
+   
+//     $fl1 = 0;
+//     $fl2 = 0;
+
+//     if ($flower1%2 == 1) {
+
+//         $fl1 = 1;
+
+//     }
+//     else {
+//         $fl1 = 0;
+//     };
+
+//     if ($flower2%2 ==1) {
+//         $fl2 = 1;
+//     }
+//     else {
+//         $fl2 = 0;
+//     }
+
+//     if ($fl1 == $fl2) {
+        
+//         $result = false;
+//     }
+//     else {
+//     $result = true;}
+
+//     return $result;
+// }
+
+// echo lovefunc(2, 1);
+
+
+// function summation($n) {
+
+//     //  $nb = $n + 1;
+//     $nn = 1;
+
+//     for ($i=0; $i <= $n; $i++) { 
+    
+      
+
+//         $nn = $nn + $i;
+        
+//     }
+
+
+    
+//     return $nn -1;
+// }
+
+// echo summation(10);
+
+
+// function spinWords(string $str): string {
+ 
+//     $strr = explode(' ', $str); 
+//     $newar = [];
+
+//     foreach ($strr as $strrr) {
+
+//         if (strlen($strrr) >= 5) {
+
+//             array_push($newar, strrev($strrr));
+
+//         } 
+//         else {
+//             array_push($newar, $strrr);
+//         }
+
+//     };
+
+//     $str = implode(' ', $newar);
+
+//     return $str;
+// }
+
+// echo spinWords('Hey fellow warriors');
+
+
+// function replaceAll($string) {
+
+//     return explode('#', $string)[0];
+// }
+
+
+// echo replaceAll('www.codewars.com#about');
+
+
+// function countBy($x, $n) {
+//     $z = [];
+
+//     for ($i=1; $i < $n ; $i++) {
+        
+//     array_push($z, $i * $x);
+        
+//     }
+
+//     return $z;
+// }
+
+// print_r(countBy(1, 10));
+
+
+// function booleanToString($b) {
+//     if ($b == true) {
+//         $b = 'true';
+//     }
+//     else {
+//         $b = 'false';
+//     }
+//     return $b;
+//   }
+
+//  echo booleanToString(false);
+
+//  ---------- > function booleanToString($b) {
+//                 return $b ? "true" : "false";
+//                 }
+
+
+
+
+// function gooseFilter($birds) {
+//     $geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    
+//     // return an array containing all of the strings in the input array except those that match strings in geese
+
+//     foreach($birds as $key => $value){
+//         if(in_array($value,$geese)){
+//             unset($birds[$key]);
+//         }
+//     }
+
+    
+
+//     return array_values($birds); }
+
+// print_r( gooseFilter( ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]));
+
+// function move($pos, $roll) {
+    
+//     return $pos + $roll * 2;
+// }
+
+// echo move(3, 6);  
+
+
+// function createPhoneNumber($numbersArray) {
+    
+//     $numbersInString = implode('', $numbersArray);
+//     $formattedPhoneNumber = preg_replace('/(\d{3})(\d{3})(\d{4})/', '($1) $2-$3', $numbersInString);
+//     return $formattedPhoneNumber;
+// }
+
+// echo createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); 
+
+// function numberToString($num)
+// {
+//   return strval($num);
+// }
+
+// echo numberToString(123);
+
+// function hoopCount($n)
+// {
+//     if ($n >= 10) {
+//         return 'Great, now move on to tricks'; 
+//     } else {
+//         return 'Keep at it until you get it';
+//     }
+// }
+
+// echo hoopCount(90);
+
+
+// function hoopCount(int $n): string {
+//     return $n >= 10 ? 'Great, now move on to tricks' : 'Keep at it until you get it';        <<<---------------
+//   }
+
+
+// ctype_upper($testcase
+
+
+//     function is_uppercase($str) {
+  
+//         $newstr = preg_replace('/[^a-zA-Z]/', '', $str);
+//         return ctype_upper($newstr);
+//     }
+
+
+//   echo is_uppercase("TESTdza  dza");
+
+$n = 99 * 99;
+
+echo $n >= 1 ? 'true' : 'false';
+
+
+  

@@ -1,9 +1,5 @@
 <!-- https://www.figma.com/design/Eu0HJlElFV29FdtzEXS4NK/Restaurant-The-District?node-id=0-1&node-type=canvas -->
 
-
-<!-- ------TEST ------ -->
-
-<!-- ----------------- -->
 <?php require_once(__DIR__ . '/assets/php/connect.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -39,14 +35,14 @@
                     $categorieStatement = $mysqlClient->prepare($sqlQuery);
                     $categorieStatement->execute();
                     $categorie = $categorieStatement->fetchAll();
-
+                   
                     foreach ($categorie as $categories) {
 
                             echo '
-                            
+                           
                             <div class="cards_cat_mp" id="img_card1">
                         <img class="img_card_cat" src="' . $ip_link .  '/assets/img/category/' . $categories['image'] . '" alt="' . $categories['libelle'] . '">
-                        <a href="' . $ip_link . '/html/' . preg_replace('#\s+#', '', $categories['libelle']) . '.php' . '">' . $categories['libelle'] . '</a>
+                        <a href="' . $ip_link . '/html/' . 'foodlist.php?categorie=' . preg_replace('#\s+#', '', $categories['id']) . '">' . $categories['libelle'] . '</a>
                     </div>';
 
                     };
@@ -75,7 +71,7 @@
                 
                 <div class="cards_pl_mp" id="img_card_plat1">
                  <img class="img_card_plat_i" src="' . $ip_link .  '/assets/img/food/' . $plats['image'] . '" alt="' . $plats['libelle'] . '">
-                        <a href="' . $ip_link . '/food/' . preg_replace('#\s+#', '', $plats['libelle']) . '.php' . '">' . $plats['libelle'] . '</a>
+                        <a href="' . $ip_link . '/html/platunique.php?plat=' . preg_replace('#\s+#', '', $plats['id']) . '">' . $plats['libelle'] . '</a>
                     
                 </div>
                              

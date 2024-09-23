@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 17 sep. 2024 à 09:03
+-- Généré le : lun. 23 sep. 2024 à 08:11
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -80,7 +80,7 @@ INSERT INTO `clients` (`id`, `nom_client`, `nom`, `prenom`, `email`, `telephone`
 (2, '', 'Smith', 'jogn', 'time@tardis.fr', '0787562623', '7 rue des test 80000 amiens', '$2y$10$4YnxFhGXNV9G2O8Y13Zmveio51IWVfqkrc9Z2i2qYar5TlujDYMri', '2024-09-12', '217aeab3-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (3, '', 'dada', 'dada', 'dada@dada.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$V6Wb5xszUUA1bTqYZKld0.Oy5bert5kvzIM20cU50ucZ7GRLfhNAS', '2024-09-12', '4d527811-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (4, '', 'dada', 'dada', 'dada@dadada.fr', '0785568962', '498 rue du test, 80450 amiens', '$2y$10$06JYz1ICntVpZYAddMTxHO5HQVOAkwwwUWM/m4.Q6PHwnokoi//Fq', '2024-09-12', '4601a92b-70da-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(6, '', 'admin', 'admin', 'admin@admin.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$PZ0YnRsvBAsAfz145RZpGOl6vioFMOGR2epaC2Jjz4vBHZj/T0z3K', '2024-09-12', '496f8b69-70dd-11ef-8e51-8d3f9323f76f', 1, 0, 1),
+(6, 'admin prenom admin nom', 'admin nom', 'admin prenom', 'admin@admin.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$UwUblM6tQpXaUJXr3R.vcea69zebtBM//Auz.788m0/7KHispcuG6', '2024-09-12', '496f8b69-70dd-11ef-8e51-8d3f9323f76f', 1, 0, 1),
 (7, '', 'Smith-test', 'test', 'jhon@test.com', '06 48 78 12 65', '5659 Rue Du Test 44865 Terre', '$2y$10$2AiymcPeIO/BJmaDGttmCeyyJsCMvNgxszjoXw1dc.lC1051yup.a', '2024-09-12', 'f561c15b-70eb-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (8, '', 'nom-test', 'prénom-test', 'email@testtest4.com', '07 87 56 26 23', '125 rue du tour, 75000  Paris', '$2y$10$xdjVGnRwBSH/BV9NU0mOGO.WL59qUxXR6.gitiXyNBGT0CbFbqgRG', '2024-09-12', '73b39216-70ec-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (9, '', 'user', 'test', 'testuser@user.com', '0707070707', '7 rue des test 80000 amiens', '$2y$10$c357EK9gID5QMmhni4XjIu0t9zJmTEr2kNATk3OOI5wA/2nJ6XVoa', '2024-09-16', 'd16fd948-73fa-11ef-8e4b-8d3e911ee009', 1, 0, 0),
@@ -151,7 +151,8 @@ INSERT INTO `plat` (`id`, `libelle`, `description`, `prix`, `image`, `id_categor
 (14, 'Pizza Margherita', 'Une authentique pizza margarita, un classique de la cuisine italienne! Une pâte faite maison, une sauce tomate fraîche, de la mozzarella Fior di latte, du basilic, origan, ail, sucre, sel & poivre...', '14.00', 'pizza-margherita.jpg', '4', 'Yes'),
 (15, 'Courgettes farcies végan', 'Voici une recette équilibrée à base de courgettes, quinoa et champignons, 100% vegan et sans gluten!', '8.00', 'courgettes_farcies.jpg', '14', 'Yes'),
 (16, 'Lasagnes', 'Découvrez notre recette des lasagnes, l\'une des spécialités italiennes que tout le monde aime avec sa viande hachée et gratinée à l\'emmental. Et bien sûr, une inoubliable béchamel à la noix de muscade.\n\n', '12.00', 'lasagnes_viande.jpg\n', '10', 'Yes'),
-(17, 'Tagliatelles au saumon', 'Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal!  \n\n', '12.00', 'tagliatelles_saumon.webp\n', '10', 'Yes');
+(17, 'Tagliatelles au saumon', 'Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal!  \n\n', '12.00', 'tagliatelles_saumon.webp\n', '10', 'Yes'),
+(18, 'testtesttest', 'tda-ètdaz', '59848954846849', '1726581093408685981.png', '13', NULL);
 
 -- --------------------------------------------------------
 
@@ -185,21 +186,6 @@ CREATE TABLE `users` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `uuid` text NOT NULL DEFAULT uuid()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `login`, `mdp`, `admin`, `date`, `uuid`) VALUES
-(19, 'admin', '$2y$10$d0OOx3ltbTuQNLWtCHh3euGm19C3s2nVJu4Ks.5hFYYNdVQC8jcke', 1, '0000-00-00 00:00:00', 'c6af462d-701b-11ef-94b7-309c232eb309'),
-(54, 'dzadzadadza4', '$2y$10$1jSh374ZFuyXR0FteY4KsOF5N7M7fAZDW9vKtCX/1Ey4HLZc8xDmK', 0, '2024-09-10 13:59:07', 'c6af46da-701b-11ef-94b7-309c232eb309'),
-(55, 'testuser484', '$2y$10$LFc.MYQBdJqFdym9HWHufOEuuxNMjuNYxYGtZnev46DkIrckPnSAu', 0, '2024-09-11 07:00:23', 'c6af46fb-701b-11ef-94b7-309c232eb309'),
-(56, 'testuser464daz6d', '$2y$10$DS.MNfkl3kc7FEmJx/Wf7eF.mvkfB2uxF9K02sZh.w0y4oARV.hK2', 0, '2024-09-11 07:00:32', 'c6af4711-701b-11ef-94b7-309c232eb309'),
-(57, 'testUser', '$2y$10$.k79ah8QqNKAgscQDdZdfu8Vvx7Z/Dvwsy0qXDh0ZeZy5f9Q0cT4G', 0, '2024-09-11 07:00:50', 'c6af4727-701b-11ef-94b7-309c232eb309'),
-(58, 'user48648646', '$2y$10$8zjgaGq.Cu0VrVK1y05BGOueZTEpMl3zH95w4cMpAz9dFbFeZD9n2', 0, '2024-09-11 07:03:04', 'c6af473b-701b-11ef-94b7-309c232eb309'),
-(59, 'useruser5d4az86d4az', '$2y$10$9LLGfnPfh0E1ut5VrPmuHeN2l85xjYD9k9A/J0FTuSB/TFQl84vNW', 0, '2024-09-11 08:58:27', '029faac8-701c-11ef-94b7-309c232eb309'),
-(60, 'dzadza858', '$2y$10$wFF0/bseiEOt3AL8d8xCuuK4nyIu8q5xa5cGQuqYcKJlWB.0gNZ8a', 0, '2024-09-11 13:40:36', '6ce1d61e-7043-11ef-94b7-309c232eb309'),
-(61, 'dazdazdad4', '$2y$10$SuyRTH14VrZk/wq6lHt..OLQPXSo9KChEb7H/GxY9C7Yq5VsJbbSe', 0, '2024-09-12 07:37:09', 'd18b5d40-70d9-11ef-8e51-8d3f9323f76f');
 
 --
 -- Index pour les tables déchargées
@@ -267,7 +253,7 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `plat`
 --
 ALTER TABLE `plat`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `TestDel`

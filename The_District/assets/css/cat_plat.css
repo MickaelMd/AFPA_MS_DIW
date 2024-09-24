@@ -24,6 +24,7 @@
 #cards_section_p_c img {
   width: 300px;
   height: 250px;
+  object-fit: cover;
 }
 .btn_suiv_prec {
   width: 200px;

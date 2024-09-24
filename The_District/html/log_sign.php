@@ -153,11 +153,10 @@ if (isset($_POST['login_submit'])) {
  $login_login = $_POST['login_email'];
  $mdp_login = $_POST['login_pwd'];
 
- if (!preg_match(pattern: "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", subject: $_POST['login_email'])) {
-       
-   echo 'Error . </br></br>';
-   return;
-   }
+ if (!filter_var($_POST['sign_email'], FILTER_VALIDATE_EMAIL)) {
+    echo 'Veuillez entrer un email valide. </br></br>';
+    return;
+}
 
  
 
@@ -239,11 +238,10 @@ if (isset($_POST['login_submit'])) {
         echo 'Le prénom est obligatoire et doit comporter uniquement des lettres. </br></br>';
         return;
         }
-        if (!preg_match(pattern: "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", subject: $_POST['sign_email'])) {
-        
+        if (!filter_var($_POST['sign_email'], FILTER_VALIDATE_EMAIL)) {
             echo 'Veuillez entrer un email valide. </br></br>';
             return;
-            }
+        }
             if (!preg_match(pattern: "/^(\+?\d{1,3}\s?)?([1-9](\s?\d\s?){8}|\d{10,14})$/", subject: $_POST['sign_telephone'])) {
         
                 echo 'Le téléphone doit comporter uniquement des chiffres. (Le signe + est autorisé.)</br></br>';

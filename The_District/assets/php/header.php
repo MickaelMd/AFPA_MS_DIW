@@ -28,7 +28,6 @@
             
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
                 
-                
                 echo ' 
                  <li class="nav-item nav_cent_res">
                     <a class="nav-link" href="' . $ip_link . '/html/profil.php">Profil</a>
@@ -43,9 +42,7 @@
                    ';
                 }; ?>
 
-
                 <?php if (isset($_SESSION['email']) && !is_null($_SESSION['email']) && $_SESSION['admin'] > 0) {
-                
                 
                 echo ' 
                  <li class="nav-item nav_cent_res">
@@ -55,18 +52,13 @@
 
                 }; ?>
 
-
             </ul>
-
-
-
             <span class="navbar-text  ms-auto">
 
                 <?php 
             
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                
-                
+                                
                 echo ' <a class="nav-link log_sign_nav" href=" ' . $ip_link . '/html/logout.php">Déconnexion</a>
             </span>';
 
@@ -77,13 +69,7 @@
                 Inscription</a>
             </span>';
             }
-
 ?>
-
-
-
-
-
         </div>
     </div>
 </nav>
@@ -92,20 +78,55 @@
     <div id="ex1-layer">
         <img src="<?php echo $ip_link ?>/assets/img/the_district_brand/big_white_logo.svg" alt="The District Logo" />
 
-
     </div>
 </div>
 <header>
-
 
     <div class="container">
         <div class="row height d-flex justify-content-center align-items-center">
             <div class="col-md-6">
                 <div class="form">
-                    <input type="text" class="form-control form-input" placeholder="Recherche..." />
+                    <input type="text" id="input_search" class="form-control form-input" placeholder="Recherche..." />
                     <span class="left-pan"><img src="<?php echo $ip_link ?>/assets/img/search.svg" alt="" /></span>
                 </div>
             </div>
         </div>
+
     </div>
 </header>
+
+<section id="search_zone">
+    <div id="test_sh">
+        <?php 
+            $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+            $platStatement = $mysqlClient->prepare($sqlQuery);
+            $platStatement->execute();
+            $plat = $platStatement->fetchAll();
+
+            foreach ($plat as $plats) {
+
+                $description = $plats['description'];
+                if (strlen($description) > 100) {
+                    $description = substr($description, 0, 50) . '...';
+                }
+
+                echo '
+                <a class="link_card_sh" href="' . $ip_link . '/html/' . 'platunique.php?plat=' . preg_replace('#\s+#', '', $plats['id']) . '">
+                 <div class="plat_affiche">
+                    
+            <img src="' . $ip_link .  '/assets/img/food/' . $plats['image'] . '" alt="">
+            <div class="info_plat_sh">
+                <h5>' . $plats['libelle'] . ' - ' . $plats['prix'] .' €</h5>
+                <p>' . $description . '
+                </p>
+
+                 </div>
+                    
+                </div>
+                </a>
+                
+                ';
+            }
+            ?>
+    </div>
+</section>

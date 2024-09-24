@@ -531,9 +531,49 @@
 
 //   echo is_uppercase("TESTdza  dza");
 
-$n = 99 * 99;
-
-echo $n >= 1 ? 'true' : 'false';
+// $n = 99 * 99;
 
 
-  
+// --------------------------------------------------------------------------------------------
+// echo $n >= 1 ? 'true' : 'false';                     ---------------------------------------
+// --------------------------------------------------------------------------------------------
+
+
+// function reverseWords($str) {
+
+
+//     return implode(' ', array_map('strrev', explode(' ', $str)));
+
+// }
+
+// echo reverseWords('This is an example!');
+
+
+// function duplicate_encode($word) {
+//     $word = strtolower($word);  
+//     $sword = '';  
+//     $letter_count = array(); 
+
+    
+//     $nw = strlen($word);
+//     for ($i = 0; $i < $nw; $i++) {
+//         if (isset($letter_count[$word[$i]])) {
+//             $letter_count[$word[$i]]++;
+//         } else {
+//             $letter_count[$word[$i]] = 1;
+//         }
+//     }
+
+    
+//     for ($i = 0; $i < $nw; $i++) {
+//         if ($letter_count[$word[$i]] > 1) {
+//             $sword .= ')';  
+//         } else {
+//             $sword .= '(';
+//         }
+//     }
+
+//     return $sword;
+// }
+
+// echo duplicate_encode('tests');  

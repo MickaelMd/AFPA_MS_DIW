@@ -37,14 +37,16 @@ $userExists = $req->fetch();
 if (!$userExists) {
 
 
-unset($_SESSION["email"]);
-unset($_SESSION["nom"]);
-unset($_SESSION["prenom"]);
-unset($_SESSION["telephone"]);
-unset($_SESSION["adresse"]);
-unset($_SESSION["admin"]);
-unset($_SESSION["role"]);
-unset($_SESSION['lostmail']);
+    unset($_SESSION["email"]);
+    unset($_SESSION["nom"]);
+    unset($_SESSION["prenom"]);
+    unset($_SESSION["telephone"]);
+    unset($_SESSION["adresse"]);
+    unset($_SESSION["admin"]);
+    unset($_SESSION["role"]);
+    unset($_SESSION['lostmail']);
+    unset($_SESSION['nom_client']);
+    unset($_SESSION['uuid']);
 
 if (ini_get(option: "session.use_cookies")) {
 setcookie(session_name(), '', time() - 42000);

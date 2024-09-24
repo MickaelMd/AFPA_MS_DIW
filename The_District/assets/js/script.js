@@ -32,3 +32,23 @@ mouseOverContainer.addEventListener("mousemove", function (e) {
 mouseOverContainer.addEventListener("mouseleave", function () {
   ex1Layer.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
 });
+
+// ---------------
+
+const input_search = document.getElementById("input_search");
+const search_zone = document.getElementById("search_zone");
+
+search_zone.style.display = "none";
+
+input_search.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  if (search_zone.style.display === "none") {
+    search_zone.style.removeProperty("display");
+  } else {
+    search_zone.style.display = "none";
+  }
+});
+document.addEventListener("click", () => {
+  search_zone.style.display = "none";
+});

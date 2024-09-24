@@ -261,8 +261,6 @@ if (isset($_POST['login_submit'])) {
                         echo 'Les mots de passe doivent être identiques.';
                         return; };
 
-
-
     $sign_email = $_POST['sign_email'];
     $stmt = $mysqlClient->prepare(query: "SELECT * FROM clients WHERE email=?");
     $stmt->execute(params: [$sign_email]); 
@@ -270,7 +268,6 @@ if (isset($_POST['login_submit'])) {
     if ($user) {
         echo "Le nom d'utilisateur existe déjà !";
     } else {
-       
     
     $nom_client = ucfirst($_POST['sign_prenom']) . ' ' . ucfirst($_POST['sign_nom']);
 
@@ -306,7 +303,6 @@ $insertmdp->execute([
   'pass' => $mdp_hash,
   'nom_client' => $nom_client,
   
-  
 ]);
 $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid admin FROM clients WHERE email = :email');
 // $req = $mysqlClient->prepare('SELECT prenom, admin FROM clients WHERE email = :email');
@@ -325,12 +321,7 @@ $_SESSION["admin"] = $resultat['admin'];
 $_SESSION["nom_client"] = $resultat['nom_client'];
 $_SESSION["uuid"] = $resultat['uuid'];
 
-
-
-
-
 // ----------------------------------
-
 
  echo "<meta http-equiv='refresh' content='0'>";
 
@@ -340,13 +331,9 @@ $_SESSION["uuid"] = $resultat['uuid'];
 
   ?>
 
-
-
     <!-- ---------------------------------------------- -->
 
     <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

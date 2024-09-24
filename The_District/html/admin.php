@@ -7,7 +7,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -77,7 +76,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                                 
                                
                                 echo '<input type="hidden" name="delete_ids_' . $id_commande . '" value="0">';
-
                                 echo '<tr> 
                                         <td>' . $id_commande . '</td>
                                         <td>' . htmlspecialchars($commandes['id_plat']) . '</td>
@@ -107,20 +105,14 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                             changements</button>
                     </div>
                 </form>
-
                 <?php
                 if (isset($_POST['submit_update'])) {
                    
                     foreach ($commande as $commandes) {
                         $id_commande = $commandes['id'];
-
-                       
-                        $archived = isset($_POST['delete_ids_' . $id_commande]) && $_POST['delete_ids_' . $id_commande] === '1' ? 0 : 1;
-
-                        
+                        $archived = isset($_POST['delete_ids_' . $id_commande]) && $_POST['delete_ids_' . $id_commande] === '1' ? 0 : 1;        
                         $etat_commande = $_POST['etat'][$id_commande] ?? $commandes['etat'];
 
-                        
                         $updateQuery = "UPDATE commande SET active = :archived, etat = :etat WHERE id = :id";
                         $updateStatement = $mysqlClient->prepare($updateQuery);
                         $updateStatement->execute([
@@ -130,18 +122,13 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                         ]);
                     }
 
-                    
-                    
                         echo "<meta http-equiv='refresh' content='0'>";
                 }
                 ?>
-
         </section>
-
 
         <section id="section_cat_list" class="mt-5">
             <h2 class="text-center mt-5">Liste des catégories</h2>
-
             <form class="mt-5" method="POST" id="cat_list">
                 <table class="table">
                     <thead>
@@ -162,13 +149,11 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                     $categorieStatement->execute();
                     $categorie = $categorieStatement->fetchAll();
 
-                    
                     foreach ($categorie as $categories) {
                         $checkcat = ($categories['active'] === 'Yes') ? 'checked="checked"' : ''; 
                         $checkSuperActive = ($categories['SuperActive'] === '1') ? 'checked="checked"' : ''; 
                         $id_categories = htmlspecialchars($categories['id']);
-                        
-                        
+                          
                         echo '<input type="hidden" name="valuecat_' . $id_categories . '" value="0">';
                         echo '<input type="hidden" name="valuecatDELETE_' . $id_categories . '" value="0">';
                         echo '<tr> 
@@ -218,12 +203,10 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             'id' => $showcat['id']
         ]);
     }
-
-    
+   
     echo "<meta http-equiv='refresh' content='0'>";
 }
 ?>
-
 
         <section id="add_cat" class="mt-5">
 
@@ -280,7 +263,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                     </thead>
                     <tbody id="platsBody">
 
-
                         <?php 
         $sqlQuery = "SELECT * FROM `plat` ORDER BY libelle";
         $platLStatement = $mysqlClient->prepare($sqlQuery);
@@ -308,7 +290,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                     leschangements</button>
             </form>
         </section>
-
 
         <section id="update_plat_section">
             <h2 class="mt-5 text-center">Modifier / Ajouter un plat</h2>
@@ -374,8 +355,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             
             $insertQuery = "INSERT INTO `plat` (libelle, description, prix, id_categorie, image) VALUES (:libelle, :description, :prix, :id_categorie, :image)";
             $params = [];
-
-            
+           
             $params['libelle'] = $_POST['update_plat_libelle'];
             $params['description'] = $_POST['update_plat_desc'];
             $params['prix'] = $_POST['update_plat_prix'];
@@ -458,9 +438,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
     }
     ?>
         </section>
-
-
-
 
     </div>
     <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>

@@ -1,7 +1,7 @@
-<?php require_once(__DIR__ . '/../assets/php/connect.php'); ?>
+<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
 
 <?php
-if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
+if (!isset($_SESSION['email']) || $_SESSION['admin'] < 1) {
     echo '<br>Page refusée !';
     header('Location: ../index.php');
     exit;
@@ -32,7 +32,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
 
 <body>
     <div class="container">
-        <?php require_once(__DIR__ . '/../assets/php/header.php'); ?>
+        <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
         <section id="section_commande_list" class="mt-5">
             <h2 class="text-center">Liste des commandes</h2>
@@ -64,40 +64,39 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                            $sqlQuery = "SELECT * FROM `commande` WHERE active > 0 ORDER BY id";
-                            $commandeStatement = $mysqlClient->prepare($sqlQuery);
-                            $commandeStatement->execute();
-                            $commande = $commandeStatement->fetchAll();
+                            <?php
+                            $sqlQuery = 'SELECT * FROM `commande` WHERE active > 0 ORDER BY id';
+$commandeStatement = $mysqlClient->prepare($sqlQuery);
+$commandeStatement->execute();
+$commande = $commandeStatement->fetchAll();
 
-                            foreach ($commande as $commandes) {
-                                $id_commande = htmlspecialchars($commandes['id']);
-                                $etat_commande = htmlspecialchars($commandes['etat']);
-                                
-                               
-                                echo '<input type="hidden" name="delete_ids_' . $id_commande . '" value="0">';
-                                echo '<tr> 
-                                        <td>' . $id_commande . '</td>
-                                        <td>' . htmlspecialchars($commandes['id_plat']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['quantite']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['total']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['date_commande']) . '</td>
+foreach ($commande as $commandes) {
+    $id_commande = htmlspecialchars($commandes['id']);
+    $etat_commande = htmlspecialchars($commandes['etat']);
+
+    echo '<input type="hidden" name="delete_ids_'.$id_commande.'" value="0">';
+    echo '<tr> 
+                                        <td>'.$id_commande.'</td>
+                                        <td>'.htmlspecialchars($commandes['id_plat']).'</td>
+                                        <td>'.htmlspecialchars($commandes['quantite']).'</td>
+                                        <td>'.htmlspecialchars($commandes['total']).'</td>
+                                        <td>'.htmlspecialchars($commandes['date_commande']).'</td>
                                         <td>
-                                        <select name="etat[' . $id_commande . ']" class="form-select">
-                                            <option value="Livrée"' . ($etat_commande === 'Livrée' ? ' selected' : '') . '>Livrée</option>
-                                            <option value="En cours de livraison"' . ($etat_commande === 'En cours de livraison' ? ' selected' : '') . '>En cours de livraison</option>
-                                            <option value="En préparation"' . ($etat_commande === 'En préparation' ? ' selected' : '') . '>En préparation</option>
-                                            <option value="Annulée"' . ($etat_commande === 'Annulée' ? ' selected' : '') . '>Annulée</option>
+                                        <select name="etat['.$id_commande.']" class="form-select">
+                                            <option value="Livrée"'.($etat_commande === 'Livrée' ? ' selected' : '').'>Livrée</option>
+                                            <option value="En cours de livraison"'.($etat_commande === 'En cours de livraison' ? ' selected' : '').'>En cours de livraison</option>
+                                            <option value="En préparation"'.($etat_commande === 'En préparation' ? ' selected' : '').'>En préparation</option>
+                                            <option value="Annulée"'.($etat_commande === 'Annulée' ? ' selected' : '').'>Annulée</option>
                                         </select>
                                         </td>
-                                        <td>' . htmlspecialchars($commandes['nom_client']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['telephone_client']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['email_client']) . '</td>
-                                        <td>' . htmlspecialchars($commandes['adresse_client']) . '</td>' . 
-                                        '<td><input type="checkbox" class="form-check-input" name="delete_ids_' . $id_commande . '" value="1"' . ($commandes['active'] === 0 ? ' checked' : '') . '></td>
+                                        <td>'.htmlspecialchars($commandes['nom_client']).'</td>
+                                        <td>'.htmlspecialchars($commandes['telephone_client']).'</td>
+                                        <td>'.htmlspecialchars($commandes['email_client']).'</td>
+                                        <td>'.htmlspecialchars($commandes['adresse_client']).'</td>'.
+            '<td><input type="checkbox" class="form-check-input" name="delete_ids_'.$id_commande.'" value="1"'.($commandes['active'] === 0 ? ' checked' : '').'></td>
                                     </tr>';
-                            }
-                            ?>
+}
+?>
                         </tbody>
                     </table>
                     <div class="d-grid gap-2">
@@ -107,24 +106,23 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                 </form>
                 <?php
                 if (isset($_POST['submit_update'])) {
-                   
                     foreach ($commande as $commandes) {
                         $id_commande = $commandes['id'];
-                        $archived = isset($_POST['delete_ids_' . $id_commande]) && $_POST['delete_ids_' . $id_commande] === '1' ? 0 : 1;        
+                        $archived = isset($_POST['delete_ids_'.$id_commande]) && $_POST['delete_ids_'.$id_commande] === '1' ? 0 : 1;
                         $etat_commande = $_POST['etat'][$id_commande] ?? $commandes['etat'];
 
-                        $updateQuery = "UPDATE commande SET active = :archived, etat = :etat WHERE id = :id";
+                        $updateQuery = 'UPDATE commande SET active = :archived, etat = :etat WHERE id = :id';
                         $updateStatement = $mysqlClient->prepare($updateQuery);
                         $updateStatement->execute([
                             'archived' => $archived,
                             'etat' => $etat_commande,
-                            'id' => $id_commande
+                            'id' => $id_commande,
                         ]);
                     }
 
-                        echo "<meta http-equiv='refresh' content='0'>";
+                    echo "<meta http-equiv='refresh' content='0'>";
                 }
-                ?>
+?>
         </section>
 
         <section id="section_cat_list" class="mt-5">
@@ -142,30 +140,30 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                   
-                    $sqlQuery = "SELECT * FROM `categorie` WHERE SuperActive > 0 ORDER BY libelle";
-                    $categorieStatement = $mysqlClient->prepare($sqlQuery);
-                    $categorieStatement->execute();
-                    $categorie = $categorieStatement->fetchAll();
+                        <?php
 
-                    foreach ($categorie as $categories) {
-                        $checkcat = ($categories['active'] === 'Yes') ? 'checked="checked"' : ''; 
-                        $checkSuperActive = ($categories['SuperActive'] === '1') ? 'checked="checked"' : ''; 
-                        $id_categories = htmlspecialchars($categories['id']);
-                          
-                        echo '<input type="hidden" name="valuecat_' . $id_categories . '" value="0">';
-                        echo '<input type="hidden" name="valuecatDELETE_' . $id_categories . '" value="0">';
-                        echo '<tr> 
-                                <td><img src="' . htmlspecialchars($ip_link . '/assets/img/category/' . $categories['image']) . '" class="img_cat_list"></td>
-                                <td>' . htmlspecialchars($categories['id']) . '</td>
-                                <td>' . htmlspecialchars($categories['libelle']) . '</td>
+    $sqlQuery = 'SELECT * FROM `categorie` WHERE SuperActive > 0 ORDER BY libelle';
+$categorieStatement = $mysqlClient->prepare($sqlQuery);
+$categorieStatement->execute();
+$categorie = $categorieStatement->fetchAll();
+
+foreach ($categorie as $categories) {
+    $checkcat = ($categories['active'] === 'Yes') ? 'checked="checked"' : '';
+    $checkSuperActive = ($categories['SuperActive'] === '1') ? 'checked="checked"' : '';
+    $id_categories = htmlspecialchars($categories['id']);
+
+    echo '<input type="hidden" name="valuecat_'.$id_categories.'" value="0">';
+    echo '<input type="hidden" name="valuecatDELETE_'.$id_categories.'" value="0">';
+    echo '<tr> 
+                                <td><img src="'.htmlspecialchars($ip_link.'/assets/img/category/'.$categories['image']).'" class="img_cat_list"></td>
+                                <td>'.htmlspecialchars($categories['id']).'</td>
+                                <td>'.htmlspecialchars($categories['libelle']).'</td>
                                 <td>11 (test)</td>
-                                <td><input type="checkbox" class="form-check-input" name="valuecat_' . $id_categories . '" value="1" ' . $checkcat . '></td>
-                                <td><input type="checkbox" class="form-check-input" name="valuecatDELETE_' . $id_categories . '" value="1" ' . $checkSuperActive . '></td>' .
-                            '</tr>';
-                    }
-                    ?>
+                                <td><input type="checkbox" class="form-check-input" name="valuecat_'.$id_categories.'" value="1" '.$checkcat.'></td>
+                                <td><input type="checkbox" class="form-check-input" name="valuecatDELETE_'.$id_categories.'" value="1" '.$checkSuperActive.'></td>'.
+        '</tr>';
+}
+?>
                     </tbody>
                 </table>
                 <div class="d-grid gap-2">
@@ -175,37 +173,35 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             </form>
         </section>
 
-        <?php 
-
+        <?php
 
     if (isset($_POST['submit_update_categorie'])) {
+        $sqlQuery = 'SELECT * FROM `categorie`';
+        $categorieStatement = $mysqlClient->prepare($sqlQuery);
+        $categorieStatement->execute();
+        $categorie = $categorieStatement->fetchAll();
 
-    $sqlQuery = "SELECT * FROM `categorie`";
-    $categorieStatement = $mysqlClient->prepare($sqlQuery);
-    $categorieStatement->execute();
-    $categorie = $categorieStatement->fetchAll();
+        foreach ($categorie as $showcat) {
+            $valueKey = 'valuecat_'.$showcat['id'];
+            $valueDeleteKey = 'valuecatDELETE_'.$showcat['id'];
 
-    foreach ($categorie as $showcat) {
-        $valueKey = 'valuecat_' . $showcat['id'];
-        $valueDeleteKey = 'valuecatDELETE_' . $showcat['id'];
+            $value = isset($_POST[$valueKey]) ? $_POST[$valueKey] : '0';
+            $valueDelete = isset($_POST[$valueDeleteKey]) ? $_POST[$valueDeleteKey] : '0';
 
-        $value = isset($_POST[$valueKey]) ? $_POST[$valueKey] : '0';
-        $valueDelete = isset($_POST[$valueDeleteKey]) ? $_POST[$valueDeleteKey] : '0';
+            $activeStatus = ($value === '1') ? 'Yes' : 'No';
+            $superActiveStatus = ($valueDelete === '1') ? '0' : $showcat['SuperActive'];
 
-        $activeStatus = ($value === '1') ? 'Yes' : 'No';
-        $superActiveStatus = ($valueDelete === '1') ? '0' : $showcat['SuperActive'];
+            $updateQuery = 'UPDATE `categorie` SET active = :active, SuperActive = :superactive WHERE id = :id';
+            $updateStatement = $mysqlClient->prepare($updateQuery);
+            $updateStatement->execute([
+                'active' => $activeStatus,
+                'superactive' => $superActiveStatus,
+                'id' => $showcat['id'],
+            ]);
+        }
 
-        $updateQuery = "UPDATE `categorie` SET active = :active, SuperActive = :superactive WHERE id = :id";
-        $updateStatement = $mysqlClient->prepare($updateQuery);
-        $updateStatement->execute([
-            'active' => $activeStatus,
-            'superactive' => $superActiveStatus,
-            'id' => $showcat['id']
-        ]);
+        echo "<meta http-equiv='refresh' content='0'>";
     }
-   
-    echo "<meta http-equiv='refresh' content='0'>";
-}
 ?>
 
         <section id="add_cat" class="mt-5">
@@ -244,9 +240,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             <select id="categorySelect" class="form-select mt-5" aria-label="Default select example">
                 <?php
     foreach ($categorie as $categories) {
-        echo '<option class="text-center" value="' . $categories['id'] . '">' . $categories['libelle'] . '</option>';
+        echo '<option class="text-center" value="'.$categories['id'].'">'.$categories['libelle'].'</option>';
     }
-    ?>
+?>
             </select>
             <form action="" name="form_enable_plat">
                 <table class="table mt-3" id="platsTable">
@@ -263,27 +259,26 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                     </thead>
                     <tbody id="platsBody">
 
-                        <?php 
-        $sqlQuery = "SELECT * FROM `plat` ORDER BY libelle";
-        $platLStatement = $mysqlClient->prepare($sqlQuery);
-        $platLStatement->execute();
-        $platL = $platLStatement->fetchAll();
+                        <?php
+    $sqlQuery = 'SELECT * FROM `plat` ORDER BY libelle';
+$platLStatement = $mysqlClient->prepare($sqlQuery);
+$platLStatement->execute();
+$platL = $platLStatement->fetchAll();
 
-        foreach ($platL as $platLs) {
-            
-            echo '<tr data-category="' . htmlspecialchars($platLs['id_categorie']) . '">  
-                <td><img src="' . htmlspecialchars($ip_link . '/assets/img/food/' . $platLs['image']) . '" class="img_cat_list"></td>' . 
-                '<td>' . htmlspecialchars($platLs['id']) . '</td>' . 
-                '<td>' . htmlspecialchars($platLs['libelle']) . '</td>' . 
-                
-                '<td>' . htmlspecialchars($platLs['description']) . '</td>' . 
-                '<td>' . htmlspecialchars($platLs['prix']) . '€</td>' . 
-                '<td>' . htmlspecialchars($platLs['id_categorie']) . '</td>' . 
-                // '<td>' . htmlspecialchars($platLs['active']) . '</td>' .
-                   '<td><input type="checkbox" class="form-check-input" name="disable_' . $platLs['id'] . '" value="1"' . ($platLs['active'] === 'Yes' ? ' checked' : '') . '></td>' .
-            '</tr>';
-        }
-        ?>
+foreach ($platL as $platLs) {
+    echo '<tr data-category="'.htmlspecialchars($platLs['id_categorie']).'">  
+                <td><img src="'.htmlspecialchars($ip_link.'/assets/img/food/'.$platLs['image']).'" class="img_cat_list"></td>'.
+        '<td>'.htmlspecialchars($platLs['id']).'</td>'.
+        '<td>'.htmlspecialchars($platLs['libelle']).'</td>'.
+
+        '<td>'.htmlspecialchars($platLs['description']).'</td>'.
+        '<td>'.htmlspecialchars($platLs['prix']).'€</td>'.
+        '<td>'.htmlspecialchars($platLs['id_categorie']).'</td>'.
+        // '<td>' . htmlspecialchars($platLs['active']) . '</td>' .
+           '<td><input type="checkbox" class="form-check-input" name="disable_'.$platLs['id'].'" value="1"'.($platLs['active'] === 'Yes' ? ' checked' : '').'></td>'.
+    '</tr>';
+}
+?>
                     </tbody>
                 </table>
                 <button class="btn btn-primary mt-3 w-100" type="submit" name="submit_update_plat">Valider
@@ -298,10 +293,10 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                 <select id="platSelect" class="form-select mt-5" name="update_plat_select">
                     <option class="text-center" value="add">Ajouter un plat</option>
                     <?php
-            foreach ($platL as $platLs) {
-                echo '<option class="text-center" value="' . htmlspecialchars($platLs['id']) . '">' . htmlspecialchars($platLs['libelle']) . '</option>';
-            }
-            ?>
+    foreach ($platL as $platLs) {
+        echo '<option class="text-center" value="'.htmlspecialchars($platLs['id']).'">'.htmlspecialchars($platLs['libelle']).'</option>';
+    }
+?>
                 </select>
 
                 <div class="form-floating mb-3 mt-3">
@@ -333,10 +328,10 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                 <select id="categorySelect" class="form-select mt-0" name="update_plat_cat">
                     <option class="text-center" value="" selected>Choisir la catégorie</option>
                     <?php
-            foreach ($categorie as $categories) {
-                echo '<option class="text-center" value="' . htmlspecialchars($categories['id']) . '">' . htmlspecialchars($categories['libelle']) . '</option>';
-            }
-            ?>
+foreach ($categorie as $categories) {
+    echo '<option class="text-center" value="'.htmlspecialchars($categories['id']).'">'.htmlspecialchars($categories['libelle']).'</option>';
+}
+?>
                 </select>
 
                 <div class="d-grid gap-2">
@@ -352,10 +347,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
         $up_id_categorie = $_POST['update_plat_cat'];
 
         if ($up_id_plat === 'add') {
-            
-            $insertQuery = "INSERT INTO `plat` (libelle, description, prix, id_categorie, image) VALUES (:libelle, :description, :prix, :id_categorie, :image)";
+            $insertQuery = 'INSERT INTO `plat` (libelle, description, prix, id_categorie, image) VALUES (:libelle, :description, :prix, :id_categorie, :image)';
             $params = [];
-           
+
             $params['libelle'] = $_POST['update_plat_libelle'];
             $params['description'] = $_POST['update_plat_desc'];
             $params['prix'] = $_POST['update_plat_prix'];
@@ -367,13 +361,13 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                 $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
 
                 if (in_array($extension, $allowedExtensions)) {
-                    $path = __DIR__ . '/../assets/img/food/';
+                    $path = __DIR__.'/../assets/img/food/';
                     if (!is_dir($path)) {
                         mkdir($path, 0777, true);
                     }
 
-                    $image_name = time() . rand() . '.' . $extension;
-                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path . $image_name);
+                    $image_name = time().rand().'.'.$extension;
+                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path.$image_name);
 
                     $params['image'] = $image_name;
                 }
@@ -384,27 +378,26 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
 
             echo "<meta http-equiv='refresh' content='0'>";
         } else {
-           
-            $updateQuery = "UPDATE `plat` SET ";
+            $updateQuery = 'UPDATE `plat` SET ';
             $params = [];
 
             if (!empty($_POST['update_plat_libelle'])) {
-                $updateQuery .= "libelle = :libelle, ";
+                $updateQuery .= 'libelle = :libelle, ';
                 $params['libelle'] = $_POST['update_plat_libelle'];
             }
 
             if (!empty($_POST['update_plat_desc'])) {
-                $updateQuery .= "description = :description, ";
+                $updateQuery .= 'description = :description, ';
                 $params['description'] = $_POST['update_plat_desc'];
             }
 
             if (!empty($_POST['update_plat_prix'])) {
-                $updateQuery .= "prix = :prix, ";
+                $updateQuery .= 'prix = :prix, ';
                 $params['prix'] = $_POST['update_plat_prix'];
             }
 
             if (!empty($up_id_categorie)) {
-                $updateQuery .= "id_categorie = :id_categorie, ";
+                $updateQuery .= 'id_categorie = :id_categorie, ';
                 $params['id_categorie'] = $up_id_categorie;
             }
 
@@ -414,20 +407,20 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
                 $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
 
                 if (in_array($extension, $allowedExtensions)) {
-                    $path = __DIR__ . '/../assets/img/food/';
+                    $path = __DIR__.'/../assets/img/food/';
                     if (!is_dir($path)) {
                         mkdir($path, 0777, true);
                     }
 
-                    $image_name = time() . rand() . '.' . $extension;
-                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path . $image_name);
+                    $image_name = time().rand().'.'.$extension;
+                    move_uploaded_file($_FILES['update_plat_img']['tmp_name'], $path.$image_name);
 
-                    $updateQuery .= "image = :image, ";
+                    $updateQuery .= 'image = :image, ';
                     $params['image'] = $image_name;
                 }
             }
 
-            $updateQuery = rtrim($updateQuery, ', ') . " WHERE id = :id";
+            $updateQuery = rtrim($updateQuery, ', ').' WHERE id = :id';
             $params['id'] = $up_id_plat;
 
             $updateStatement = $mysqlClient->prepare($updateQuery);
@@ -436,11 +429,11 @@ if (!isset($_SESSION["email"]) || $_SESSION["admin"] < 1) {
             echo "<meta http-equiv='refresh' content='0'>";
         }
     }
-    ?>
+?>
         </section>
 
     </div>
-    <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>
+    <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

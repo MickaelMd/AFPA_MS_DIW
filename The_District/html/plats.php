@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../assets/php/connect.php'); ?>
+<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -23,41 +23,39 @@
 <body>
     <div class="container">
 
-        <?php require_once(__DIR__ . '/../assets/php/header.php'); ?>
+        <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
         <section id="sec_cards_plat_cat">
             <h1 id="title_section_cat_plat" class="text-center">Tout les plats</h1>
             <div id="cards_section_p_c">
 
 
-                <?php 
+                <?php
 
                 $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
-                $platLStatement = $mysqlClient->prepare($sqlQuery);
-                $platLStatement->execute();
-                $platL = $platLStatement->fetchAll();
+$platLStatement = $mysqlClient->prepare($sqlQuery);
+$platLStatement->execute();
+$platL = $platLStatement->fetchAll();
 
-                foreach ($platL as $plats ) {
+foreach ($platL as $plats) {
+    $description = $plats['description'];
+    if (strlen($description) > 100) {
+        $description = substr($description, 0, 200).'...';
+    }
 
-                   
-                    $description = $plats['description'];
-                    if (strlen($description) > 100) {
-                        $description = substr($description, 0, 200) . '...';
-                    }
-
-                    echo '
+    echo '
                     <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="' . $ip_link .'/assets/img/food/' . $plats['image'] . '" class="img-fluid rounded-start" alt="Image du plat" />
+                                <img src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" class="img-fluid rounded-start" alt="Image du plat" />
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h4 class="card-title"> '. $plats['libelle'] . ' </h4>
+                                    <h4 class="card-title"> '.$plats['libelle'].' </h4>
                                     <p class="card-text font_text">
-                                        ' . $description . '
+                                        '.$description.'
                                     </p>
-                                    <p class="font_text show_price">' . $plats['prix'] . ' €</p>
+                                    <p class="font_text show_price">'.$plats['prix'].' €</p>
                                     <div class="d-grid gap-2 d-md-flex">
                                         <a href="#">
                                             <button type="button" class="btn btn-info mt-3 btn_com">
@@ -69,9 +67,9 @@
                             </div>
                         </div>
                     </div>';
-                }
+}
 
-                ?>
+?>
 
             </div>
 
@@ -81,7 +79,7 @@
 
 
 
-    <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>
+    <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
 
 
 

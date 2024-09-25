@@ -1,22 +1,20 @@
-<?php require_once(__DIR__ . '/../assets/php/connect.php'); ?>
+<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
 
 <?php
-$id = $_GET['plat']; 
+$id = $_GET['plat'];
 
 $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM plat WHERE id = :id');
-$req-> execute(params: array(
-    'id' => $id));
+$req->execute(params: [
+    'id' => $id]);
 
 $resultat = $req->fetch();
 
 if (!$resultat) {
-   
     echo "<h1>Erreur : Le plat demandé n'existe pas.</h1>";
-    exit; 
+    exit;
 }
 
 $name = $resultat['libelle'];
-
 
 ?>
 <!DOCTYPE html>
@@ -43,43 +41,41 @@ $name = $resultat['libelle'];
 <body>
     <div class="container">
 
-        <?php require_once(__DIR__ . '/../assets/php/header.php'); ?>
+        <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
         <section id="sec_cards_plat_cat">
             <h1 id="title_section_cat_plat">Plat : <?php echo $name; ?></h1>
 
             <div id="cards_section_p_c">
 
-                <?php 
+                <?php
 
                     $sqlQuery = "SELECT * FROM `plat` WHERE id = $id ORDER BY libelle";
-                    $platLStatement = $mysqlClient->prepare($sqlQuery);
-                    $platLStatement->execute();
-                    $platL = $platLStatement->fetchAll();
+$platLStatement = $mysqlClient->prepare($sqlQuery);
+$platLStatement->execute();
+$platL = $platLStatement->fetchAll();
 
+foreach ($platL as $platLs) {
+    $description = $platLs['description'];
+    if (strlen($description) > 100) {
+        $description = substr($description, 0, 200).'...';
+    }
 
-                    foreach ($platL as $platLs) {
-
-                        $description = $platLs['description'];
-                        if (strlen($description) > 100) {
-                            $description = substr($description, 0, 200) . '...';
-                        }
-
-                        echo '
+    echo '
                         
                         <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="../assets/img/food/' . $platLs['image'] .'" class="img-fluid rounded-start"
-                                alt="' . $platLs['libelle'] . '" />
+                            <img src="../assets/img/food/'.$platLs['image'].'" class="img-fluid rounded-start"
+                                alt="'.$platLs['libelle'].'" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h4 class="card-title">' . $platLs['libelle'] . '</h4>
+                                <h4 class="card-title">'.$platLs['libelle'].'</h4>
                                 <p class="card-text font_text">
-                                    ' . $description . '
+                                    '.$description.'
                                 </p>
-                                <p class="font_text show_price">' . $platLs['prix'] . '€' . '</p>
+                                <p class="font_text show_price">'.$platLs['prix'].'€'.'</p>
                                 <div class="d-grid gap-2 d-md-flex">
                                     <a href="#">
                                         <button type="button" class="btn btn-info mt-3 btn_com">
@@ -92,9 +88,8 @@ $name = $resultat['libelle'];
                 </div>
                         
                         ';
-                        
-                    }
-                    ?>
+}
+?>
 
             </div>
 
@@ -103,7 +98,7 @@ $name = $resultat['libelle'];
 
 
 
-    <?php require_once(__DIR__ . '/../assets/php/footer.php'); ?>
+    <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
 
 
 

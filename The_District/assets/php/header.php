@@ -1,7 +1,7 @@
 <nav class="navbar bg-body-tertiary navbar-expand-md fixed-top bg-blur">
     <div class="container-fluid">
-        <a class="navbar-brand nav_marg" href="<?php echo $ip_link ?>/index.php">
-            <img src="<?php echo $ip_link ?>/assets/img/the_district_brand/nav_logo.svg" alt="Bootstrap" width="150"
+        <a class="navbar-brand nav_marg" href="<?php echo $ip_link; ?>/index.php">
+            <img src="<?php echo $ip_link; ?>/assets/img/the_district_brand/nav_logo.svg" alt="Bootstrap" width="150"
                 height="auto" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -11,72 +11,65 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="<?php echo $ip_link ?>/index.php">Accueil</a>
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/index.php">Accueil</a>
                 </li>
                 <li class="nav-item nav_cent_res">
                     <a class="nav-link" aria-current="page"
-                        href="<?php echo $ip_link ?>/html/categorie.php">Catégorie</a>
+                        href="<?php echo $ip_link; ?>/html/categorie.php">Catégories</a>
                 </li>
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="<?php echo $ip_link ?>/html/plats.php">Plats</a>
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/html/plats.php">Plats</a>
                 </li>
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="<?php echo $ip_link ?>/html/contact.php">Contact</a>
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/html/contact.php">Contact</a>
                 </li>
 
-                <?php 
-            
+                <?php
+
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                
                 echo ' 
                  <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="' . $ip_link . '/html/profil.php">Profil</a>
+                    <a class="nav-link" href="'.$ip_link.'/html/profil.php">Profil</a>
                 </li>
                 ';
-
-                } else {
-                    echo ' 
+            } else {
+                echo ' 
                     <li class="nav-item nav_cent_res">
-                       <a class="nav-link" href="' . $ip_link . '/html/log_sign.php">Profil</a>
+                       <a class="nav-link" href="'.$ip_link.'/html/log_sign.php">Profil</a>
                    </li>
                    ';
-                }; ?>
+            } ?>
 
                 <?php if (isset($_SESSION['email']) && !is_null($_SESSION['email']) && $_SESSION['admin'] > 0) {
-                
-                echo ' 
+                    echo ' 
                  <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="' . $ip_link . '/html/admin.php">Administration</a>
+                    <a class="nav-link" href="'.$ip_link.'/html/admin.php">Administration</a>
                 </li>
                 ';
-
-                }; ?>
+                } ?>
 
             </ul>
             <span class="navbar-text  ms-auto">
 
-                <?php 
-            
-            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                                
-                echo ' <a class="nav-link log_sign_nav" href=" ' . $ip_link . '/html/logout.php">Déconnexion</a>
-            </span>';
+                <?php
 
+            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
+                echo ' <a class="nav-link log_sign_nav" href=" '.$ip_link.'/html/logout.php">Déconnexion</a>
+            </span>';
             } else {
-                
-                echo ' <a class="nav-link log_sign_nav" href=" ' . $ip_link . '/html/log_sign.php">Connexion
+                echo ' <a class="nav-link log_sign_nav" href=" '.$ip_link.'/html/log_sign.php">Connexion
                 /
                 Inscription</a>
             </span>';
             }
-?>
+        ?>
         </div>
     </div>
 </nav>
 
 <div id="ex1" class="paralaxbox">
     <div id="ex1-layer">
-        <img src="<?php echo $ip_link ?>/assets/img/the_district_brand/big_white_logo.svg" alt="The District Logo" />
+        <img src="<?php echo $ip_link; ?>/assets/img/the_district_brand/big_white_logo.svg" alt="The District Logo" />
 
     </div>
 </div>
@@ -87,7 +80,7 @@
             <div class="col-md-6">
                 <div class="form">
                     <input type="text" id="input_search" class="form-control form-input" placeholder="Recherche..." />
-                    <span class="left-pan"><img src="<?php echo $ip_link ?>/assets/img/search.svg" alt="" /></span>
+                    <span class="left-pan"><img src="<?php echo $ip_link; ?>/assets/img/search.svg" alt="" /></span>
                 </div>
             </div>
         </div>
@@ -95,29 +88,28 @@
     </div>
 </header>
 
-<section id="search_zone">
+<section id="search_zone" style="display: none;">
     <div id="test_sh">
-        <?php 
-            $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-            $platStatement = $mysqlClient->prepare($sqlQuery);
-            $platStatement->execute();
-            $plat = $platStatement->fetchAll();
+        <?php
+                    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+        $platStatement = $mysqlClient->prepare($sqlQuery);
+        $platStatement->execute();
+        $plat = $platStatement->fetchAll();
 
-            foreach ($plat as $plats) {
+        foreach ($plat as $plats) {
+            $description = $plats['description'];
+            if (strlen($description) > 100) {
+                $description = substr($description, 0, 50).'...';
+            }
 
-                $description = $plats['description'];
-                if (strlen($description) > 100) {
-                    $description = substr($description, 0, 50) . '...';
-                }
-
-                echo '
-                <a class="link_card_sh" href="' . $ip_link . '/html/' . 'platunique.php?plat=' . preg_replace('#\s+#', '', $plats['id']) . '">
+            echo '
+                <a class="link_card_sh" href="'.$ip_link.'/html/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">
                  <div class="plat_affiche">
                     
-            <img src="' . $ip_link .  '/assets/img/food/' . $plats['image'] . '" alt="">
+            <img src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" alt="">
             <div class="info_plat_sh">
-                <h5>' . $plats['libelle'] . ' - ' . $plats['prix'] .' €</h5>
-                <p>' . $description . '
+                <h5>'.$plats['libelle'].' - '.$plats['prix'].' €</h5>
+                <p>'.$description.'
                 </p>
 
                  </div>
@@ -126,7 +118,7 @@
                 </a>
                 
                 ';
-            }
-            ?>
+        }
+        ?>
     </div>
 </section>

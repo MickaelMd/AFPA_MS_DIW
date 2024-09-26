@@ -1,8 +1,6 @@
-<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
+<?php require_once __DIR__.'/../assets/php/connect.php';
 
-<?php
 $id = $_GET['categorie'];
-
 $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
 $req->execute(params: [
     'id' => $id]);
@@ -14,7 +12,10 @@ if (!$resultat) {
 } else {
     $name = $resultat['libelle'];
 }
-
+$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = $id ORDER BY libelle";
+$platLStatement = $mysqlClient->prepare($sqlQuery);
+$platLStatement->execute();
+$platL = $platLStatement->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -48,11 +49,6 @@ if (!$resultat) {
             <div id="cards_section_p_c">
 
                 <?php
-
-                    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = $id ORDER BY libelle";
-$platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute();
-$platL = $platLStatement->fetchAll();
 
 if (!$platL) {
     echo '<h1 class="text-danger text-center">Aucun plat dans cette catégorie !</h1>';

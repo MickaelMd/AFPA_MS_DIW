@@ -1,98 +1,65 @@
-<?php 
+<?php
 
-session_start(); 
-date_default_timezone_set("Europe/Paris");
+session_start();
+date_default_timezone_set('Europe/Paris');
 
 $ip_link = 'http://localhost:3000/The_District';
 
 try {
-$mysqlClient = new PDO(
-dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
-username: 'root',
-password: 'root'
-);
+    $mysqlClient = new PDO(
+        dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
+        username: 'root',
+        password: 'root'
+    );
 } catch (Exception $e) {
-die('Erreur : ' . $e->getMessage());
+    exit('Erreur : '.$e->getMessage());
 }
 
+if (isset($_SESSION['email'])) {
+    try {
+        $mysqlClient = new PDO(
+            dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
+            username: 'root',
+            password: 'root'
+        );
+    } catch (Exception $e) {
+        exit('Erreur : '.$e->getMessage());
+    }
 
-if (isset($_SESSION["email"])) {
+    // Vérifier si l'utilisateur existe encore dans la base de données
+    $req = $mysqlClient->prepare(query: 'SELECT id FROM clients WHERE email = :email');
+    $req->execute(params: ['email' => $_SESSION['email']]);
 
-try {
-$mysqlClient = new PDO(
-dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
-username: 'root',
-password: 'root'
-);
-} catch (Exception $e) {
-die('Erreur : ' . $e->getMessage());
+    $userExists = $req->fetch();
+
+    if (!$userExists) {
+        unset($_SESSION['email']);
+        unset($_SESSION['nom']);
+        unset($_SESSION['prenom']);
+        unset($_SESSION['telephone']);
+        unset($_SESSION['adresse']);
+        unset($_SESSION['admin']);
+        unset($_SESSION['role']);
+        unset($_SESSION['lostmail']);
+        unset($_SESSION['nom_client']);
+        unset($_SESSION['uuid']);
+
+        if (ini_get(option: 'session.use_cookies')) {
+            setcookie(session_name(), '', time() - 42000);
+        }
+
+        session_destroy();
+    }
 }
 
-// Vérifier si l'utilisateur existe encore dans la base de données
-$req = $mysqlClient->prepare(query: 'SELECT id FROM clients WHERE email = :email');
-$req->execute(params: ['email' => $_SESSION["email"]]);
+// echo '</br>' . '</br>' . '</br>' . '</br>';
+// echo "Session ID : " . session_id() . ' ';
 
-$userExists = $req->fetch();
+// if (isset($_SESSION["email"])) {
+// echo 'email : ' . $_SESSION["email"] . ' ';
+// }
 
-if (!$userExists) {
-
-
-    unset($_SESSION["email"]);
-    unset($_SESSION["nom"]);
-    unset($_SESSION["prenom"]);
-    unset($_SESSION["telephone"]);
-    unset($_SESSION["adresse"]);
-    unset($_SESSION["admin"]);
-    unset($_SESSION["role"]);
-    unset($_SESSION['lostmail']);
-    unset($_SESSION['nom_client']);
-    unset($_SESSION['uuid']);
-
-if (ini_get(option: "session.use_cookies")) {
-setcookie(session_name(), '', time() - 42000);
-}
-
-session_destroy();
-
-
-
-}
-};
-
-echo '</br>' . '</br>' . '</br>' . '</br>';
-echo "Session ID : " . session_id() . ' ';
-
-if (isset($_SESSION["email"])) {
-echo 'email : ' . $_SESSION["email"] . ' ';
-}
-
-if (isset($_SESSION["admin"])) {
-echo 'Admin : ' . $_SESSION["admin"];
-}
-?>
-
-<?php
-// if (isset($_POST['deco'])) {
-   
-//     unset($_SESSION["email"]);
-//     unset($_SESSION["admin"]);
-//     unset($_SESSION["role"]);
-
-   
-//     if (isset($_COOKIE['login'])) {
-//         setcookie('login', '', time() - 3600, '/', '', true, true); // chemin et paramètres sécurisés
-//     }
-
-    
-//     if (ini_get("session.use_cookies")) {
-//         setcookie(session_name(), '', time() - 42000, '/');
-//     }
-
-    
-//     session_destroy();
-
-
-//     echo "<meta http-equiv='refresh' content='0'>";
-// } 
-
+// if (isset($_SESSION["admin"])) {
+// echo 'Admin : ' . $_SESSION["admin"];
+// }
 ?>

@@ -1,7 +1,5 @@
 <?php
 
-// if (isset($_POST['deco'])) {
-
 unset($_SESSION['email']);
 unset($_SESSION['nom']);
 unset($_SESSION['prenom']);

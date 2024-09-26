@@ -1,6 +1,20 @@
 <!-- https://www.figma.com/design/Eu0HJlElFV29FdtzEXS4NK/Restaurant-The-District?node-id=0-1&node-type=canvas -->
 
-<?php require_once __DIR__.'/assets/php/connect.php'; ?>
+<?php
+
+require_once __DIR__.'/assets/php/connect.php';
+
+$sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT 6";
+$categorieStatement = $mysqlClient->prepare($sqlQuery);
+$categorieStatement->execute();
+$categorie = $categorieStatement->fetchAll();
+
+$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+$platStatement = $mysqlClient->prepare($sqlQuery);
+$platStatement->execute();
+$plat = $platStatement->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -31,11 +45,6 @@
             <div class="list_cat_mp">
                 <?php
 
-                $sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT 6";
-$categorieStatement = $mysqlClient->prepare($sqlQuery);
-$categorieStatement->execute();
-$categorie = $categorieStatement->fetchAll();
-
 foreach ($categorie as $categories) {
     echo '
                            
@@ -47,7 +56,6 @@ foreach ($categorie as $categories) {
                     </div>';
 }
 ?>
-
             </div>
             <a class="d-flex text-decoration-none" href="html/categorie.php">
                 <button type="button" class="btn btn-lg btn-info mt-3">
@@ -55,30 +63,18 @@ foreach ($categorie as $categories) {
                 </button>
             </a>
             <br />
-
             <div class="mt-5 list_cat_mp">
-
                 <?php
-
-            $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-$platStatement = $mysqlClient->prepare($sqlQuery);
-$platStatement->execute();
-$plat = $platStatement->fetchAll();
 
 foreach ($plat as $plats) {
     echo '
-                
                 <div class="cards_pl_mp">
-
                 <div class="img_zoom">
                  <img class="img_card_plat_i" src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" alt="'.$plats['libelle'].'"> </div>
-                        <a href="'.$ip_link.'/html/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">'.$plats['libelle'].'</a>
-                    
-                </div>
-                             
+                        <a href="'.$ip_link.'/html/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">'.$plats['libelle'].'</a>                   
+                </div>                            
                 ';
 }
-
 ?>
 
             </div> <a class="d-flex text-decoration-none" href="html/plats.php">
@@ -87,13 +83,7 @@ foreach ($plat as $plats) {
                 </button></a>
         </section>
     </div>
-
-    <!-- ---------------- -->
-
     <?php require_once __DIR__.'/assets/php/footer.php'; ?>
-
-    <!-- ---------- -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>

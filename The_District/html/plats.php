@@ -1,4 +1,10 @@
-<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
+<?php require_once __DIR__.'/../assets/php/connect.php';
+
+$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
+$platLStatement = $mysqlClient->prepare($sqlQuery);
+$platLStatement->execute();
+$platL = $platLStatement->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -31,11 +37,6 @@
 
 
                 <?php
-
-                $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
-$platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute();
-$platL = $platLStatement->fetchAll();
 
 foreach ($platL as $plats) {
     $description = $plats['description'];
@@ -72,16 +73,10 @@ foreach ($platL as $plats) {
 ?>
 
             </div>
-
-
         </section>
     </div>
 
-
-
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

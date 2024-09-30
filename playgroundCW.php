@@ -4,34 +4,30 @@
 
 --------------------------------------------------- -->
 
-<?php 
+<?php
 
 // function zeroFuel($distanceToPump, $mpg, $fuelLeft) {
-   
+
 //     $distance = $mpg * $fuelLeft;
 
 //     if ($distanceToPump > $distance) {
-//         return false; 
+//         return false;
 //     } else {
-//         return true; 
+//         return true;
 //     }
 // }
 
 // echo zeroFuel(50, 25, 8);
 
-
-
 // function reverseSeq ($n) {
-  
 
 //     $array = [];
 
-//     for ($i=$n; $i > 0; $i--) { 
+//     for ($i=$n; $i > 0; $i--) {
 //       $newn = $n--;
 //         array_push($array, $newn);
 //      }
 //      return $array;
-
 
 // };
 
@@ -39,22 +35,20 @@
 
 // $input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15];
 
-// for ($i=count($input); $i > 0; $i--) { 
+// for ($i=count($input); $i > 0; $i--) {
 //     echo $i . '</br>';
 // }
 
-
 // function countPositivesSumNegatives($input) {
-     
+
 //     $count = 0;
 //     $nbr = -1;
 //     $total = 0;
 //     $pos = 0;
-//     for ($i=count($input); $i > 0; $i--) { 
+//     for ($i=count($input); $i > 0; $i--) {
 //         $count++;
 //         $nbr++;
 //         if ($input[$nbr] < 0) {
-
 
 //             $total = $total + $input[$nbr];
 
@@ -62,11 +56,9 @@
 
 //         if ($input[$nbr] > 0) {
 
-
 //             $pos++;
 
 //         }
-        
 
 //     }
 //    return $newarray = [$pos, $total];
@@ -74,10 +66,7 @@
 
 // print_r( countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]) );
 
-
-
 // function countPositivesSumNegatives($input) {
-     
 
 //     if (empty($input)) {
 //         return [];
@@ -87,14 +76,14 @@
 //      $nbr = -1;
 //      $total = 0;
 //      $pos = 0;
-//      for ($i=count($input); $i > 0; $i--) { 
+//      for ($i=count($input); $i > 0; $i--) {
 //          $count++;
 //          $nbr++;
 //          if ($input[$nbr] < 0) {
 //              $total = $total + $input[$nbr];
 //          }
 //          if ($input[$nbr] > 0) {
- 
+
 //              $pos++;
 //          }
 //      }
@@ -104,66 +93,55 @@
 //  echo '</br>';
 //  print_r( countPositivesSumNegatives([]) );
 
-
-
 // function string_to_array($s){
 //     return explode(' ', $s);
 //   }
 
 //   print_r( string_to_array("I love arrays they are my favorite"));
 
-
-
-
-
 // function fake_bin(string $s): string {
-//     $nbrstr = strlen($s);  
-//     $array = str_split($s);  
-    
-   
-//     for ($i = 0; $i < $nbrstr; $i++) {
-       
+//     $nbrstr = strlen($s);
+//     $array = str_split($s);
+
+   //     for ($i = 0; $i < $nbrstr; $i++) {
+
 //         if ($array[$i] < 5) {
-//             $array[$i] = '0';  
+//             $array[$i] = '0';
 //         } else {
-//             $array[$i] = '1'; 
+//             $array[$i] = '1';
 //         }
 //     }
 
-//     $result = implode('', $array);  
+//     $result = implode('', $array);
 //     return $result;
 // }
 
 // echo fake_bin("123456789");
 // $a = 1; $b = 9;
 // $array = [];
-// for ($i=$a; $i < $b; $i++) { 
+// for ($i=$a; $i < $b; $i++) {
 
 //     array_push($array, $i);
-    
+
 // };
 
 // print_r($array);
 
 // function between(int $a, int $b): array {
 //     $array = [];
-    
-//     for ($i=$a; $i <= $b; $i++) { 
+
+//     for ($i=$a; $i <= $b; $i++) {
 
 //         array_push($array, $i);
-        
+
 //     };
-    
-    
-//     return $array;
+
+    //     return $array;
 //   }
 
 //   print_r(between(-99,31));
 
-
-
 // function removeEveryOther($array) {
- 
 
 //     for ($i = count($array) -1; $i >= 0 ; $i--){
 //         if (($i % 2) == 1) unset ($array[$i]);
@@ -174,7 +152,6 @@
 
 //   print_r( removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep", "Romove"]));
 
-
 // function hero(int $bullets, int $dragons){
 //     // throw new Exception("Function not implemented");
 
@@ -183,7 +160,7 @@
 //         return true;
 //     }
 //     else {
-        
+
 //         return false;
 //     }
 
@@ -192,7 +169,7 @@
 // echo hero(4, 2);
 
 // function findNeedle($haystack) {
-    
+
 //     $test = array_search('needle' , $haystack) ;
 //     return 'found the needle at position ' . $test;
 
@@ -210,7 +187,7 @@
 //     if ($p1 == 'scissors' && $p2 == 'rock') {
 //         return 'Player 2 won!';
 //     }
-   
+
 //     if ($p1 == 'rock' && $p2 == 'scissors') {
 //         return 'Player 1 won!';
 //     }
@@ -234,11 +211,9 @@
 
 // echo rpc('scissors', 'rock');
 
-
 // function remove_char(string $s): string {
 
 // return substr($s, 1, -1,);
-
 
 // }
 
@@ -255,8 +230,6 @@
 
 // echo makeNegative(-150);
 
-
-
 // function maps($x)
 // {
 //  $newar = [];
@@ -267,14 +240,12 @@
 
 //     array_push($newar, $test);
 
-//  }; 
+//  };
 // return $newar;
 
 // }
 
 // print_r(maps([10, 50, 80]));
-
-
 
 // function switch_it_up($number)
 // {
@@ -321,24 +292,19 @@
 // function countsheep($num){
 
 //     $text = '';
-    
-//         for ($i=1; $i < $num + 1; $i++) { 
-    
+
+//         for ($i=1; $i < $num + 1; $i++) {
+
 //             $text .= $i . ' sheep...';
-            
-            
-//         }
+
+            //         }
 //     return $text;
 //     }
-    
+
 //     echo countsheep(3);
 
-
-
-
-
 // function lovefunc($flower1, $flower2) {
-   
+
 //     $fl1 = 0;
 //     $fl2 = 0;
 
@@ -359,7 +325,7 @@
 //     }
 
 //     if ($fl1 == $fl2) {
-        
+
 //         $result = false;
 //     }
 //     else {
@@ -370,31 +336,25 @@
 
 // echo lovefunc(2, 1);
 
-
 // function summation($n) {
 
 //     //  $nb = $n + 1;
 //     $nn = 1;
 
-//     for ($i=0; $i <= $n; $i++) { 
-    
-      
+//     for ($i=0; $i <= $n; $i++) {
 
 //         $nn = $nn + $i;
-        
+
 //     }
 
-
-    
-//     return $nn -1;
+    //     return $nn -1;
 // }
 
 // echo summation(10);
 
-
 // function spinWords(string $str): string {
- 
-//     $strr = explode(' ', $str); 
+
+//     $strr = explode(' ', $str);
 //     $newar = [];
 
 //     foreach ($strr as $strrr) {
@@ -403,7 +363,7 @@
 
 //             array_push($newar, strrev($strrr));
 
-//         } 
+//         }
 //         else {
 //             array_push($newar, $strrr);
 //         }
@@ -417,30 +377,26 @@
 
 // echo spinWords('Hey fellow warriors');
 
-
 // function replaceAll($string) {
 
 //     return explode('#', $string)[0];
 // }
 
-
 // echo replaceAll('www.codewars.com#about');
-
 
 // function countBy($x, $n) {
 //     $z = [];
 
 //     for ($i=1; $i < $n ; $i++) {
-        
+
 //     array_push($z, $i * $x);
-        
+
 //     }
 
 //     return $z;
 // }
 
 // print_r(countBy(1, 10));
-
 
 // function booleanToString($b) {
 //     if ($b == true) {
@@ -458,12 +414,9 @@
 //                 return $b ? "true" : "false";
 //                 }
 
-
-
-
 // function gooseFilter($birds) {
 //     $geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-    
+
 //     // return an array containing all of the strings in the input array except those that match strings in geese
 
 //     foreach($birds as $key => $value){
@@ -472,28 +425,25 @@
 //         }
 //     }
 
-    
-
 //     return array_values($birds); }
 
 // print_r( gooseFilter( ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]));
 
 // function move($pos, $roll) {
-    
+
 //     return $pos + $roll * 2;
 // }
 
-// echo move(3, 6);  
-
+// echo move(3, 6);
 
 // function createPhoneNumber($numbersArray) {
-    
+
 //     $numbersInString = implode('', $numbersArray);
 //     $formattedPhoneNumber = preg_replace('/(\d{3})(\d{3})(\d{4})/', '($1) $2-$3', $numbersInString);
 //     return $formattedPhoneNumber;
 // }
 
-// echo createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); 
+// echo createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
 
 // function numberToString($num)
 // {
@@ -505,7 +455,7 @@
 // function hoopCount($n)
 // {
 //     if ($n >= 10) {
-//         return 'Great, now move on to tricks'; 
+//         return 'Great, now move on to tricks';
 //     } else {
 //         return 'Keep at it until you get it';
 //     }
@@ -513,34 +463,27 @@
 
 // echo hoopCount(90);
 
-
 // function hoopCount(int $n): string {
 //     return $n >= 10 ? 'Great, now move on to tricks' : 'Keep at it until you get it';        <<<---------------
 //   }
 
-
 // ctype_upper($testcase
 
-
 //     function is_uppercase($str) {
-  
+
 //         $newstr = preg_replace('/[^a-zA-Z]/', '', $str);
 //         return ctype_upper($newstr);
 //     }
-
 
 //   echo is_uppercase("TESTdza  dza");
 
 // $n = 99 * 99;
 
-
 // --------------------------------------------------------------------------------------------
 // echo $n >= 1 ? 'true' : 'false';                     ---------------------------------------
 // --------------------------------------------------------------------------------------------
 
-
 // function reverseWords($str) {
-
 
 //     return implode(' ', array_map('strrev', explode(' ', $str)));
 
@@ -548,14 +491,12 @@
 
 // echo reverseWords('This is an example!');
 
-
 // function duplicate_encode($word) {
-//     $word = strtolower($word);  
-//     $sword = '';  
-//     $letter_count = array(); 
+//     $word = strtolower($word);
+//     $sword = '';
+//     $letter_count = array();
 
-    
-//     $nw = strlen($word);
+    //     $nw = strlen($word);
 //     for ($i = 0; $i < $nw; $i++) {
 //         if (isset($letter_count[$word[$i]])) {
 //             $letter_count[$word[$i]]++;
@@ -564,10 +505,9 @@
 //         }
 //     }
 
-    
-//     for ($i = 0; $i < $nw; $i++) {
+    //     for ($i = 0; $i < $nw; $i++) {
 //         if ($letter_count[$word[$i]] > 1) {
-//             $sword .= ')';  
+//             $sword .= ')';
 //         } else {
 //             $sword .= '(';
 //         }
@@ -576,4 +516,32 @@
 //     return $sword;
 // }
 
-// echo duplicate_encode('tests');  
+// echo duplicate_encode('tests');
+
+// function likes($names)
+// {
+//     $count = count($names) - 2;
+//     if (count($names) == 1) {
+//         return $names[0].' likes this';
+//     }
+//     if (count($names) == 2) {
+//         return $names[0].' and '.$names[1].' like this';
+//     }
+//     if (count($names) == 3) {
+//         return $names[0].', '.$names[1].' and '.$names[2].' like this';
+//     }
+//     if (count($names) > 2) {
+//         return $names[0].', '.$names[1].' and '.$count.' others like this';
+//     } else {
+//         return 'no one likes this';
+//     }
+// }
+
+// echo likes(['test test', 'test', 'test']);
+
+function smash(array $words): string
+{
+    return implode(' ', $words);
+}
+
+echo smash(['mot', 'mot2', 'mot3']);

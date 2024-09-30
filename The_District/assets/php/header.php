@@ -54,10 +54,10 @@
                 <?php
 
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                echo ' <a class="nav-link log_sign_nav" href=" '.$ip_link.'/html/logout.php">Déconnexion</a>
+                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/html/logout.php">Déconnexion</a>
             </span>';
             } else {
-                echo ' <a class="nav-link log_sign_nav" href=" '.$ip_link.'/html/log_sign.php">Connexion
+                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/html/log_sign.php">Connexion
                 /
                 Inscription</a>
             </span>';
@@ -89,9 +89,9 @@
 </header>
 
 <section id="search_zone" style="display: none;">
-    <div id="test_sh">
+    <div id="search_zone_list">
         <?php
-                    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+                    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
         $platStatement = $mysqlClient->prepare($sqlQuery);
         $platStatement->execute();
         $plat = $platStatement->fetchAll();

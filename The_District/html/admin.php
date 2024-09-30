@@ -37,14 +37,7 @@ if (!isset($_SESSION['email']) || $_SESSION['admin'] < 1) {
         <section id="section_commande_list" class="mt-5">
             <h2 class="text-center">Liste des commandes</h2>
             <div class="container mt-5">
-                <!-- <div class="input-group mb-3">
-                    <span class="input-group-text">?</span>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="recherche_commande_input" placeholder="Recherche"
-                            name="recherche_commande_input">
-                        <label for="recherche_commande_input">Recherche</label>
-                    </div>
-                </div> -->
+
 
                 <form class="mt-3" method="POST" id="commande_list">
                     <table class="table">
@@ -104,7 +97,11 @@ foreach ($commande as $commandes) {
                             changements</button>
                     </div>
                 </form>
+
                 <?php
+
+// ------------------ Update status command --------------
+
                 if (isset($_POST['submit_update'])) {
                     foreach ($commande as $commandes) {
                         $id_commande = $commandes['id'];
@@ -175,6 +172,8 @@ foreach ($categorie as $categories) {
 
         <?php
 
+// ----------------- Update active / Delete Categorye ------------
+
     if (isset($_POST['submit_update_categorie'])) {
         $sqlQuery = 'SELECT * FROM `categorie`';
         $categorieStatement = $mysqlClient->prepare($sqlQuery);
@@ -244,7 +243,7 @@ foreach ($categorie as $categories) {
     }
 ?>
             </select>
-            <form action="" name="form_enable_plat">
+            <form action="" name="form_enable_plat" method="POST">
                 <table class="table mt-3" id="platsTable">
                     <thead>
                         <tr>
@@ -260,6 +259,7 @@ foreach ($categorie as $categories) {
                     <tbody id="platsBody">
 
                         <?php
+// --------------------- Add Categorye -------------------
     $sqlQuery = 'SELECT * FROM `plat` ORDER BY libelle';
 $platLStatement = $mysqlClient->prepare($sqlQuery);
 $platLStatement->execute();
@@ -285,6 +285,32 @@ foreach ($platL as $platLs) {
                     leschangements</button>
             </form>
         </section>
+
+        <?php
+
+// --------------- Update active plat --------------
+
+if (isset($_POST['submit_update_plat'])) {
+    foreach ($platL as $platLs) {
+        $platId = $platLs['id'];
+
+        if (isset($_POST['disable_'.$platId])) {
+            $activeStatus = 'Yes';
+        } else {
+            $activeStatus = 'No';
+        }
+
+        $updateQuery = 'UPDATE `plat` SET `active` = :active WHERE `id` = :id';
+        $updateStatement = $mysqlClient->prepare($updateQuery);
+
+        $updateStatement->execute([
+            ':active' => $activeStatus,
+            ':id' => $platId, ]);
+    }
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+?>
+
 
         <section id="update_plat_section">
             <h2 class="mt-5 text-center">Modifier / Ajouter un plat</h2>
@@ -342,6 +368,9 @@ foreach ($categorie as $categories) {
             </form>
 
             <?php
+
+// ------------------- Update / add Food --------------
+
     if (isset($_POST['submit_add_categorie'])) {
         $up_id_plat = $_POST['update_plat_select'];
         $up_id_categorie = $_POST['update_plat_cat'];

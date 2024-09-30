@@ -89,12 +89,28 @@ foreach ($platL as $platLs) {
                         ';
 }
 ?>
-
             </div>
+            <?php
+
+$req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
+$req->execute(params: [
+    'id' => $id - 1]);
+
+$resultatL = $req->fetch();
+$btn_link_l = $resultatL ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatL['id']) : '#';
+
+$req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
+$req->execute(params: [
+    'id' => $id + 1]);
+
+$resultatR = $req->fetch();
+$btn_link_r = $resultatR ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatR['id']) : '#';
+
+?>
             <div id="btn_section" class="d-flex justify-content-center">
                 <div class="d-grid gap-2 d-md-block btn_section_cat_menu">
 
-                    <a href="#">
+                    <a href="<?php echo $btn_link_l; ?>">
                         <!------------ -->
 
                         <button class="btn btn-primary btn_suiv_prec" type="button">
@@ -107,7 +123,7 @@ foreach ($platL as $platLs) {
                         </button>
                     </a>
 
-                    <a href="#">
+                    <a href="<?php echo $btn_link_r; ?>">
                         <!------------ -->
                         <button class="btn btn-primary btn_suiv_prec" type="button">
                             SUIVANT

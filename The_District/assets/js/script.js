@@ -37,18 +37,42 @@ mouseOverContainer.addEventListener("mouseleave", function () {
 
 const input_search = document.getElementById("input_search");
 const search_zone = document.getElementById("search_zone");
+const plats = document.querySelectorAll(".plat_affiche");
 
+input_search.addEventListener("input", searchPlats);
 search_zone.style.display = "none";
 
 input_search.addEventListener("click", (event) => {
   event.stopPropagation();
 
   if (search_zone.style.display === "none") {
+    plats.forEach((plat, index) => {
+      plat.style.display = index < 3 ? "flex" : "none";
+    });
     search_zone.style.removeProperty("display");
   } else {
     search_zone.style.display = "none";
   }
 });
+
 document.addEventListener("click", () => {
   search_zone.style.display = "none";
 });
+
+function searchPlats() {
+  const query = input_search.value.toLowerCase();
+  let resultCount = 0;
+
+  plats.forEach((plat) => {
+    const platInfo = plat
+      .querySelector(".info_plat_sh h5")
+      .textContent.toLowerCase();
+
+    if (platInfo.includes(query) && resultCount < 3) {
+      plat.style.display = "flex";
+      resultCount++;
+    } else {
+      plat.style.display = "none";
+    }
+  });
+}

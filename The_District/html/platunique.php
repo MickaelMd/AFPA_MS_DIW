@@ -57,13 +57,13 @@ $platL = $platLStatement->fetchAll();
 
 foreach ($platL as $platLs) {
     $description = $platLs['description'];
-    if (strlen($description) > 100) {
-        $description = substr($description, 0, 200).'...';
+    if (strlen($description) > 500) {
+        $description = substr($description, 0, 500).'...';
     }
 
     echo '
                         
-                        <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
+                        <div class="card mb-3" id="cards_plat_all" style="max-width: 100%">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="../assets/img/food/'.$platLs['image'].'" class="img-fluid rounded-start"

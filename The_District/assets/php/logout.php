@@ -10,9 +10,10 @@ unset($_SESSION['role']);
 unset($_SESSION['lostmail']);
 unset($_SESSION['nom_client']);
 unset($_SESSION['uuid']);
+unset($_SESSION['csrf']);  // < -------------
 
 if (isset($_COOKIE['login'])) {
-    setcookie('login', '', time() - 3600, '/', '', true, true); // chemin et paramètres sécurisés
+    setcookie('login', '', time() - 3600, '/', '', true, true);
 }
 
 if (ini_get('session.use_cookies')) {
@@ -22,5 +23,3 @@ if (ini_get('session.use_cookies')) {
 session_destroy();
 
 header('Location: '.$_SERVER['HTTP_REFERER']);
-// echo "<meta http-equiv='refresh' content='0'>";
-// }

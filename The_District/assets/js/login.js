@@ -106,3 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem("loginFail") === "true") {
+    document.getElementById("error_login_fail").style.display = "block";
+    localStorage.removeItem("loginFail");
+  }
+});

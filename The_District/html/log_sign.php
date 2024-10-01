@@ -29,21 +29,22 @@
 
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
-
-
         <?php
 
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
                 echo '<h3 class="text-center mt-5 text-success">Vous êtes connecté ! </h3>';
-            } else {
-                echo '
+                echo '<meta http-equiv="refresh" content="1; URL='.$ip_link.'/index.php">';
 
-
-
+                return;
+            }
+?>
         <section id="login_section_page" class="mt-5">
 
             <h3 class="text-center">Connexion
             </h3>
+            <div id="error_login_fail" class="mt-5">
+                <h4 class="text-danger text-center">Identifiant ou Mot De Passe incorrect.</h4>
+            </div>
 
             <form action="" method="POST">
 
@@ -61,18 +62,12 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary w-50 mt-3" name="login_submit">Connexion</button>
 
-
                     </div>
                     <a href="pwdlost.php" class="text-center mt-2">Mot de passe oublié</a>
                 </div>
             </form>
 
         </section>
-
-
-
-
-
 
         <section id="signup_section_page" class="mt-5">
 
@@ -126,19 +121,9 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary w-50 mt-3" name="sign_submit">Inscription</button>
                     </div>
-
                 </div>
-
             </form>
-
-
-            ';
-            }
-
-?>
-
         </section>
-
 
     </div>
     <?php
@@ -162,7 +147,8 @@ if (isset($_POST['login_submit'])) {
     $resultat = $req->fetch();
 
     if (!$resultat or !password_verify(password: $_POST['login_pwd'], hash: $resultat['pass'])) {
-        echo 'Identifiant ou Mot De Passe incorrect.<br/>';
+        $fail_pass = true;
+        echo '<script>localStorage.setItem("loginFail", true);</script>';
     } elseif ($resultat['active'] < 1) {
         echo 'Compte désactivé';
     } else {

@@ -16,17 +16,6 @@ try {
 }
 
 if (isset($_SESSION['email'])) {
-    // try {
-    //     $mysqlClient = new PDO(
-    //         dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
-    //         username: 'root',
-    //         password: 'root'
-    //     );
-    // } catch (Exception $e) {
-    //     exit('Erreur : '.$e->getMessage());
-    // }
-
-    // Vérifier si l'utilisateur existe encore dans la base de données
     $req = $mysqlClient->prepare(query: 'SELECT id FROM clients WHERE email = :email');
     $req->execute(params: ['email' => $_SESSION['email']]);
 
@@ -43,6 +32,7 @@ if (isset($_SESSION['email'])) {
         unset($_SESSION['lostmail']);
         unset($_SESSION['nom_client']);
         unset($_SESSION['uuid']);
+        unset($_SESSION['csrf']);
 
         if (ini_get(option: 'session.use_cookies')) {
             setcookie(session_name(), '', time() - 42000);
@@ -51,14 +41,3 @@ if (isset($_SESSION['email'])) {
         session_destroy();
     }
 }
-
-// echo '</br>' . '</br>' . '</br>' . '</br>';
-// echo "Session ID : " . session_id() . ' ';
-
-// if (isset($_SESSION["email"])) {
-// echo 'email : ' . $_SESSION["email"] . ' ';
-// }
-
-// if (isset($_SESSION["admin"])) {
-// echo 'Admin : ' . $_SESSION["admin"];
-// }

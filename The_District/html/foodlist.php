@@ -1,22 +1,32 @@
-<?php require_once __DIR__.'/../assets/php/connect.php';
+<?php
+require_once __DIR__.'/../assets/php/connect.php';
 
 $id = $_GET['categorie'];
-$req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
-$req->execute(params: [
-    'id' => $id]);
+if (!filter_var($id, FILTER_VALIDATE_INT)) {
+    exit('ID invalide.');
+}
 
+$req = $mysqlClient->prepare('SELECT id, libelle, active FROM categorie WHERE id = :id');
+$req->execute([
+    'id' => (int) $id,
+]);
 $resultat = $req->fetch();
 
 if (!$resultat) {
-    $name = " La catégorie demandé n'existe pas.";
+    $name = "La catégorie demandée n'existe pas.";
 } else {
     $name = $resultat['libelle'];
 }
-$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = $id ORDER BY libelle";
+
+$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = :id_categorie ORDER BY libelle";
 $platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute();
+$platLStatement->execute([
+    'id_categorie' => (int) $id,
+]);
+
 $platL = $platLStatement->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 

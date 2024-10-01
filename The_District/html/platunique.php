@@ -1,11 +1,18 @@
-<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
+<?php require_once __DIR__.'/../assets/php/connect.php';
+
+error_reporting(0);
+?>
 
 <?php
 $id = $_GET['plat'];
 
-$req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM plat WHERE id = :id');
-$req->execute(params: [
-    'id' => $id]);
+if (!is_numeric($id) || (int) $id <= 0) {
+    echo '<h1>Erreur : ID de plat invalide.</h1>';
+    exit;
+}
+
+$req = $mysqlClient->prepare('SELECT id, libelle, active FROM plat WHERE id = :id');
+$req->execute(['id' => (int) $id]);
 
 $resultat = $req->fetch();
 
@@ -14,14 +21,16 @@ if (!$resultat) {
     exit;
 }
 
-$name = $resultat['libelle'];
+$name = htmlspecialchars($resultat['libelle'], ENT_QUOTES, 'UTF-8');
 
-$sqlQuery = "SELECT * FROM `plat` WHERE id = $id ORDER BY libelle";
+$sqlQuery = 'SELECT * FROM plat WHERE id = :id ORDER BY libelle';
 $platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute();
-$platL = $platLStatement->fetchAll();
-
+$platLStatement->execute(['id' => (int) $id]);
+$platL = $platLStatement->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 

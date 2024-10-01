@@ -539,9 +539,18 @@
 
 // echo likes(['test test', 'test', 'test']);
 
-function smash(array $words): string
+// function smash(array $words): string
+// {
+//     return implode(' ', $words);
+// }
+
+// echo smash(['mot', 'mot2', 'mot3']);
+
+function detect_pangram($string)
 {
-    return implode(' ', $words);
+    $pattern = '/^(?=.*a)(?=.*b)(?=.*c)(?=.*d)(?=.*e)(?=.*f)(?=.*g)(?=.*h)(?=.*i)(?=.*j)(?=.*k)(?=.*l)(?=.*m)(?=.*n)(?=.*o)(?=.*p)(?=.*q)(?=.*r)(?=.*s)(?=.*t)(?=.*u)(?=.*v)(?=.*w)(?=.*x)(?=.*y)(?=.*z).*$/i';
+
+    return preg_match($pattern, $string) ? 'true' : 'false';
 }
 
-echo smash(['mot', 'mot2', 'mot3']);
+echo detect_pangram('The quick brown fox jumps over the lazy dog');

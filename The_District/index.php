@@ -9,11 +9,6 @@ $categorieStatement = $mysqlClient->prepare($sqlQuery);
 $categorieStatement->execute();
 $categorie = $categorieStatement->fetchAll();
 
-$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-$platStatement = $mysqlClient->prepare($sqlQuery);
-$platStatement->execute();
-$plat = $platStatement->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -66,6 +61,11 @@ foreach ($categorie as $categories) {
             <br />
             <div class="mt-5 list_cat_mp">
                 <?php
+
+$sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+$platStatement = $mysqlClient->prepare($sqlQueryy);
+$platStatement->execute();
+$plat = $platStatement->fetchAll();
 
 foreach ($plat as $plats) {
     echo '

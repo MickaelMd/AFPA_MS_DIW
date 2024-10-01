@@ -54,7 +54,7 @@
                 <?php
 
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/html/logout.php">Déconnexion</a>
+                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/assets/php/logout.php">Déconnexion</a>
             </span>';
             } else {
                 echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/html/log_sign.php">Connexion

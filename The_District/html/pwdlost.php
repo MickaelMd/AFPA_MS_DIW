@@ -29,8 +29,6 @@
 
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
-
-
         <?php
 
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
@@ -88,8 +86,6 @@
             // Si aucun utilisateur n'a été trouvé avec cet email
             echo ' </br><h3 class="text-center">Aucun utilisateur trouvé avec cet email.</h3><br/>';
         } else {
-            // Si un utilisateur est trouvé, vous pouvez afficher ou traiter les informations
-
             $resetcode = rand(10000000, 99999999);
 
             $updateQuery = 'UPDATE `clients` SET resetcode = :resetcode WHERE email = :email';
@@ -101,27 +97,10 @@
 
             echo '<h3 class="text-center mt-4 text-danger">Code de réinitialisation : '.$resetcode.'</h3>'.
             '</br> <p class="text-center">(a envoyer par mail)</p>';
-
-            // ------------
-            // $newpwd = 'pass' . rand(10000000, 99999999);
-
-            // $newhash = password_hash($newpwd, PASSWORD_DEFAULT);
-
-            // echo '</br> </br>' . $newhash . '</br> Nouveau mot de passe : ' . $newpwd;
-
-            // $updateQuery = "UPDATE `clients` SET pass = :pass WHERE email = :email";
-            // $updateStatement = $mysqlClient->prepare($updateQuery);
-            // $updateStatement->execute([
-            //     'pass' => $newhash,
-            //     'email' => $lostemail
-            // ]);
-            // ------------
         }
     }
 
 ?>
-
-
 
         <!-- ---------------------------------------------- -->
     </div>

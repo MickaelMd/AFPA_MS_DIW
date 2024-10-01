@@ -9,6 +9,11 @@ $categorieStatement = $mysqlClient->prepare($sqlQuery);
 $categorieStatement->execute();
 $categorie = $categorieStatement->fetchAll();
 
+// $sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+// $platStatement = $mysqlClient->prepare($sqlQueryy);
+// $platStatement->execute();
+// $plat = $platStatement->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

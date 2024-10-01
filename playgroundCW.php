@@ -103,7 +103,7 @@
 //     $nbrstr = strlen($s);
 //     $array = str_split($s);
 
-   //     for ($i = 0; $i < $nbrstr; $i++) {
+//     for ($i = 0; $i < $nbrstr; $i++) {
 
 //         if ($array[$i] < 5) {
 //             $array[$i] = '0';
@@ -136,7 +136,7 @@
 
 //     };
 
-    //     return $array;
+//     return $array;
 //   }
 
 //   print_r(between(-99,31));
@@ -297,7 +297,7 @@
 
 //             $text .= $i . ' sheep...';
 
-            //         }
+//         }
 //     return $text;
 //     }
 
@@ -347,7 +347,7 @@
 
 //     }
 
-    //     return $nn -1;
+//     return $nn -1;
 // }
 
 // echo summation(10);
@@ -496,7 +496,7 @@
 //     $sword = '';
 //     $letter_count = array();
 
-    //     $nw = strlen($word);
+//     $nw = strlen($word);
 //     for ($i = 0; $i < $nw; $i++) {
 //         if (isset($letter_count[$word[$i]])) {
 //             $letter_count[$word[$i]]++;
@@ -505,7 +505,7 @@
 //         }
 //     }
 
-    //     for ($i = 0; $i < $nw; $i++) {
+//     for ($i = 0; $i < $nw; $i++) {
 //         if ($letter_count[$word[$i]] > 1) {
 //             $sword .= ')';
 //         } else {
@@ -546,11 +546,25 @@
 
 // echo smash(['mot', 'mot2', 'mot3']);
 
-function detect_pangram($string)
-{
-    $pattern = '/^(?=.*a)(?=.*b)(?=.*c)(?=.*d)(?=.*e)(?=.*f)(?=.*g)(?=.*h)(?=.*i)(?=.*j)(?=.*k)(?=.*l)(?=.*m)(?=.*n)(?=.*o)(?=.*p)(?=.*q)(?=.*r)(?=.*s)(?=.*t)(?=.*u)(?=.*v)(?=.*w)(?=.*x)(?=.*y)(?=.*z).*$/i';
+// function detect_pangram($string)
+// {
+//     $pattern = '/^(?=.*a)(?=.*b)(?=.*c)(?=.*d)(?=.*e)(?=.*f)(?=.*g)(?=.*h)(?=.*i)(?=.*j)(?=.*k)(?=.*l)(?=.*m)(?=.*n)(?=.*o)(?=.*p)(?=.*q)(?=.*r)(?=.*s)(?=.*t)(?=.*u)(?=.*v)(?=.*w)(?=.*x)(?=.*y)(?=.*z).*$/i';
 
-    return preg_match($pattern, $string) ? 'true' : 'false';
+//     return preg_match($pattern, $string) ? 'true' : 'false';
+// }
+
+// echo detect_pangram('The quick brown fox jumps over the lazy dog');
+
+function getCount($str)
+{
+    $vowels = ['a', 'e', 'i', 'o', 'u'];
+    $Vowelscount = 0;
+
+    foreach ($vowels as $substring) {
+        $Vowelscount += substr_count($str, $substring);
+    }
+
+    return $Vowelscount;
 }
 
-echo detect_pangram('The quick brown fox jumps over the lazy dog');
+print_r(getCount('abracadabra'));

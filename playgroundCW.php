@@ -555,16 +555,30 @@
 
 // echo detect_pangram('The quick brown fox jumps over the lazy dog');
 
-function getCount($str)
-{
-    $vowels = ['a', 'e', 'i', 'o', 'u'];
-    $Vowelscount = 0;
+// function getCount($str)
+// {
+//     $vowels = ['a', 'e', 'i', 'o', 'u'];
+//     $Vowelscount = 0;
 
-    foreach ($vowels as $substring) {
-        $Vowelscount += substr_count($str, $substring);
+//     foreach ($vowels as $substring) {
+//         $Vowelscount += substr_count($str, $substring);
+//     }
+
+//     return $Vowelscount;
+// }
+
+// print_r(getCount('abracadabra'));
+
+function high($x)
+{
+    $alpha = range('a', 'z');
+    $number = range(1, 26);
+    $n = 0;
+
+    for ($i = 0; $i < strlen($x); ++$i) {
     }
 
-    return $Vowelscount;
+    return $n;
 }
 
-print_r(getCount('abracadabra'));
+print_r(high('testz'));

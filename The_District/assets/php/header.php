@@ -94,9 +94,9 @@
                     $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
         $platStatement = $mysqlClient->prepare($sqlQuery);
         $platStatement->execute();
-        $plat = $platStatement->fetchAll();
+        $platSZ = $platStatement->fetchAll();
 
-        foreach ($plat as $plats) {
+        foreach ($platSZ as $plats) {
             $description = $plats['description'];
             if (strlen($description) > 100) {
                 $description = substr($description, 0, 50).'...';

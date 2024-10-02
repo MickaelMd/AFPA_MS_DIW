@@ -1,5 +1,4 @@
 <!-- https://www.figma.com/design/Eu0HJlElFV29FdtzEXS4NK/Restaurant-The-District?node-id=0-1&node-type=canvas -->
-
 <?php
 
 require_once __DIR__.'/assets/php/connect.php';
@@ -9,10 +8,10 @@ $categorieStatement = $mysqlClient->prepare($sqlQuery);
 $categorieStatement->execute();
 $categorie = $categorieStatement->fetchAll();
 
-// $sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-// $platStatement = $mysqlClient->prepare($sqlQueryy);
-// $platStatement->execute();
-// $plat = $platStatement->fetchAll();
+$sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
+$platStatement = $mysqlClient->prepare($sqlQueryy);
+$platStatement->execute();
+$platindex = $platStatement->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -67,12 +66,7 @@ foreach ($categorie as $categories) {
             <div class="mt-5 list_cat_mp">
                 <?php
 
-$sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-$platStatement = $mysqlClient->prepare($sqlQueryy);
-$platStatement->execute();
-$plat = $platStatement->fetchAll();
-
-foreach ($plat as $plats) {
+foreach ($platindex as $plats) {
     echo '
                 <div class="cards_pl_mp">
                 <div class="img_zoom">

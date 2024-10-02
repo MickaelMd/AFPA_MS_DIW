@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     profil_pwd: {
       validate: (value) => {
-        // Permettre que le mot de passe soit vide
         if (value === "") return true;
         return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value);
       },
@@ -50,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     profil_pwd_confirm: {
       validate: (value, values) => {
-        // Permettre la validation si les deux champs sont vides
         if (values.profil_pwd === "" && value === "") return true;
         return value === values.profil_pwd;
       },

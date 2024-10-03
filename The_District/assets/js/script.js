@@ -42,16 +42,24 @@ const plats = document.querySelectorAll(".plat_affiche");
 input_search.addEventListener("input", searchPlats);
 search_zone.style.display = "none";
 
+function showSearchZone() {
+  plats.forEach((plat, index) => {
+    plat.style.display = index < 3 ? "flex" : "none";
+  });
+  search_zone.style.removeProperty("display");
+}
+
 input_search.addEventListener("click", (event) => {
   event.stopPropagation();
-
   if (search_zone.style.display === "none") {
-    plats.forEach((plat, index) => {
-      plat.style.display = index < 3 ? "flex" : "none";
-    });
-    search_zone.style.removeProperty("display");
-  } else {
-    search_zone.style.display = "none";
+    showSearchZone();
+  }
+});
+
+input_search.addEventListener("focus", (event) => {
+  event.stopPropagation();
+  if (search_zone.style.display === "none") {
+    showSearchZone();
   }
 });
 
@@ -76,3 +84,17 @@ function searchPlats() {
     }
   });
 }
+
+// --------------
+
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key === "k") {
+    event.preventDefault();
+
+    if (input_search) {
+      input_search.focus();
+    }
+  }
+});
+
+// -------------------

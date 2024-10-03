@@ -5,6 +5,8 @@ date_default_timezone_set('Europe/Paris');
 
 $ip_link = 'http://localhost:3000/The_District';
 
+// define('BASE_URL', 'http://localhost:3000/The_District'); ??
+
 try {
     $mysqlClient = new PDO(
         dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
@@ -33,6 +35,7 @@ if (isset($_SESSION['email'])) {
         unset($_SESSION['nom_client']);
         unset($_SESSION['uuid']);
         unset($_SESSION['csrf']);
+        // unset($_SESSION['shopping_list_count']);
 
         if (ini_get(option: 'session.use_cookies')) {
             setcookie(session_name(), '', time() - 42000);

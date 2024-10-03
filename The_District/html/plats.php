@@ -44,7 +44,8 @@ foreach ($platL as $plats) {
         $description = substr($description, 0, 200).'...';
     }
 
-    echo '
+    echo '              
+                        <form action="" method="POST">
                     <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -58,16 +59,20 @@ foreach ($platL as $plats) {
                                     </p>
                                     <p class="font_text show_price">'.$plats['prix'].' €</p>
                                     <div class="d-grid gap-2 d-md-flex">
-                                        <a href="#">
-                                            <button type="button" class="btn btn-info mt-3 btn_com">
+                                        
+                                            <button type="submit" class="btn btn-info mt-3 btn_com" name="command_btn" value="'.$plats['id'].'">
                                                 COMMANDER
                                             </button>
-                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>';
+                    </div> </form>';
+}
+
+if (isset($_POST['command_btn'])) {
+    $_SESSION['shopping_list_count'] = $_SESSION['shopping_list_count'] + 1;
 }
 
 ?>

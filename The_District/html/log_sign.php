@@ -162,6 +162,7 @@ if (isset($_POST['login_submit'])) {
         $_SESSION['admin'] = $resultat['admin'];
         $_SESSION['nom_client'] = $resultat['nom_client'];
         $_SESSION['uuid'] = $resultat['uuid'];
+        // $_SESSION['shopping_list_count'];
 
         echo ' '.$_SESSION['admin'].'</br>';
         echo ' Session ID : '.session_id();
@@ -275,6 +276,7 @@ if (isset($_POST['login_submit'])) {
           $_SESSION['admin'] = $resultat['admin'];
           $_SESSION['nom_client'] = $resultat['nom_client'];
           $_SESSION['uuid'] = $resultat['uuid'];
+          $_SESSION['shopping_list_count'];
 
           // ----------------------------------
 

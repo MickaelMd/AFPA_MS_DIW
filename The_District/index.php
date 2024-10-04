@@ -32,6 +32,7 @@ $platindex = $platStatement->fetchAll();
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/chicken.js" defer></script>
     <title>The District : Accueil</title>
 </head>
 

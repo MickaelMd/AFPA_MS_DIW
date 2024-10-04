@@ -56,9 +56,9 @@ if (isset($_POST['reset_submit'])) {
     $resultat = $req->fetch();
 
     if (!$resultat) {
-        echo '</br><h3 class="text-center">Aucun utilisateur trouvé avec cet email.</h3><br/>';
+        echo '</br><h3 class="text-center">Aucun utilisateur trouvé avec cet email, ou cet utilisateur n\'a pas demandé de code de réinitialisation.</h3><br/>';
     } elseif ($resultat['resetcode'] < 1) {
-        echo '<h3 class="text-center">Cet utilisateur n\'a pas demandé de code de réinitialisation.</h3>';
+        echo '<h3 class="text-center">Aucun utilisateur trouvé avec cet email, ou cet utilisateur n\'a pas demandé de code de réinitialisation.</h3>';
     } else {
         $_SESSION['lostmail'] = $lostemail;
         echo '
@@ -116,6 +116,7 @@ if (isset($_POST['reset_code_submit'])) {
                 'resetcode' => $reset_code,
             ]);
             echo '<h3 class="text-center text-success">Votre mot de passe a été réinitialisé avec succès !</h3>';
+            echo '<meta http-equiv="refresh" content="1; URL='.$ip_link.'/index.php">';
         } else {
             echo '<h3 class="text-center text-danger">Le code de vérification est incorrect.</h3>';
         }

@@ -18,23 +18,13 @@
     if (basename($_SERVER['SCRIPT_NAME']) == 'index.php') {
         echo '<link rel="stylesheet" href="assets/css/style.css">
 
-
-
-
                 <script src="assets/js/script.js" defer></script>
                 <script src="assets/js/chicken.js" defer></script>
-                <script src="https://unpkg.com/swup@4"></script>
-               
-
                 <title>The District : Accueil</title>';
     } else {
-        echo '<link rel="stylesheet" href="../assets/css/style.css" />';
-
-        echo '
-
-            <script src="https://unpkg.com/swup@4"></script>
-        <script src="../assets/js/script.js" defer></script>
-        ';
+        echo '<link rel="stylesheet" href="../assets/css/style.css" />'
+            .
+            '<script src="../assets/js/script.js" defer></script>';
     }
 
     if (basename($_SERVER['SCRIPT_NAME']) == 'categorie.php') {
@@ -48,7 +38,7 @@
     if (basename($_SERVER['SCRIPT_NAME']) == 'contact.php') {
         echo '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
             <link rel="stylesheet" href="../assets/css/contact.css" />
-            <script src="../assets/js/contact.js"></script>
+            <script src="../assets/js/contact.js" defer  ></script>
             <script src="../assets/js/maps.js" defer></script>
             <title>The District : Contact</title>';
     }

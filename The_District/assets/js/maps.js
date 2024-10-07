@@ -20,9 +20,3 @@ marker.addTo(map);
 marker.bindPopup(
   "<p> The District</p> </br> 30 Rue de Poulainville, 80000 Amiens"
 );
-
-L.control
-  .bigImage({
-    position: "topright",
-  })
-  .addTo(map);

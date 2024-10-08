@@ -18,7 +18,6 @@ $platindex = $platStatement->fetchAll();
 
 <body>
 
-
     <div class="container">
 
         <?php require_once __DIR__.'/assets/php/header.php'; ?>

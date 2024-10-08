@@ -1,7 +1,6 @@
 <?php require_once __DIR__.'/../assets/php/connect.php'; ?>
 <?php require_once __DIR__.'/../assets/php/head.php'; ?>
 
-
 <body>
     <div class="container">
 
@@ -154,9 +153,6 @@ if (isset($_POST['login_submit'])) {
 }
 
 ?>
-    <!-- ------------------------------------ -->
-
-
     <?php
 
   // --------  Créer un user et se connecter avec    -----
@@ -225,11 +221,7 @@ if (isset($_POST['login_submit'])) {
           }
 
           $sqlQuery = 'INSERT INTO clients(nom_client, nom, prenom, email, telephone, adresse, pass) VALUES (:nom_client, :nom, :prenom, :email, :telephone, :adresse, :pass)';
-
-          // Préparation
           $insertmdp = $mysqlClient->prepare($sqlQuery);
-
-          // Exécution !
           $insertmdp->execute([
               'nom' => $_POST['sign_nom'],
               'prenom' => $_POST['sign_prenom'],
@@ -255,19 +247,12 @@ if (isset($_POST['login_submit'])) {
           $_SESSION['nom_client'] = $resultat['nom_client'];
           $_SESSION['uuid'] = $resultat['uuid'];
           $_SESSION['shopping_list_count'];
-
-          // ----------------------------------
-
           echo "<meta http-equiv='refresh' content='0'>";
       }
   }
 
 ?>
-
-    <!-- ---------------------------------------------- -->
-
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>

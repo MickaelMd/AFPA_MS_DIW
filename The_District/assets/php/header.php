@@ -74,9 +74,8 @@
     </div>
 </div>
 <header>
-
     <div class="container">
-        <div class="row height d-flex justify-content-center align-items-center">
+        <div class="row height d-flex justify-content-center align-items-center search_zone_input">
             <div class="col-md-6">
                 <div class="form">
                     <input type="text" id="input_search" class="form-control form-input" placeholder="Recherche..." />

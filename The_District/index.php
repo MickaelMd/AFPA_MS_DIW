@@ -41,7 +41,7 @@ $platindex = $platStatement->fetchAll();
                 </button>
             </a>
             <br />
-            <div class="mt-5 list_cat_mp">
+            <div class="mt-5 list_cat_mp mart-20">
                 <?php
 foreach ($platindex as $plats) {
     echo '

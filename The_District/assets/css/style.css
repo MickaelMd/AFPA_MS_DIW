@@ -99,7 +99,7 @@ header {
   flex-direction: column;
 }
 header img {
-  margin: 20px auto;
+  margin: 18px auto;
 }
 
 .form {
@@ -110,7 +110,9 @@ header img {
   margin: 0% 10% 0% 10%;
   color: #9ca3af;
 }
-
+.search_zone_input {
+  margin-top: -50px;
+}
 .form span {
   position: absolute;
   right: 17px;
@@ -258,10 +260,12 @@ header img {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 20px;
   justify-content: center;
 }
-
+.mart-20 {
+  margin-top: -20px !important;
+}
 #pres_cat_pl button {
   color: black;
   font-size: 16pt;
@@ -349,7 +353,7 @@ header img {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 30px;
   justify-content: center;
 }
 

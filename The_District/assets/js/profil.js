@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  function i() {
+    console.log("test");
+  }
   const form = document.getElementById("form_profil");
   const fields = [
     "profil_nom",

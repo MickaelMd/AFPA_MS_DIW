@@ -6,17 +6,8 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
     exit('ID invalide.');
 }
 
-$req = $mysqlClient->prepare('SELECT id, libelle, active FROM categorie WHERE id = :id');
-$req->execute([
-    'id' => (int) $id,
-]);
-$resultat = $req->fetch();
-
-$sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = :id_categorie ORDER BY libelle";
-$platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute([
-    'id_categorie' => (int) $id,
-]);
+$resultat = foodlist($id);
+$platLStatement = foodlistpl($id);
 
 if (!$resultat) {
     $name = "La catégorie demandée n'existe pas.";
@@ -25,8 +16,8 @@ if (!$resultat) {
 }
 
 $platL = $platLStatement->fetchAll();
-?>
-<?php require_once __DIR__.'/../assets/php/head.php'; ?>
+
+require_once __DIR__.'/../assets/php/head.php'; ?>
 
 <body>
     <div class="container">
@@ -82,18 +73,12 @@ foreach ($platL as $platLs) {
             </div>
             <?php
 
-                        $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
-$req->execute(params: [
-    'id' => $id - 1]);
+$resultatL = btn_left($id);
 
-$resultatL = $req->fetch();
 $btn_link_l = $resultatL ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatL['id']) : '#';
 
-$req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
-$req->execute(params: [
-    'id' => $id + 1]);
+$resultatR = btn_right($id);
 
-$resultatR = $req->fetch();
 $btn_link_r = $resultatR ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatR['id']) : '#';
 
 ?>
@@ -136,9 +121,7 @@ if ($btn_link_r == '#') {
         </section>
     </div>
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
 </body>
 
 </html>

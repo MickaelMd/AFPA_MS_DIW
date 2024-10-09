@@ -1,20 +1,10 @@
 <!-- https://www.figma.com/design/Eu0HJlElFV29FdtzEXS4NK/Restaurant-The-District?node-id=0-1&node-type=canvas -->
 <?php
-
 require_once __DIR__.'/assets/php/connect.php';
+$categorie = index_categorie_list(6);
+$platindex = plat_index_list(3);
 
-$sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT 6";
-$categorieStatement = $mysqlClient->prepare($sqlQuery);
-$categorieStatement->execute();
-$categorie = $categorieStatement->fetchAll();
-
-$sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT 3";
-$platStatement = $mysqlClient->prepare($sqlQueryy);
-$platStatement->execute();
-$platindex = $platStatement->fetchAll();
-
-?>
-<?php require_once __DIR__.'/assets/php/head.php'; ?>
+require_once __DIR__.'/assets/php/head.php'; ?>
 
 <body>
 
@@ -59,13 +49,9 @@ foreach ($platindex as $plats) {
                 </button>
             </a>
         </section>
-
     </div>
     <?php require_once __DIR__.'/assets/php/footer.php'; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

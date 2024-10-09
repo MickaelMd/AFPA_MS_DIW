@@ -1,13 +1,10 @@
-<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
-
-<?php
+<?php require_once __DIR__.'/../assets/php/connect.php';
 if (!isset($_SESSION['email']) || $_SESSION['admin'] < 1) {
     echo '<br>Page refusée !';
     header('Location: ../index.php');
     exit;
 }
-?>
-<?php require_once __DIR__.'/../assets/php/head.php'; ?>
+require_once __DIR__.'/../assets/php/head.php'; ?>
 
 <body>
     <div class="container">
@@ -37,7 +34,7 @@ if (!isset($_SESSION['email']) || $_SESSION['admin'] < 1) {
                         </thead>
                         <tbody>
                             <?php
-                            $sqlQuery = 'SELECT * FROM `commande` WHERE active > 0 ORDER BY id';
+                           $sqlQuery = 'SELECT * FROM `commande` WHERE active > 0 ORDER BY id';
 $commandeStatement = $mysqlClient->prepare($sqlQuery);
 $commandeStatement->execute();
 $commande = $commandeStatement->fetchAll();
@@ -443,9 +440,6 @@ foreach ($categorie as $categories) {
     </div>
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

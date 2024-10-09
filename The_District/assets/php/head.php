@@ -58,21 +58,21 @@
     if (basename($_SERVER['SCRIPT_NAME']) == 'platunique.php') {
         echo ' <link rel="stylesheet" href="../assets/css/cat_plat.css" />
 
-<title>The District : '.$name.'</title>';
+                <title>The District : '.$name.'</title>';
     }
     if (basename($_SERVER['SCRIPT_NAME']) == 'profil.php') {
         echo ' <link rel="stylesheet" href="../assets/css/profil.css">
-<script src="../assets/js/profil.js" defer></script>
-<title>The District : Profil</title> ';
+                <script src="../assets/js/profil.js" defer></script>
+                <title>The District : Profil</title> ';
     }
     if (basename($_SERVER['SCRIPT_NAME']) == 'pwdlost.php') {
         echo ' <script src="../assets/js/login.js" defer></script>
-<title>The District : Récupération de mot de passe</title>';
+                <title>The District : Récupération de mot de passe</title>';
     }
     if (basename($_SERVER['SCRIPT_NAME']) == 'resetpass.php') {
         echo ' <script src="../assets/js/resetpass.js" defer></script>
         <link rel="stylesheet" href="../assets/css/login.css" />
-<title>The District : Récupération de mot de passe</title>';
+        <title>The District : Récupération de mot de passe</title>';
     }
 
     ?>

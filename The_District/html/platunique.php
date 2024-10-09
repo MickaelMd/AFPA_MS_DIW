@@ -1,9 +1,5 @@
 <?php require_once __DIR__.'/../assets/php/connect.php';
 
-error_reporting(0);
-?>
-
-<?php
 $id = $_GET['plat'];
 
 if (!is_numeric($id) || (int) $id <= 0) {
@@ -11,10 +7,7 @@ if (!is_numeric($id) || (int) $id <= 0) {
     exit;
 }
 
-$req = $mysqlClient->prepare('SELECT id, libelle, active FROM plat WHERE id = :id');
-$req->execute(['id' => (int) $id]);
-
-$resultat = $req->fetch();
+$resultat = pl_unique_verif($id);
 
 if (!$resultat) {
     echo "<h1>Erreur : Le plat demandé n'existe pas.</h1>";
@@ -23,10 +16,6 @@ if (!$resultat) {
 
 $name = htmlspecialchars($resultat['libelle'], ENT_QUOTES, 'UTF-8');
 
-$sqlQuery = 'SELECT * FROM plat WHERE id = :id ORDER BY libelle';
-$platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute(['id' => (int) $id]);
-$platL = $platLStatement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php require_once __DIR__.'/../assets/php/head.php'; ?>
@@ -40,6 +29,8 @@ $platL = $platLStatement->fetchAll(PDO::FETCH_ASSOC);
             <div id="cards_section_p_c">
 
                 <?php
+
+$platL = pl_list($id);
 
 foreach ($platL as $platLs) {
     $description = $platLs['description'];
@@ -82,9 +73,6 @@ foreach ($platL as $platLs) {
         </section>
     </div>
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

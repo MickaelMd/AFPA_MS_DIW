@@ -1,5 +1,5 @@
-<?php require_once __DIR__.'/../assets/php/connect.php'; ?>
-<?php require_once __DIR__.'/../assets/php/head.php'; ?>
+<?php require_once __DIR__.'/../assets/php/connect.php';
+require_once __DIR__.'/../assets/php/head.php'; ?>
 
 <body>
     <div class="container">
@@ -8,12 +8,12 @@
 
         <?php
 
-            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                echo '<h3 class="text-center mt-5 text-success">Vous êtes connecté ! </h3>';
-                echo '<meta http-equiv="refresh" content="1; URL='.$ip_link.'/index.php">';
+           if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
+               echo '<h3 class="text-center mt-5 text-success">Vous êtes connecté ! </h3>';
+               echo '<meta http-equiv="refresh" content="1; URL='.$ip_link.'/index.php">';
 
-                return;
-            }
+               return;
+           }
 ?>
         <section id="login_section_page" class="mt-5">
 
@@ -232,7 +232,6 @@ if (isset($_POST['login_submit'])) {
               'nom_client' => $nom_client,
           ]);
           $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid ,admin FROM clients WHERE email = :email');
-          // $req = $mysqlClient->prepare('SELECT prenom, admin FROM clients WHERE email = :email');
           $req->execute([
               'email' => $sign_email]);
 
@@ -253,9 +252,7 @@ if (isset($_POST['login_submit'])) {
 
 ?>
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
 </body>
 
 </html>

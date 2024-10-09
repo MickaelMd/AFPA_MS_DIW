@@ -38,15 +38,13 @@
                        <a class="nav-link" href="'.$ip_link.'/html/log_sign.php">Profil</a>
                    </li>
                    ';
-            } ?>
-
-                <?php if (isset($_SESSION['email']) && !is_null($_SESSION['email']) && $_SESSION['admin'] > 0) {
-                    echo ' 
+            } if (isset($_SESSION['email']) && !is_null($_SESSION['email']) && $_SESSION['admin'] > 0) {
+                echo ' 
                  <li class="nav-item nav_cent_res">
                     <a class="nav-link" href="'.$ip_link.'/html/admin.php">Administration</a>
                 </li>
                 ';
-                } ?>
+            } ?>
 
             </ul>
             <span class="navbar-text  ms-auto">
@@ -90,10 +88,8 @@
 <section id="search_zone" style="display: none;">
     <div id="search_zone_list">
         <?php
-                    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle";
-        $platStatement = $mysqlClient->prepare($sqlQuery);
-        $platStatement->execute();
-        $platSZ = $platStatement->fetchAll();
+
+        $platSZ = plat_index_list(99999);
 
         foreach ($platSZ as $plats) {
             $description = $plats['description'];

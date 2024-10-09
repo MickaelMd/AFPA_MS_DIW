@@ -44,3 +44,101 @@ if (isset($_SESSION['email'])) {
         session_destroy();
     }
 }
+
+// ------ index.php, categorie.php, plats.php, header.php <=
+
+function index_categorie_list($limit)
+{
+    global $mysqlClient;
+    $sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT $limit";
+    $categorieStatement = $mysqlClient->prepare($sqlQuery);
+    $categorieStatement->execute();
+    $categorie = $categorieStatement->fetchAll();
+
+    return $categorie;
+}
+
+function plat_index_list($limit)
+{
+    global $mysqlClient;
+    $sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT $limit";
+    $platStatement = $mysqlClient->prepare($sqlQueryy);
+    $platStatement->execute();
+    $platindex = $platStatement->fetchAll();
+
+    return $platindex;
+}
+
+// ------ foodlist.php <=
+
+function foodlist($id)
+{
+    global $mysqlClient;
+    $req = $mysqlClient->prepare('SELECT id, libelle, active FROM categorie WHERE id = :id');
+    $req->execute([
+        'id' => (int) $id,
+    ]);
+    $resultat = $req->fetch();
+
+    return $resultat;
+}
+
+function foodlistpl($id)
+{
+    global $mysqlClient;
+    $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = :id_categorie ORDER BY libelle";
+    $platLStatement = $mysqlClient->prepare($sqlQuery);
+    $platLStatement->execute([
+        'id_categorie' => (int) $id,
+    ]);
+
+    return $platLStatement;
+}
+
+function btn_left($id)
+{
+    global $mysqlClient;
+    $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
+    $req->execute(params: [
+        'id' => $id - 1]);
+
+    $resultatL = $req->fetch();
+
+    return $resultatL;
+}
+
+function btn_right($id)
+{
+    global $mysqlClient;
+    $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
+    $req->execute(params: [
+        'id' => $id + 1]);
+
+    $resultatR = $req->fetch();
+
+    return $resultatR;
+}
+
+// ------ platunique.php <=
+
+function pl_unique_verif($id)
+{
+    global $mysqlClient;
+    $req = $mysqlClient->prepare('SELECT id, libelle, active FROM plat WHERE id = :id');
+    $req->execute(['id' => (int) $id]);
+
+    $resultat = $req->fetch();
+
+    return $resultat;
+}
+
+function pl_list($id)
+{
+    global $mysqlClient;
+    $sqlQuery = 'SELECT * FROM plat WHERE id = :id ORDER BY libelle';
+    $platLStatement = $mysqlClient->prepare($sqlQuery);
+    $platLStatement->execute(['id' => (int) $id]);
+    $platL = $platLStatement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $platL;
+}

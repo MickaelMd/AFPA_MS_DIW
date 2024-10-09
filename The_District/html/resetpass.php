@@ -32,9 +32,8 @@ if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
 
 if (isset($_POST['reset_submit'])) {
     $lostemail = $_POST['reset_email'];
-    $req = $mysqlClient->prepare('SELECT id, nom, prenom, email, telephone, adresse, pass, active, resetcode, admin FROM clients WHERE email = :email');
-    $req->execute(['email' => $lostemail]);
-    $resultat = $req->fetch();
+
+    $resultat = rp_find($lostemail);
 
     if (!$resultat) {
         echo '</br><h3 class="text-center">Aucun utilisateur trouvé avec cet email, ou cet utilisateur n\'a pas demandé de code de réinitialisation.</h3><br/>';
@@ -82,20 +81,12 @@ if (isset($_POST['reset_code_submit'])) {
     } elseif ($reset_pass !== $reset_pass_confirm) {
         echo '<h3 class="text-center text-danger">Les mots de passe ne correspondent pas.</h3>';
     } else {
-        $checkCodeQuery = 'SELECT resetcode FROM clients WHERE email = :email';
-        $checkCodeStatement = $mysqlClient->prepare($checkCodeQuery);
-        $checkCodeStatement->execute(['email' => $lostmail]);
-        $codeResult = $checkCodeStatement->fetch();
+        $codeResult = rp_check($lostmail);
 
         if ($codeResult && $codeResult['resetcode'] == $reset_code) {
             $mdp_hash = password_hash($reset_pass, PASSWORD_DEFAULT);
-            $updateQuery = 'UPDATE clients SET pass = :pass, resetcode = 0 WHERE email = :email AND resetcode = :resetcode';
-            $updateStatement = $mysqlClient->prepare($updateQuery);
-            $updateStatement->execute([
-                'pass' => $mdp_hash,
-                'email' => $lostmail,
-                'resetcode' => $reset_code,
-            ]);
+
+            rp_setnewpass($reset_pass, $mdp_hash, $lostmail, $reset_code);
             echo '<h3 class="text-center text-success">Votre mot de passe a été réinitialisé avec succès !</h3>';
             echo '<meta http-equiv="refresh" content="1; URL='.$ip_link.'/index.php">';
         } else {

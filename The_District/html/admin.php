@@ -34,11 +34,8 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
                         </thead>
                         <tbody>
                             <?php
-                           $sqlQuery = 'SELECT * FROM `commande` WHERE active > 0 ORDER BY id';
-$commandeStatement = $mysqlClient->prepare($sqlQuery);
-$commandeStatement->execute();
-$commande = $commandeStatement->fetchAll();
 
+            $commande = admin_command();
 foreach ($commande as $commandes) {
     $id_commande = htmlspecialchars($commandes['id']);
     $etat_commande = htmlspecialchars($commandes['etat']);
@@ -84,13 +81,7 @@ foreach ($commande as $commandes) {
                         $archived = isset($_POST['delete_ids_'.$id_commande]) && $_POST['delete_ids_'.$id_commande] === '1' ? 0 : 1;
                         $etat_commande = $_POST['etat'][$id_commande] ?? $commandes['etat'];
 
-                        $updateQuery = 'UPDATE commande SET active = :archived, etat = :etat WHERE id = :id';
-                        $updateStatement = $mysqlClient->prepare($updateQuery);
-                        $updateStatement->execute([
-                            'archived' => $archived,
-                            'etat' => $etat_commande,
-                            'id' => $id_commande,
-                        ]);
+                        admin_update_command($archived, $etat_commande, $id_commande);
                     }
 
                     echo "<meta http-equiv='refresh' content='0'>";
@@ -115,10 +106,7 @@ foreach ($commande as $commandes) {
                     <tbody>
                         <?php
 
-    $sqlQuery = 'SELECT * FROM `categorie` WHERE SuperActive > 0 ORDER BY libelle';
-$categorieStatement = $mysqlClient->prepare($sqlQuery);
-$categorieStatement->execute();
-$categorie = $categorieStatement->fetchAll();
+$categorie = admin_list_categorie();
 
 foreach ($categorie as $categories) {
     $checkcat = ($categories['active'] === 'Yes') ? 'checked="checked"' : '';
@@ -151,11 +139,6 @@ foreach ($categorie as $categories) {
 // ----------------- Update active / Delete Categorye ------------
 
     if (isset($_POST['submit_update_categorie'])) {
-        $sqlQuery = 'SELECT * FROM `categorie`';
-        $categorieStatement = $mysqlClient->prepare($sqlQuery);
-        $categorieStatement->execute();
-        $categorie = $categorieStatement->fetchAll();
-
         foreach ($categorie as $showcat) {
             $valueKey = 'valuecat_'.$showcat['id'];
             $valueDeleteKey = 'valuecatDELETE_'.$showcat['id'];
@@ -166,13 +149,7 @@ foreach ($categorie as $categories) {
             $activeStatus = ($value === '1') ? 'Yes' : 'No';
             $superActiveStatus = ($valueDelete === '1') ? '0' : $showcat['SuperActive'];
 
-            $updateQuery = 'UPDATE `categorie` SET active = :active, SuperActive = :superactive WHERE id = :id';
-            $updateStatement = $mysqlClient->prepare($updateQuery);
-            $updateStatement->execute([
-                'active' => $activeStatus,
-                'superactive' => $superActiveStatus,
-                'id' => $showcat['id'],
-            ]);
+            admin_update_categorie($activeStatus, $superActiveStatus, $showcat);
         }
 
         echo "<meta http-equiv='refresh' content='0'>";
@@ -236,10 +213,8 @@ foreach ($categorie as $categories) {
 
                         <?php
 // --------------------- Add Categorye -------------------
-    $sqlQuery = 'SELECT * FROM `plat` ORDER BY libelle';
-$platLStatement = $mysqlClient->prepare($sqlQuery);
-$platLStatement->execute();
-$platL = $platLStatement->fetchAll();
+
+$platL = admin_plat_l();
 
 foreach ($platL as $platLs) {
     echo '<tr data-category="'.htmlspecialchars($platLs['id_categorie']).'">  
@@ -276,18 +251,11 @@ if (isset($_POST['submit_update_plat'])) {
             $activeStatus = 'No';
         }
 
-        $updateQuery = 'UPDATE `plat` SET `active` = :active WHERE `id` = :id';
-        $updateStatement = $mysqlClient->prepare($updateQuery);
-
-        $updateStatement->execute([
-            ':active' => $activeStatus,
-            ':id' => $platId, ]);
+        admin_active_plat($activeStatus, $platId);
     }
     echo "<meta http-equiv='refresh' content='0'>";
 }
 ?>
-
-
         <section id="update_plat_section">
             <h2 class="mt-5 text-center">Modifier / Ajouter un plat</h2>
 

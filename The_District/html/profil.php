@@ -2,8 +2,7 @@
 if (!isset($_SESSION['email'])) {
     header('Location: ../index.php');
 }
-?>
-<?php require_once __DIR__.'/../assets/php/head.php'; ?>
+require_once __DIR__.'/../assets/php/head.php'; ?>
 
 
 <body>
@@ -24,18 +23,18 @@ if (!isset($_SESSION['email'])) {
                         <label class="form-label" for="nom">Nom</label>
                         <input type="text" class="form-control" id="profil_nom" name="profil_nom" <?php
 
-            if (isset($_SESSION['nom']) && !is_null($_SESSION['nom'])) {
-                echo 'value="'.$_SESSION['nom'].'"';
-            } ?> />
+           if (isset($_SESSION['nom']) && !is_null($_SESSION['nom'])) {
+               echo 'value="'.$_SESSION['nom'].'"';
+           } ?> />
                         <span id="error-profil_nom" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="profil_prenom">Prenom</label>
                         <input type="text" class="form-control" id="profil_prenom" name="profil_prenom" <?php
 
-            if (isset($_SESSION['prenom']) && !is_null($_SESSION['prenom'])) {
-                echo 'value="'.$_SESSION['prenom'].'"';
-            } ?> />
+           if (isset($_SESSION['prenom']) && !is_null($_SESSION['prenom'])) {
+               echo 'value="'.$_SESSION['prenom'].'"';
+           } ?> />
                         <span id="error-profil_prenom" class="text-danger"></span>
                     </div>
                 </div>
@@ -44,18 +43,18 @@ if (!isset($_SESSION['email'])) {
                         <label class="form-label" for="profil_email">Email</label>
                         <input type="email" class="form-control" id="profil_email" name="profil_email" <?php
 
-            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                echo 'value="'.$_SESSION['email'].'"';
-            } ?> />
+           if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
+               echo 'value="'.$_SESSION['email'].'"';
+           } ?> />
                         <span id="error-profil_email" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="profil_telephone">Téléphone</label>
                         <input type="text" class="form-control" id="profil_telephone" name="profil_telephone" <?php
 
-            if (isset($_SESSION['telephone']) && !is_null($_SESSION['telephone'])) {
-                echo 'value="'.$_SESSION['telephone'].'"';
-            } ?> />
+           if (isset($_SESSION['telephone']) && !is_null($_SESSION['telephone'])) {
+               echo 'value="'.$_SESSION['telephone'].'"';
+           } ?> />
                         <span id="error-profil_telephone" class="text-danger"></span>
                     </div>
                 </div>

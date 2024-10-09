@@ -117,11 +117,7 @@ if (isset($_POST['login_submit'])) {
         return;
     }
 
-    $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid, admin FROM clients WHERE email = :email');
-    $req->execute(params: [
-        'email' => $login_login]);
-
-    $resultat = $req->fetch();
+    $resultat = connect_result($login_login);
 
     if (!$resultat or !password_verify(password: $_POST['login_pwd'], hash: $resultat['pass'])) {
         $fail_pass = true;
@@ -144,9 +140,7 @@ if (isset($_POST['login_submit'])) {
         echo ' '.$_SESSION['admin'].'</br>';
         echo ' Session ID : '.session_id();
 
-        $updateQuery = 'UPDATE clients SET resetcode = 0 WHERE email = :email';
-        $updateStatement = $mysqlClient->prepare($updateQuery);
-        $updateStatement->execute(['email' => $login_login]);
+        connect_resetcode($login_login);
 
         echo "<meta http-equiv='refresh' content='0'>";
     }
@@ -196,9 +190,9 @@ if (isset($_POST['login_submit'])) {
       }
 
       $sign_email = $_POST['sign_email'];
-      $stmt = $mysqlClient->prepare(query: 'SELECT * FROM clients WHERE email=?');
-      $stmt->execute(params: [$sign_email]);
-      $user = $stmt->fetch();
+
+      $user = sign_email($sign_email);
+
       if ($user) {
           echo "Le nom d'utilisateur existe déjà !";
       } else {
@@ -220,22 +214,12 @@ if (isset($_POST['login_submit'])) {
               echo 'Le mot de passe est invalide.';
           }
 
-          $sqlQuery = 'INSERT INTO clients(nom_client, nom, prenom, email, telephone, adresse, pass) VALUES (:nom_client, :nom, :prenom, :email, :telephone, :adresse, :pass)';
-          $insertmdp = $mysqlClient->prepare($sqlQuery);
-          $insertmdp->execute([
-              'nom' => $_POST['sign_nom'],
-              'prenom' => $_POST['sign_prenom'],
-              'email' => $_POST['sign_email'],
-              'telephone' => $_POST['sign_telephone'],
-              'adresse' => $_POST['sign_adresse'],
-              'pass' => $mdp_hash,
-              'nom_client' => $nom_client,
-          ]);
-          $req = $mysqlClient->prepare(query: 'SELECT id, nom, prenom, email, telephone, adresse, pass, active, uuid ,admin FROM clients WHERE email = :email');
-          $req->execute([
-              'email' => $sign_email]);
+          $sign_nom = $_POST['sign_nom'];
+          $sign_prenom = $_POST['sign_prenom'];
+          $sign_telephone = $_POST['sign_telephone'];
+          $sign_adresse = $_POST['sign_adresse'];
 
-          $resultat = $req->fetch();
+          sign_insert($nom_client, $sign_nom, $sign_prenom, $sign_email, $sign_telephone, $sign_adresse, $mdp_hash);
 
           $_SESSION['email'] = $sign_email;
           $_SESSION['nom'] = $resultat['nom'];
@@ -246,6 +230,7 @@ if (isset($_POST['login_submit'])) {
           $_SESSION['nom_client'] = $resultat['nom_client'];
           $_SESSION['uuid'] = $resultat['uuid'];
           $_SESSION['shopping_list_count'];
+
           echo "<meta http-equiv='refresh' content='0'>";
       }
   }

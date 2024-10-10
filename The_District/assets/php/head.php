@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="assets/img/the_district_brand/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo $ip_link; ?>/assets/img/the_district_brand/favicon.png"
+        type="image/x-icon" />
     <meta name="description" content="Site du restaurant The District" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -17,12 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const validations = {
     nom: {
-      validate: (value) => value !== "",
-      errorMessage: "Le nom est obligatoire.",
+      validate: (value) => /^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/.test(value),
+      errorMessage:
+        "Le nom est obligatoire et doit comporter uniquement des lettres.",
     },
     prenom: {
-      validate: (value) => value !== "",
-      errorMessage: "Le prénom est obligatoire.",
+      validate: (value) => /^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/.test(value),
+      errorMessage:
+        "Le prénom est obligatoire et doit comporter uniquement des lettres.",
     },
     email: {
       validate: (value) =>
@@ -64,10 +66,20 @@ document.addEventListener("DOMContentLoaded", function () {
         validations[fieldId].errorMessage
       );
       if (!validationPassed) isValid = false;
+      localStorage.removeItem("contact_demande"); // <---
     });
 
     if (!isValid) {
       event.preventDefault();
     }
   });
+});
+
+// --- <---
+
+let demande = document.getElementById("demande");
+document.getElementById("demande").innerHTML =
+  localStorage.getItem("contact_demande");
+demande.addEventListener("input", function () {
+  localStorage.setItem("contact_demande", demande.value);
 });

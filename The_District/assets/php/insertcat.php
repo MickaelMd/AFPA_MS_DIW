@@ -7,9 +7,8 @@ if (!isset($_SESSION['email']) || $_SESSION['admin'] < 1) {
     header('Location: '.$ip_link.'/index.php');
     exit;
 }
+$insertRecipe = insert_cat();
 
-$sqlQuery = 'INSERT INTO categorie(libelle, image, active) VALUES (:libelle, :image, :active)';
-$insertRecipe = $mysqlClient->prepare($sqlQuery);
 $active = isset($_POST['cat_add_active']) ? 'Yes' : 'No';
 
 if ($active !== 'Yes' && $active !== 'No') {

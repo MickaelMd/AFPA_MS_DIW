@@ -343,3 +343,14 @@ function admin_active_plat($activeStatus, $platId)
         ':active' => $activeStatus,
         ':id' => $platId, ]);
 }
+
+// ------ assets/php/insertcat.php <=
+
+function insert_cat()
+{
+    global $mysqlClient;
+    $sqlQuery = 'INSERT INTO categorie(libelle, image, active) VALUES (:libelle, :image, :active)';
+    $insertRecipe = $mysqlClient->prepare($sqlQuery);
+
+    return $insertRecipe;
+}

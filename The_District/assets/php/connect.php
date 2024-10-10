@@ -3,16 +3,21 @@
 session_start();
 date_default_timezone_set('Europe/Paris');
 
-$ip_link = 'http://localhost:3000/The_District';
+require_once __DIR__.'/../../vendor/autoload.php';
+use Dotenv\Dotenv;
 
-// define('BASE_URL', 'http://localhost:3000/The_District'); ??
+$dotenv = Dotenv::createImmutable(__DIR__.'/../../');
+$dotenv->load();
+
+$ip_link = $_ENV['URL_LINK'];
 
 try {
-    $mysqlClient = new PDO(
-        dsn: 'mysql:host=127.0.0.1;dbname=The_District;charset=utf8',
-        username: 'root',
-        password: 'root'
-    );
+    $dsn = 'mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_NAME'].';charset='.$_ENV['DB_CHARSET'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASSWORD'];
+
+    $mysqlClient = new PDO($dsn, $username, $password);
+    echo 'Connexion réussie à la base de données!';
 } catch (Exception $e) {
     exit('Erreur : '.$e->getMessage());
 }

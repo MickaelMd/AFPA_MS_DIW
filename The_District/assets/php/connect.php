@@ -17,7 +17,6 @@ try {
     $password = $_ENV['DB_PASSWORD'];
 
     $mysqlClient = new PDO($dsn, $username, $password);
-    echo 'Connexion réussie à la base de données!';
 } catch (Exception $e) {
     exit('Erreur : '.$e->getMessage());
 }

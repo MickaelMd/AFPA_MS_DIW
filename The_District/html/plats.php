@@ -1,5 +1,5 @@
 <?php require_once __DIR__.'/../assets/php/connect.php';
-$platL = plat_index_list(90000);
+
 require_once __DIR__.'/../assets/php/head.php'; ?>
 
 <body>
@@ -12,7 +12,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
             <div id="cards_section_p_c">
 
                 <?php
-
+$platL = plat_index_list(90000);
 foreach ($platL as $plats) {
     $description = $plats['description'];
     if (strlen($description) > 100) {

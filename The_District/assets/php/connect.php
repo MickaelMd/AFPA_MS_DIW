@@ -20,7 +20,7 @@ try {
 
     $mysqlClient = new PDO($dsn, $username, $password);
 } catch (Exception $e) {
-    echo '<h1>Erreur : Configurer le fichier connect.php dans /assets/php et le .env</h1>';
+    echo '<h1>Erreur : Configurer le fichier connect.php dans /assets/php et le .env, et utilisez MariaDB.</h1>';
     exit('Erreur : '.$e->getMessage());
 }
 
